@@ -1,0 +1,28 @@
+@media(max-width:1200px){
+.middle-sec .col-md-6, .col-md-4{ width:100%;}
+}
+@media(max-width:991px){
+.main-content-box {
+  display: block;
+}
+.left-sec, .middle-sec, .right-sec{ display:block; width:100%;}
+}
+@media(max-width:480px){
+.para-list-type, .para-info {
+  position: static;
+  transform: inherit;
+	-webkit-transform:inherit;
+	-moz-transform:inherit;
+	-ms-transform:inherit;
+	-o-transform:inherit; 
+  
+}
+.para-detail {
+  border-left: medium none;
+  border-radius: 0;
+  border-right: medium none;
+}
+.outer-box {
+  padding: 0;
+}
+}
