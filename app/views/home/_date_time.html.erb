@@ -1,0 +1,36 @@
+<div class="modal fade" id="dateTimePopup" tabindex="-1" role="dialog" aria-labelledby="dateTimePopupLabel">
+  <div class="modal-dialog" role="document" style="margin-right: 21%;">
+    <div class="cal-outer-box" style="max-width: 400px;">
+      <h4>start</h4>
+      <!-- Datepicker -->
+      <div class="date-section">
+        <div id="start_date"></div>
+      </div>
+      <div class="custom-timeslder-span1">
+        <div class="rang-sli">
+          <p>  
+            <span class="range-inp" id="start_time" ng-model="newAudit.startTime">10:00</span>
+          </p>
+          <div id="slider-range-max"></div>
+        </div>
+      </div>
+      <h4>end</h4>
+      <!-- Datepicker -->
+      <div class="date-section">
+        <div id="end_date"></div>
+      </div>
+      <div class="custom-timeslder-span1">
+        <div class="rang-sli">
+          <p>  
+            <span class="range-inp" id="end_time" ng-model="newAudit.endTime">10:00</span>
+          </p>
+          <div id="slider-range-max1"></div>
+        </div>
+      </div>
+      <div class="footer-cal">
+        <button type="button" class="btn btn-cal">finetune</button>
+        <button type="button" class="btn btn-cal" ng-click="test()" data-dismiss="modal">done</button>
+      </div>
+    </div>
+  </div>
+</div>

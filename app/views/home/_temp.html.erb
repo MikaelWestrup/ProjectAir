@@ -1,0 +1,33 @@
+<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Pop-over</button> -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document" style="margin-right: 21%;">
+    <div class="cal-outer-box" style="max-width: 427px;">
+      <h4>start</h4>
+      <!-- Datepicker -->
+      <div class="date-section"> <div id="datepicker" ng-model="newAudit.startDate" data-date-format="dd-mm-yyyy"></div> </div>
+      <div class="custom-timeslder-span1">
+        <div class="rang-sli">
+          <p>  
+            <input class="range-inp" type="text" id="amount" readonly ng-model="newAudit.startTime">
+          </p>
+          <div id="slider-range-max"></div>
+        </div>
+      </div>
+      <h4>end</h4>
+      <!-- Datepicker -->
+      <div class="date-section"> <div id="datepicker1" ng-model="newAudit.endDate"></div> </div>
+      <div class="custom-timeslder-span1">
+        <div class="rang-sli">
+          <p>  
+            <input class="range-inp" type="text" id="amount1" readonly ng-model="newAudit.endTime" >
+          </p>
+          <div id="slider-range-max1"></div>
+        </div>
+      </div>
+      <div class="footer-cal">
+        <button type="button" class="btn btn-cal">finetune</button>
+        <button type="button" class="btn btn-cal" data-dismiss="modal">Done</button>
+      </div>
+    </div>
+  </div>
+</div>

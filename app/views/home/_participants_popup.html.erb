@@ -1,0 +1,66 @@
+<div class="modal fade" id="participantsPopup" tabindex="-1" role="dialog" aria-labelledby="participantsPopupLabel">
+  <div class="modal-dialog" role="document" style="margin-right: 21%;">
+    <div class="cal-outer-box" style="max-width: 427px;">
+      <div class="row">
+        <div class="col-xs-6 left-sec-popup">
+          <h4>Auditor</h4>
+          <div class="col-md-12 auditor-list main-span mCustomScrollbar">
+            <div class="panel-group" role="tablist">
+              <div class="outer-box" style="cursor: pointer;" ng-repeat="i in range(20)" ng-click="toggle = !toggle" ng-class="{ 'selected' : toggle}" value="{{ i }}">
+                <!-- <div class="para-list-type"></div> -->
+                <div class="auditor-detail">Auditor 1</div>
+                <a class="info para-info" href="javascript:void(0);" title="Info"></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-6 right-sec-popup">
+          <h4>Auditee</h4>
+          <div class="iner-box row">
+            <form>
+              <div class="col-md-6 custom-dd">
+                <div class="form-group">
+                  <select class="dropdown form-control">
+                    <option>Company 1</option>
+                    <option selected="selected">Company 2</option>
+                    <option>Company 3</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-6 custom-dd">
+                <div class="form-group">
+                  <select class="dropdown form-control">
+                    <option>Department 1</option>
+                    <option selected="selected">Department 2</option>
+                    <option>Department 3</option>
+                  </select>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="col-md-12 auditor-list main-span mCustomScrollbar">
+            <div class="panel-group" role="tablist">
+              <div class="outer-box" style="cursor: pointer;" ng-repeat="i in range(20)" ng-click="toggle = !toggle" ng-class="{ 'selected' : toggle}" value="{{ i }}">
+                <!-- <div class="para-list-type"></div> -->
+                <div class="auditor-detail">Auditor 1</div>
+                <a class="info para-info" href="javascript:void(0);" title="Info"></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><br>
+      <div class="footer-cal">
+        <button type="button" class="btn btn-cal" ng-click="select_auditor()" data-dismiss="modal">Done</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style type="text/css">
+  .left-sec-popup { border-right: 2px solid #e5e5e5; }
+  .auditor-list { padding-left: 0px; padding-right: 0px; }
+  .auditor-list .panel-group .outer-box { border-radius: 8px; }
+  .selected { border-color: #f69c4c; }
+  .left-sec-popup .main-span, .right-sec-popup .main-span { max-height: 410px ; }
+  .left-sec-popup .auditor-list { margin-top: 28%; }
+</style>

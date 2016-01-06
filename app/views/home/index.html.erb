@@ -1,4 +1,4 @@
-<div class="main-content-box">
+<div class="main-content-box" ng-controller="MainCtrl">
   <div class="left-sec">
     <div class="iner-box row">
       <form>
@@ -10,381 +10,45 @@
         <div class="col-md-6 custom-dd">
           <div class="form-group">
             <select name="speed" id="speed">
-              <option>Slower</option>
-              <option>Slow</option>
-              <option selected="selected">Medium</option>
-              <option>Fast</option>
-              <option>Faster</option>
+              <option>Regulation</option>
+              <option selected="selected">Chapter</option>
+              <option>Paragraph</option>
             </select>
           </div>
         </div>
       </form>
       <div class="col-md-12 main-span mCustomScrollbar">
-        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-            <div class="panel panel-default">
-            <div class="panel-heading highlight" role="tab" id="headingOne">
+        <div class="panel-group" id="accordion" role="tablist">
+          <!-- ng loop start -->
+          <div class="panel panel-default" ng-repeat="chapter in chapters">
+            <div role="tab" id="chapter_{{$index}}" class="panel-heading" ng-class="{'highlight' : $first}">
               <h4 class="panel-title clearfix">
-              <a role="button" class="expbtn" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                
-              </a>
-              <p>145.a.55 maintenance record</p>
-              <a class="info" href="javascript:void(0);" title="Info"></a>
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse_{{$index}}" aria-expanded="true" aria-controls="collapse_{{$index}}" class="expbtn" ngclass="{'collapsed' : $first}" toggle-class="highlight">
+                </a>
+                <p>{{ chapter.name }}</p>
+                <a class="info" href="javascript:void(0);" title="Info"></a>
               </h4>
             </div>
-            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+            <div id="collapse_{{$index}}" aria-labelledby="chapter_{{$index}}" class="panel-collapse collapse" ng-class="{'in' : $first}">
               <div class="panel-body">
-              <div class="outer-box">
-                <div class="para-list-type">a</div>
-                <div class="para-detail">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.</div>
-                <a href="#" class="para-info"></a>
-              </div>
-                                  <div class="outer-box">
-                <div class="para-list-type">b</div>
-                <div class="para-detail">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.</div>
-                <a href="#" class="para-info"></a>
-              </div>
-              </div>
-            </div>
-            </div>
-              <div class="panel panel-default">
-              <div class="panel-heading" role="tab" id="headingTwo">
-                <h4 class="panel-title clearfix">
-                <a class="collapsed expbtn"  role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                 
-                </a>
-                <p>145.a.55 maintenance record</p>
-                <a class="info" href="javascript:void(0);" title="Info"></a>
-                </h4>
-              </div>
-              <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                <div class="panel-body">
-                <div class="outer-box">
-                <div class="para-list-type">b</div>
-                <div class="para-detail">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.</div>
-                <a href="#" class="para-info"></a>
-              </div>
+                <div class="outer-box" ng-repeat="paragraph in chapter.paragraphs">
+                  <span id="{{ paragraph.id }}">
+                    <div class="para-list-type">{{ paragraph.code }}</div>
+                    <div class="para-detail">{{ paragraph.description }}</div>
+                    <a class="info para-info" href="javascript:void(0);" title="Info"></a>
+                  <span>
                 </div>
               </div>
-              </div>
-            <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingThree">
-              <h4 class="panel-title">
-              <a class="collapsed expbtn" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                
-              </a>
-              <p>145.a.55 maintenance record</p>
-              <a class="info" href="javascript:void(0);" title="Info"></a>
-              </h4>
-            </div>
-            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-              <div class="panel-body">
-              <div class="outer-box">
-                <div class="para-list-type">c</div>
-                <div class="para-detail">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.</div>
-                <a href="#" class="para-info"></a>
-              </div>
-              </div>
-            </div>
-            </div>
-            <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingfr">
-              <h4 class="panel-title">
-              <a class="collapsed expbtn" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsefr" aria-expanded="false" aria-controls="collapsefr">
-                
-              </a>
-              <p>145.a.55 maintenance record</p>
-              <a class="info" href="javascript:void(0);" title="Info"></a>
-              </h4>
-            </div>
-            <div id="collapsefr" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingfr">
-              <div class="panel-body">
-              <div class="outer-box">
-                <div class="para-list-type">c</div>
-                <div class="para-detail">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.</div>
-                <a href="#" class="para-info"></a>
-              </div>
-              </div>
-            </div>
-            </div>
-            <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingfv">
-              <h4 class="panel-title">
-              <a class="collapsed expbtn" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsefv" aria-expanded="false" aria-controls="collapsefv">
-                
-              </a>
-              <p>145.a.55 maintenance record</p>
-              <a class="info" href="javascript:void(0);" title="Info"></a>
-              </h4>
-            </div>
-            <div id="collapsefv" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingfv">
-              <div class="panel-body">
-              <div class="outer-box">
-                <div class="para-list-type">c</div>
-                <div class="para-detail">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.</div>
-                <a href="#" class="para-info"></a>
-              </div>
-              </div>
-            </div>
-            </div>
-            <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingsx">
-              <h4 class="panel-title">
-              <a class="collapsed expbtn" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsesx" aria-expanded="false" aria-controls="collapsesx">
-                
-              </a>
-              <p>145.a.55 maintenance record</p>
-              <a class="info" href="javascript:void(0);" title="Info"></a>
-              </h4>
-            </div>
-            <div id="collapsesx" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingsx">
-              <div class="panel-body">
-              <div class="outer-box">
-                <div class="para-list-type">c</div>
-                <div class="para-detail">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.</div>
-                <a href="#" class="para-info"></a>
-              </div>
-              </div>
-            </div>
-            </div>
-            <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingsvn">
-              <h4 class="panel-title">
-              <a class="collapsed expbtn" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsesvn" aria-expanded="false" aria-controls="collapsesvn">
-                
-              </a>
-              <p>145.a.55 maintenance record</p>
-              <a class="info" href="javascript:void(0);" title="Info"></a>
-              </h4>
-            </div>
-            <div id="collapsesvn" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingsvn">
-              <div class="panel-body">
-              <div class="outer-box">
-                <div class="para-list-type">c</div>
-                <div class="para-detail">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.</div>
-                <a href="#" class="para-info"></a>
-              </div>
-              </div>
-            </div>
-            </div>
-            <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingegt">
-              <h4 class="panel-title">
-              <a class="collapsed expbtn" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseegt" aria-expanded="false" aria-controls="collapseegt">
-                
-              </a>
-              <p>145.a.55 maintenance record</p>
-              <a class="info" href="javascript:void(0);" title="Info"></a>
-              </h4>
-            </div>
-            <div id="collapseegt" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingegt">
-              <div class="panel-body">
-              <div class="outer-box">
-                <div class="para-list-type">c</div>
-                <div class="para-detail">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.</div>
-                <a href="#" class="para-info"></a>
-              </div>
-              </div>
-            </div>
-            </div>
-            <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingnine">
-              <h4 class="panel-title">
-              <a class="collapsed expbtn" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsenine" aria-expanded="false" aria-controls="collapsenine">
-                
-              </a>
-              <p>145.a.55 maintenance record</p>
-              <a class="info" href="javascript:void(0);" title="Info"></a>
-              </h4>
-            </div>
-            <div id="collapsenine" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingnine">
-              <div class="panel-body">
-              <div class="outer-box">
-                <div class="para-list-type">c</div>
-                <div class="para-detail">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.</div>
-                <a href="#" class="para-info"></a>
-              </div>
-              </div>
-            </div>
-            </div>
-                            
-                            <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="heading10">
-              <h4 class="panel-title">
-              <a class="collapsed expbtn" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse10" aria-expanded="false" aria-controls="collapsenine">
-                
-              </a>
-              <p>145.a.55 maintenance record</p>
-              <a class="info" href="javascript:void(0);" title="Info"></a>
-              </h4>
-            </div>
-            <div id="collapse10" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading10">
-              <div class="panel-body">
-              <div class="outer-box">
-                <div class="para-list-type">c</div>
-                <div class="para-detail">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.</div>
-                <a href="#" class="para-info"></a>
-              </div>
-              </div>
-            </div>
-            </div>
-                            
-        </div>
-      </div>
-    </div>
-    
-  </div>
-  <div class="outer-middle-box">
-    <div class="info-box-outer">
-      <div class="info-box mCustomScrollbar">
-        <p>Information from AMC, GM and linked regulation paragraph.</p>
-                      <p>Information from AMC, GM and linked regulation paragraph.</p>
-                      <p>Information from AMC, GM and linked regulation paragraph.</p>
-                     
-                   
-      </div>
-    </div>
-    <div class="middle-sec">
-      <div class="iner-box clearfix">
-        <div class="middle-inner-box clearfix mCustomScrollbar">
-        <div class="row middle-header clearfix">
-          <div class="col-md-3"> <div class="span-box">145 a 55(b)</div> </div>
-          <div class="col-md-3"> <div class="span-box">145 a 55(c)</div> </div>
-          <div class="col-md-3"> <div class="span-box">145 a 60(b)</div> </div>
-          <div class="col-md-3"> <div class="span-box">145 a 60(c)</div> </div>
-        </div>
-        <div class="row audit-box">
-          <div class="col-md-6">
-            <div class="form-group">
-            <label for="exampleInputEmail1">type of audit</label>
-              <div class="dropdown">
-                <a href="#" class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a class="trigger right-caret">Level 1</a>
-                    <ul class="dropdown-menu sub-menu">
-                      <li><a href="#">Level 2</a></li>
-                      <li><a href="#">Level 2</a></li>
-                      <li><a href="#">Level 2</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="#">Level 1</a></li>
-                  <li><a href="#">Level 1</a></li>
-                </ul>
-              </div>
             </div>
           </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="exampleInputEmail1">name of audit</label>
-              <input type="text" class="form-control"  />
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <ul class="audit-time-box clearfix">
-              <li>one time <button type="submit" class="btn btn-default"><img src="assets/Large-One-Time.png" alt="" class="img-responsive" /></button></li>
-              <li>repeating<button type="submit" class="btn btn-default"><img src="assets/Large-Reoccurring.png" alt="" class="img-responsive" /></button></li>
-            </ul>
-          </div>
-          <div class="col-md-6 audit-int">
-            <p>audit interval</p>
-            <ul class="audit-time-box clearfix">
-              <li><a href="#">-</a></li>
-              <li class="active"><span>5</span></li>
-              <li><span>12</span></li>
-              <li><span>24</span></li>
-              <li><a href="#">+</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="row date-middle">
-          <div class="col-md-4 date-box">
-            <ul class="audit-time-box clearfix">
-              <li>date &amp; time <button type="submit" class="btn btn-default" id="pop">
-              <img src="assets/Large-Date-and-Time.png" alt="" class="img-responsive" /></button></li>
-            </ul>
-          </div>
-          <div class="col-md-4 onside">
-            <ul class="audit-time-box clearfix">
-              <li>onside<button type="submit" class="btn btn-default">
-                <img src="assets/Large-Home.png" alt="" class="img-responsive" />
-              </button></li>
-              <li>desktop<button type="submit" class="btn btn-default">
-                <img src="assets/Large-Desktop.png" alt="" class="img-responsive" />
-              </button></li>
-            </ul>
-          </div>
-          <div class="col-md-4 parti">
-            <ul class="audit-time-box clearfix">
-              <li>participants 
-                <button type="submit" class="btn btn-default">
-                  <img src="assets/user.png" alt="" class="img-responsive" />
-                </button></li>
-            </ul>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6 date-box">
-            <ul class="audit-time-box clearfix">
-              <li>include previous audit funding <button type="submit" class="btn btn-default">
-                <img src="assets/Large-Checklist.png" alt="" class="img-responsive" />
-              </button></li>
-            </ul>
-          </div>
-          
-          <div class="col-md-6 parti">
-            <ul class="audit-time-box clearfix">
-              <li>include occurrences <button type="submit" class="btn btn-default">
-                <img src="assets/Large-Checklist.png" alt="" class="img-responsive" />
-              </button></li>
-            </ul>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12 footer-note-box">
-            <label>notes</label>
-            <textarea class="form-control"></textarea>
-          </div>
-        </div>
-        <div class="row blank-dv"></div>
-        </div>
-      </div>
-    </div>
-    <div class="custom-popup">
-      <div class="cal-outer-box">
-        <h4>start</h4>
-        <!-- Datepicker -->
-        <div class="date-section"> <div id="datepicker"></div> </div>
-        <div class="custom-timeslder-span1">
-            <div class="rang-sli">
-                                  <p>  
-                                    <input class="range-inp" type="text" id="amount" readonly >
-                                  </p>
-                                  <div id="slider-range-max"></div>
-                              </div>
-        </div>
-        
-                      
-                      
-        <h4>end</h4>
-        <!-- Datepicker -->
-        <div class="date-section"> <div id="datepicker1"></div> </div>
-        <div class="custom-timeslder-span1">
-            <div class="rang-sli">
-                                  <p>  
-                                    <input class="range-inp" type="text" id="amount1" readonly >
-                                  </p>
-                                  <div id="slider-range-max1"></div>
-                              </div>
-        </div>
-        <div class="footer-cal">
-          <button type="submit" class="btn btn-cal">finetune</button>
-          <button type="submit" class="btn btn-cal" id="done">done</button>
+          <!-- ng loop end -->
         </div>
       </div>
     </div>
   </div>
+
+  <%= render partial: "middle_section" %>
+  
   <div class="right-sec">
     <div class="iner-box row">
       <form>
