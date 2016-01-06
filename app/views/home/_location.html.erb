@@ -1,68 +1,73 @@
 <div class="modal fade" id="locationPopup" tabindex="-1" role="dialog" aria-labelledby="locationPopupLabel">
   <div class="modal-dialog" role="document" style="margin-right: 21%;">
-    <div class="cal-outer-box" style="max-width: 427px;">
-      <div class="fine-tune">
-        <h4>26-JAN-2016</h4>
-        <div class="row">
-          <div class="col-md-4">
-            <p>Start</p>
-            <div class="form-group">
-              <select class="form-control">
-                <option value="08">08</option>
-                <option value="09">09</option>
-              </select>
-              <select name="colors" class="form-control">
-                <option value="30">30</option>
-                <option value="40">40</option>
-              </select>
+    <div class="cal-outer-box main-span mCustomScrollbar" style="max-width: 420px;">
+      <div class="location-form">
+        <form>
+          <div class="form-group">
+            <div class="col-md-6">
+              <label for="location-country">Country</label>
+              <input type="text" class="form-control" placeholder="Country" id="location-country"/>
+            </div>
+            <div class="col-md-6">
+              <label for="location-airport">Airport</label>
+              <input type="text" class="form-control" placeholder="Airport" id="location-airport"/>
             </div>
           </div>
-          <div class="col-md-4">
-            <p>Stop</p>
-            <div class="form-group">
-              <select name="colors" class="form-control">
-                <option value="08">08</option>
-                <option value="09">09</option>
-              </select>
-              <select name="colors" class="form-control">
-                <option value="30">30</option>
-                <option value="40">40</option>
-              </select>
+          <div class="form-group">
+            <div class="col-md-12">
+              <label for="location-address">Address</label>
+              <input type="text" class="form-control" id="location-address"/>
             </div>
           </div>
-          <div class="col-md-4">
-            <p>Paragraphs</p>
-            <div class="form-group">
-              <select name="colors" class="form-control fc-lg">
-                <option>145.A.35(A)</option>
-                <option>145.A.35(B)</option>
-              </select>
+          <div class="form-group">
+            <div class="col-md-6">
+              <label for="location-zipcode">Zipcode</label>
+              <input type="text" class="form-control" placeholder="Zipcode" id="location-zipcode"/>
+            </div>
+            <div class="col-md-6">
+              <label for="location-town">Town/City</label>
+              <input type="text" class="form-control" placeholder="Town/City" id="location-town"/>
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <p>Note</p>
-            <input type="text" class="form-control" />
+          <div class="form-group">
+            <div class="col-md-12">
+              <label for="location-additional-details">Additional Details</label>
+              <input type="text" class="form-control" id="location-additional-details"/>
+            </div>
           </div>
-        </div>
-        <div class="footer-cal">
-          <button type="button" class="btn btn-default">+</button>
-        </div>
+          <div class="form-group">
+            <div class="col-md-6">
+              <label for="location-name">Location Name</label>
+              <input type="text" class="form-control" placeholder="Location Name" id="location-name"/>
+            </div>
+            <div class="col-md-6">
+              <button type="button" class="btn btn-cal" data-dismiss="modal" style="margin-top: 14%;">Done</button>
+            </div>
+          </div>
+        </form>
       </div>
-      <div class="footer-cal">
-        <button type="button" class="btn btn-cal" data-dismiss="modal">Done</button>
+      <div class="location-list">
+        <div class="row middle-header clearfix">
+          <div class="col-md-3"> <div class="span-box">145 a 55(b)</div> </div>
+          <div class="col-md-3"> <div class="span-box">145 a 55(c)</div> </div>
+          <div class="col-md-3"> <div class="span-box">145 a 60(b)</div> </div>
+          <div class="col-md-3"> <div class="span-box">145 a 60(c)</div> </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
 <style type="text/css">
-  .fine-tune .form-group .form-control { display: -webkit-inline-box; width: 48%; padding-left: 0px;}
+  .fine-tune .form-group .form-control { display: -webkit-inline-box; width: 48%; padding-left: 0px; padding-right: 0px; }
   .fine-tune .form-group .fc-lg { width: 100%; }
   .fine-tune .footer-cal { margin-top: 2%; margin-bottom: 2%; }
   .fine-tune .form-control:focus, .fine-tune .footer-cal .btn:hover { border: 2px solid #FA9C46; box-shadow: none; }
   ul#st-menu { border-radius: 5px; }
   ul#st-menu > li:hover, ul#st-menu > li:focus { background: #fa9c46; border: 1px solid #fa9c46; color: #fff; }
-
+  #locationPopup .cal-outer-box { padding-left: 12px; padding-right: 12px; }
+  .location-form { border: 2px solid #e5e5e5; position: fixed; max-width: 65%; padding-bottom: 8px; margin-top: -5px; border-radius: 16px; }
+  .location-form .form-control { border: 2px solid #e5e5e5; border-radius: 10px ; }
+  .location-form .form-control:focus { border: 2px solid #FA9C46; box-shadow: none; border-radius: 10px ; }
+  .location-list { padding-top: 87%; }
 </style>

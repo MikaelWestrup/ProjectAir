@@ -1,0 +1,22 @@
+<div class="modal fade" id="fineTunePopup" tabindex="-1" role="dialog" aria-labelledby="fineTunePopupLabel">
+  <div class="modal-dialog" role="document" style="margin-right: 21%;">
+    <div class="cal-outer-box main-span mCustomScrollbar" style="max-width: 420px;">
+      <div ng-repeat="i in range(2)">
+        <%= render partial: "temp" %>
+      </div>
+      <div class="footer-cal">
+        <button type="button" class="btn btn-cal" data-dismiss="modal">Done</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style type="text/css">
+  .fine-tune .form-group .form-control { display: -webkit-inline-box; width: 48%; padding-left: 0px; padding-right: 0px; }
+  .fine-tune .form-group .fc-lg { width: 100%; }
+  .fine-tune .footer-cal { margin-top: 2%; margin-bottom: 2%; }
+  .fine-tune .form-control:focus, .fine-tune .footer-cal .btn:hover { border: 2px solid #FA9C46; box-shadow: none; }
+  ul#st-menu { border-radius: 5px; }
+  ul#st-menu > li:hover, ul#st-menu > li:focus { background: #fa9c46; border: 1px solid #fa9c46; color: #fff; }
+  #locationPopup .cal-outer-box { padding-left: 12px; padding-right: 12px; }
+</style>
