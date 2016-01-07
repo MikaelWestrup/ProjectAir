@@ -111,6 +111,7 @@ GEM
       cocaine (~> 0.5.5)
       mime-types
       mimemagic (= 0.3.0)
+    pg (0.18.4)
     rack (1.6.4)
     rack-pjax (0.8.0)
       nokogiri (~> 1.5)
@@ -213,6 +214,7 @@ DEPENDENCIES
   momentjs-rails (>= 2.9.0)
   mysql2 (= 0.3.18)
   paperclip
+  pg
   rails (= 4.2.4)
   rails_admin
   sass-rails (~> 5.0)
