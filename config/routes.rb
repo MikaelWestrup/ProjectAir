@@ -5,4 +5,8 @@ Rails.application.routes.draw do
 
   # Root path for application
   root 'home#index'
+
+  namespace :api, defaults: {format: :json} do
+    resources :audits
+  end
 end
