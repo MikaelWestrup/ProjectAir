@@ -27,5 +27,5 @@
 //= require angular-mocks
 //= require angular-resource
 
-//= require angular-js/app
+//= require angular/app
 
