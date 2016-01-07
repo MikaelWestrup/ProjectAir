@@ -11,7 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160107074722) do
+ActiveRecord::Schema.define(version: 20160107114334) do
+
+  create_table "audit_types", force: :cascade do |t|
+    t.string   "name",         limit: 255
+    t.boolean  "is_parent",                default: false
+    t.integer  "main_type_id", limit: 4
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+  end
+
+  create_table "audits", force: :cascade do |t|
+    t.string   "name",          limit: 255
+    t.integer  "audit_type_id", limit: 4
+    t.datetime "period_start"
+    t.datetime "period_end"
+    t.string   "planner",       limit: 255
+    t.integer  "location_id",   limit: 4
+    t.integer  "interval",      limit: 4
+    t.integer  "auditor_id",    limit: 4
+    t.integer  "auditee_id",    limit: 4
+    t.text     "notes",         limit: 65535
+    t.boolean  "reoccuring",                  default: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
+  end
 
   create_table "chapters", force: :cascade do |t|
     t.text     "name",          limit: 65535
@@ -53,6 +77,29 @@ ActiveRecord::Schema.define(version: 20160107074722) do
     t.datetime "avatar_updated_at"
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
+  end
+
+  create_table "fine_tunes", force: :cascade do |t|
+    t.date     "ddate"
+    t.time     "start_hour"
+    t.time     "end_hour"
+    t.text     "notes",        limit: 65535
+    t.integer  "audit_id",     limit: 4
+    t.integer  "paragraph_id", limit: 4
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.string   "name",               limit: 255
+    t.string   "country",            limit: 255
+    t.string   "airport",            limit: 255
+    t.text     "address",            limit: 65535
+    t.string   "zipcode",            limit: 255
+    t.string   "town",               limit: 255
+    t.text     "additional_details", limit: 65535
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
   end
 
   create_table "paragraph_types", force: :cascade do |t|
