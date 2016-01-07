@@ -28,5 +28,5 @@
 //= require angular-resource
 //= require angular-route
 
-//= require angular-js/app
-//= require_tree ./angular-js
+//= require ./angular/app
+//= require_tree ./angular
