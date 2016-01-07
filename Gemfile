@@ -43,6 +43,9 @@ gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
 # Use rails admin for backhand management
 gem 'rails_admin'
 
+# Use paperclip for storing and handling media like images and videos
+gem "paperclip"
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
