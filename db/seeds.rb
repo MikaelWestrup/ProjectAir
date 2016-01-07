@@ -7,8 +7,6 @@ Regulation.create([
 
 Chapter.create([
   {name: "Name Test 1", ctype: "Ctype Test 1", annex: "Annex Test 1", code: "Chapter code Test 1", regulation_id: 1},
-  {name: "Name Test 2", ctype: "Ctype Test 2", annex: "Annex Test 2", code: "Chapter code Test 2", regulation_id: 1},
-  {name: "Name Test 1", ctype: "Ctype Test 1", annex: "Annex Test 1", code: "Chapter code Test 1", regulation_id: 2},
   {name: "Name Test 2", ctype: "Ctype Test 2", annex: "Annex Test 2", code: "Chapter code Test 2", regulation_id: 2}
 ])
 

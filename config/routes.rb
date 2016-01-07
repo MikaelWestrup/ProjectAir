@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   # Root path for application
   root 'home#index'
 
-  namespace :api, defaults: {format: :json} do
+  scope "api", defaults: {format: :json} do
     resources :audits
+    resources :chapters, only: :index
+    match 'chapters/search' => "chapters#search", via: [:get, :post]
   end
 end

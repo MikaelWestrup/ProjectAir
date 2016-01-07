@@ -1,4 +1,27 @@
-var myApp = angular.module('myApp', []);
+var myApp = angular.module('myApp', ["ngResource"]);
+
+myApp.config(function($httpProvider) {
+  $httpProvider.defaults.headers.common['X-CSRF-Token'] =
+    $('meta[name=csrf-token]').attr('content');
+});
+
+myApp.factory("Chapter", function($resource) {
+  return $resource("/api/chapters/:id", { id: "@id" },
+    {
+      'index':   { method: 'GET', isArray: true }
+    }
+  );
+});
+
+
+myApp.controller('ChapterIndexCtrl', function($scope, Chapter){
+  $scope.chapters = Chapter.index();
+  $scope.search = function(){
+    console.log($scope.searchForm);
+  };
+});
+
+
 
 myApp.factory('db_data', [function(){
   var object = {
@@ -20,7 +43,7 @@ myApp.factory('db_data', [function(){
 }]);
 
 myApp.controller('MainCtrl', ['$scope', 'db_data', function($scope, db_data){
-  $scope.chapters = db_data.chapters;
+  // $scope.chapters = db_data.chapters;
   $scope.audit_types = db_data.audit_types;
   $scope.intervals = [6,12,24];
   $scope.range = function(val){

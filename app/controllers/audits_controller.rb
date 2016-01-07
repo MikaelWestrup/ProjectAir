@@ -4,6 +4,7 @@ class AuditsController < ApplicationController
 
   def index
     @audits = Audit.all
+    respond_with @audits
   end
 
   def show
