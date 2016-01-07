@@ -26,7 +26,6 @@
 //= require angular
 //= require angular-mocks
 //= require angular-resource
-//= require angular-route
 
-//= require ./angular/app
-//= require_tree ./angular
+//= require angular-js/app
+
