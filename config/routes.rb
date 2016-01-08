@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   scope "api", defaults: {format: :json} do
     resources :audits
-    resources :chapters, only: :index
-    match 'chapters/search' => "chapters#search", via: [:get, :post]
+    resources :chapters, only: [:index, :create]
+    get 'chapters' => "chapters#search"
   end
 end

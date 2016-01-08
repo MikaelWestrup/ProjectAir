@@ -9,8 +9,7 @@
         </div>
         <div class="col-md-6 custom-dd">
           <div class="form-group">
-            <select name="speed" id="speed" ng-model="searchForm.filter" ng-change="search()">
-              <option disabled selected>Filter by</option>
+            <select class="form-control" ng-model="searchForm.filter" ng-change="search()">
               <option>Regulation</option>
               <option>Chapter</option>
               <option>Paragraph</option>
@@ -24,7 +23,7 @@
           <div class="panel panel-default" ng-repeat="chapter in chapters">
             <div role="tab" id="chapter_{{$index}}" class="panel-heading" ng-class="{'highlight' : $first}">
               <h4 class="panel-title clearfix">
-                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse_{{$index}}" aria-expanded="true" aria-controls="collapse_{{$index}}" class="expbtn" ngclass="{'collapsed' : $first}" toggle-class="highlight">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse_{{$index}}" aria-expanded="true" aria-controls="collapse_{{$index}}" class="expbtn" ng-class="{'collapsed' : !$first}" toggle-class="highlight">
                 </a>
                 <p>{{ chapter.name }}</p>
                 <a class="info" href="javascript:void(0);" title="Info"></a>

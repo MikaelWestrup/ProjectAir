@@ -17,7 +17,8 @@ myApp.factory("Chapter", function($resource) {
 myApp.controller('ChapterIndexCtrl', function($scope, Chapter){
   $scope.chapters = Chapter.index();
   $scope.search = function(){
-    console.log($scope.searchForm);
+    $scope.chapters = Chapter.index($scope.searchForm);
+    // console.log($scope.searchForm);
   };
 });
 

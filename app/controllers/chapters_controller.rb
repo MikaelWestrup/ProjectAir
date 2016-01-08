@@ -1,12 +1,14 @@
 class ChaptersController < ApplicationController
+  before_filter :search, only: :index
+  
   respond_to :json
 
-  def index
-    @chapters = Chapter.all
+  def index  
     respond_with @chapters.as_json(include: :paragraphs)
   end
 
-  def search
-    
-  end
+  private
+    def search
+      @chapters = Chapter.ransack(name_cont: params[:q]).result
+    end
 end
