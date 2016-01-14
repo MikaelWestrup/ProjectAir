@@ -12,7 +12,7 @@
 
 class AuditType < ActiveRecord::Base
   # Validations for storing filtered data
-  validates_presence_of :name, :is_parent
+  validates_presence_of :name
 
   # Relations/Associations with other models
   belongs_to :main_type, class_name: 'AuditType', foreign_key: 'main_type_id'

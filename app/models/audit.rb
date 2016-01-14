@@ -20,8 +20,8 @@
 
 class Audit < ActiveRecord::Base
   # Validations for storing filtered data
-  validates_presence_of :name, :period_start, :period_end, :planner, :interval, :reoccuring
-  validates_presence_of :audit_type, :location 
+  validates_presence_of :name, :period_start, :period_end, :interval, :reoccuring
+  validates_presence_of :audit_type#, :location 
 
   # Relations/Associations with other models
   belongs_to :location
