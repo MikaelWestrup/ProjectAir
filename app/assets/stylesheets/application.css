@@ -14,6 +14,7 @@
  *= require design/jquery.mCustomScrollbar.min
  *= require design/jquery-ui
  *= require bootstrap-datetimepicker
+ *= require chosen
  *= require design/style
  *= require design/responsive
  *= require_tree .

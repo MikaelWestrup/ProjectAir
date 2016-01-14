@@ -4,10 +4,10 @@ myApp.controller('AuditCtrl', function($scope, Audit){
 
   $scope.submit = function(){
     setParams();
-    console.log($scope.audit);
 
     function success(response) {
       console.log("success", response);
+      $scope.audit = $scope.locations = {};
     }
 
     function failure(response) {
@@ -20,10 +20,8 @@ myApp.controller('AuditCtrl', function($scope, Audit){
       // });
     }
 
-    newAudit = { audit: $scope.audit };
-    console.log(newAudit);
+    newAudit = { audit: $scope.audit, location: $scope.locations };
     Audit.create(newAudit, success, failure);
-
   };
 
   $scope.setAuditType = function(auditType){
@@ -40,7 +38,6 @@ myApp.controller('AuditCtrl', function($scope, Audit){
   };
 
   $scope.setLocation = function() {
-    console.log($scope.audit);
   };
 
   $scope.changeInterval = function(value, operation){
@@ -57,7 +54,19 @@ myApp.controller('AuditCtrl', function($scope, Audit){
     $scope.audit["interval"] = ($scope.audit.reoccuring == 'true' ? ($scope.rinterval || 0) : (0));
     $scope.audit["period_start"] = $scope.sdate || null;
     $scope.audit["period_end"] = $scope.edate || null;
+    $scope.audit["reoccuring"] = $scope.audit["reoccuring"] == "true" ? true : false;
+    $scope.audit["onside"] = $scope.audit["onside"] == "true" ? true : false;
+    $scope.audit["paragraphs"] = getParagraphsList();
   };
+
+  function getParagraphsList () {
+    paras = [];
+    var temp = $("#select-para-list").val();
+    for (var i = temp.length - 1; i >= 0; i--) {
+      paras.push(parseInt(temp[i]));
+    };
+    return paras;
+  }
 
   function toDateTime(date,time){
     return date + " " + time;
