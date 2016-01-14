@@ -28,4 +28,10 @@
 //= require angular-resource
 
 //= require angular/app
+//= require angular/services/Audit
+//= require angular/controllers/MainCtrl
+//= require angular/controllers/chapters/ChapterIndexCtrl
+//= require angular/controllers/audits/AuditEditCtrl
+//= require angular/directives/directive
+
 

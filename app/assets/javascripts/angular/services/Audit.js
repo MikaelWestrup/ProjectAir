@@ -1,4 +1,24 @@
-myApp.factory('db_data', [function($resource){
+myApp.factory("Audit", function($resource) {
+  return $resource("/api/audits/:id", { id: "@id" },
+    {
+      'index':   { method: 'GET', isArray: true },
+      'create':  { method: 'POST' },
+      'show':    { method: 'GET', isArray: false },
+      'update':  { method: 'PUT' },
+      'destroy': { method: 'DELETE' }
+    }
+  );
+});
+
+myApp.factory("Chapter", function($resource) {
+  return $resource("/api/chapters/:id", { id: "@id" },
+    {
+      'index':   { method: 'GET', isArray: true }
+    }
+  );
+});
+
+myApp.factory('db_data', [function(){
   var object = {
     chapters: [
       {id: 1, name: "Chapter 1", paragraphs: [{id: 1, code: 'A', description: "This is a description of chapter paragraph."}, {id: 10, code: 'B', description: "This is a description of chapter paragraph."}]},

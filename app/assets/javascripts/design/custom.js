@@ -2,7 +2,8 @@ $(document).ready(function(){
 // date picker
 
   $( "#start_date, #end_date" ).datepicker({
-  	inline: true,
+  	dateFormat: 'dd-mm-yy',
+    inline: true,
   });
 
 // dropdown
