@@ -18,7 +18,6 @@ class AuditsController < ApplicationController
     if @location.save
       @audit = @location.audits.build(audit_params)
       if @audit.save
-        byebug
         params[:audit][:paragraphs].each { |para| @audit.paragraphs.build(para) }
         render json: @audit, status: :created
       else
