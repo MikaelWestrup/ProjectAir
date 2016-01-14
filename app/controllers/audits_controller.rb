@@ -14,10 +14,19 @@ class AuditsController < ApplicationController
   end
 
   def create
-    @audit = Audit.new(filter_params)
-    if @audit.save
-      render json: @audit, status: :created
+    @location = Location.new(location_params)
+    if @location.save
+      @audit = @location.audits.build(audit_params)
+      if @audit.save
+        byebug
+        params[:audit][:paragraphs].each { |para| @audit.paragraphs.build(para) }
+        render json: @audit, status: :created
+      else
+        @location.destroy
+        render json: @audit.errors, status: :unprocessable_entity
+      end
     else
+      @location.errors.each {|error| @audit.errors.add(error)}
       render json: @audit.errors, status: :unprocessable_entity
     end
   end
@@ -36,15 +45,11 @@ class AuditsController < ApplicationController
       @audit = Audit.find(params[:id])
     end
 
-    def filter_params
-      data = { :name => params[:name], :audit_type_id => params[:audit_type].to_i, :period_start => DateTime.parse(params[:period_start]),
-        :period_end => DateTime.parse(params[:period_end]), :interval => params[:interval].to_i, :notes => params[:notes],
-        :reoccuring => params[:reoccuring]=='true' ? true : false }
+    def audit_params
+      params.require(:audit).permit(:name, :reoccuring, :onside, :notes, :audit_type_id, :interval, :period_start, :period_end)
     end
 
-    # def audit_params
-    #   params[:period_start] = DateTime.parse(params[:period_start])
-    #   params[:period_end] = DateTime.parse(params[:period_end])
-    #   params.permit(:name, :reoccuring, :period_start, :period_end, :notes, :audit_type, :interval)
-    # end
+    def location_params
+      params.require(:location).permit(:name, :country, :airport, :address, :zipcode, :town, :additional_details)
+    end
 end

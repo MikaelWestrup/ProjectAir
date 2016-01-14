@@ -12,6 +12,7 @@ class CreateAudits < ActiveRecord::Migration
       t.integer :auditee_id
       t.text :notes
       t.boolean :reoccuring, default: false
+      t.boolean :onside, default: false
       t.text :notes
 
       t.timestamps null: false

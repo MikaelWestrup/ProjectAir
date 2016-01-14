@@ -35,6 +35,7 @@ gem 'coffee-rails', '~> 4.1.0'
 # gem 'therubyracer', platforms: :ruby
 
 gem 'angularjs-rails'
+gem "angular-dragdrop-rails"
 gem 'twitter-bootstrap-rails'
 # gem 'angular-rails-templates'
 

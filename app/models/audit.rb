@@ -14,13 +14,14 @@
 #  auditee_id    :integer
 #  notes         :text(65535)
 #  reoccuring    :boolean          default(FALSE)
+#  onside        :boolean          default(FALSE)
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #
 
 class Audit < ActiveRecord::Base
   # Validations for storing filtered data
-  validates_presence_of :name, :period_start, :period_end, :interval, :reoccuring
+  validates_presence_of :name, :period_start, :period_end, :interval
   validates_presence_of :audit_type#, :location 
 
   # Relations/Associations with other models

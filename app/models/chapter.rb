@@ -14,9 +14,16 @@
 
 class Chapter < ActiveRecord::Base
   # Validations for storing filtered data
-  validates_presence_of :name, :ctype, :annex, :code, :regulation
+  validates_presence_of :name, :ctype, :annex, :regulation
+
+  before_save :set_chapter_code
 
   # Relations/Associations with other models
   belongs_to :regulation
   has_many :paragraphs
+
+  private
+    def set_chapter_code
+      self.code = self.name.split(' ')[0]
+    end
 end

@@ -6,12 +6,19 @@
     <div class="iner-box clearfix">
       <div class="middle-inner-box clearfix mCustomScrollbar">
         <form ng-submit="submit()">
-          <div class="row middle-header clearfix">
-            <div class="col-md-3"> <div class="span-box">145 a 55(b)</div> </div>
+          <!-- <div class="row middle-header clearfix"> -->
+            <!-- <div class="col-md-3"> <div class="span-box">145 a 55(b)</div> </div>
             <div class="col-md-3"> <div class="span-box">145 a 55(c)</div> </div>
             <div class="col-md-3"> <div class="span-box">145 a 60(b)</div> </div>
-            <div class="col-md-3"> <div class="span-box">145 a 60(c)</div> </div>
-          </div>
+            <div class="col-md-3"> <div class="span-box">145 a 60(c)</div> </div> -->
+            <span ng-controller="ChapterIndexCtrl">
+              <select chosen multiple id="select-para-list" ng-model="audit.pp">
+                <optgroup ng-repeat="chapter in chapters" label="{{ chapter.name }}">
+                  <option ng-repeat="para in chapter.paragraphs" value="{{ para.id }}">{{ chapter.code +'('+ para.number +")" }}</option>
+                </optgroup>
+              </select>
+            </span>
+          <!-- </div> -->
           <div class="row audit-box">
             <div class="col-md-6">
               <div class="form-group">
@@ -57,7 +64,7 @@
               <p>Audit Interval</p>
               <ul class="audit-time-box clearfix">
                 <li><a ng-click="changeInterval(intervals[0], '-')" ng-hide="intervals.includes(0)">-</a></li>
-                <li ng-repeat="interval in intervals" ng-click="setInterval(interval)" ng-class="{'active' : interval == rinterval}">
+                <li ng-repeat="interval in intervals" ng-click="setInterval(interval)" ng-class="{'active' : interval == rinterval && audit.reoccuring == 'true' }">
                   <span>{{ interval }}</span>
                 </li>
                 <li><a ng-click="changeInterval(intervals[2], '+')" ng-hide="intervals.includes(48)">+</a></li>
@@ -140,3 +147,9 @@
 
   .disabled { pointer-events:none; opacity: 0.4; }
 </style>
+
+<script type="text/javascript">
+  $(function(){
+    $("#select-para-list").chosen();
+  });
+</script>

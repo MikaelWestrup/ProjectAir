@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20160107114334) do
     t.integer  "auditee_id",    limit: 4
     t.text     "notes",         limit: 65535
     t.boolean  "reoccuring",                  default: false
+    t.boolean  "onside",                      default: false
     t.datetime "created_at",                                  null: false
     t.datetime "updated_at",                                  null: false
   end
