@@ -8,46 +8,7 @@ $(document).ready(function(){
 
 // dropdown
 
-$( "#speed, #speed1" ).selectmenu();
-
-// accordion 
-
-// $(function () { $('#collapseFour').collapse({
-//       toggle: false
-//    })});
-//    $(function () { $('#collapseOne').collapse('show')});
-//    $(function () { $('#collapseTwo').collapse('hide')});
-//    $(function () { $('#collapseThree').collapse('hide')});
-//    $(function () { $('#collapsefr').collapse('hide')});
-//    $(function () { $('#collapsefv').collapse('hide')});
-//    $(function () { $('#collapsesx').collapse('hide')});
-//    $(function () { $('#collapsesvn').collapse('hide')});
-//    $(function () { $('#collapseegt').collapse('hide')});
-//    $(function () { $('#collapsenine').collapse('hide')});
-//    $(function () { $('#collapse10').collapse('hide')});	
-	
-// js for toggle
-// $(".info").click(function(){
-// 	$(".info-box").fadeToggle();			  
-// });
-	
-// js for popup
-
-// $("#pop").click(function(){
-// 	$("#date_time_popup").fadeIn();done			  
-// });
-// $("#done").click(function(){
-// 	$("#date_time_popup").fadeOut();			  
-// });
-
-// $("#onside_field").click(function(){
-//   $("#location").fadeIn();done        
-// });
-// $("#location-done").click(function(){
-//   $("#location").fadeOut();       
-// });
-
-
+  $( "#speed, #speed1" ).selectmenu();
 
 $(function(){
 	$(".dropdown-menu > li > a.trigger").on("click",function(e){
@@ -102,6 +63,7 @@ $(function() {
     }
   });
 });
+
 
 
 

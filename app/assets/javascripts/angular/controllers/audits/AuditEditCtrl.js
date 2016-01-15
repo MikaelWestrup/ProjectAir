@@ -1,5 +1,7 @@
 myApp.controller('AuditCtrl', function($scope, Audit){
   // $scope.audit = new Audit();
+  // $scope.audit_types = Audit.index();
+  $scope.audits = Audit.index();
   $scope.intervals = [6,12,24];
 
   $scope.submit = function(){
@@ -7,7 +9,9 @@ myApp.controller('AuditCtrl', function($scope, Audit){
 
     function success(response) {
       console.log("success", response);
-      $scope.audit = $scope.locations = {};
+      alert("Audit is successfully created.");
+      window.location.reload();
+      // $scope.audit = $scope.locations = {};
     }
 
     function failure(response) {

@@ -20,14 +20,14 @@
 //= require design/jquery.mCustomScrollbar.concat.min
 //= require design/jquery-ui.min
 //= require design/custom
-//= require chosen.jquery
+//= require design/chosen.jquery
 
 //= require turbolinks
 
 //= require angular
 //= require angular-mocks
 //= require angular-resource
-//= require angular/angular-chosen
+//= require angular/resources/angular-chosen
 
 //= require angular/app
 //= require angular/services/Audit
