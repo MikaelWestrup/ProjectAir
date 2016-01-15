@@ -14,7 +14,7 @@
             <span ng-controller="ChapterIndexCtrl">
               <select chosen multiple id="select-para-list" ng-model="audit.pp">
                 <optgroup ng-repeat="chapter in chapters" label="{{ chapter.name }}">
-                  <option ng-repeat="para in chapter.paragraphs" value="{{ para.id }}">{{ chapter.code +'('+ para.number +")" }}</option>
+                  <option ng-repeat="para in chapter.paragraphs" value="{{ para.id }}">{{ para.name }}</option>
                 </optgroup>
               </select>
             </span>

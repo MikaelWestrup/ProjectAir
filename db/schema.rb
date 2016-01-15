@@ -11,7 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160115051252) do
+ActiveRecord::Schema.define(version: 20160115073938) do
+
+  create_table "attachment_types", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "attachments", force: :cascade do |t|
+    t.string   "name",                      limit: 255
+    t.string   "number",                    limit: 255
+    t.text     "description",               limit: 65535
+    t.text     "up_to_including_amendment", limit: 65535
+    t.integer  "attachment_type_id",        limit: 4
+    t.integer  "paragraph_id",              limit: 4
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+  end
 
   create_table "audit_items", force: :cascade do |t|
     t.integer  "audit_id",     limit: 4
@@ -110,18 +127,11 @@ ActiveRecord::Schema.define(version: 20160115051252) do
     t.datetime "updated_at",                       null: false
   end
 
-  create_table "paragraph_types", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-  end
-
   create_table "paragraphs", force: :cascade do |t|
     t.string   "name",                      limit: 255
     t.string   "number",                    limit: 255
     t.text     "description",               limit: 65535
     t.text     "up_to_including_amendment", limit: 65535
-    t.integer  "paragraph_type_id",         limit: 4
     t.integer  "chapter_id",                limit: 4
     t.datetime "created_at",                              null: false
     t.datetime "updated_at",                              null: false

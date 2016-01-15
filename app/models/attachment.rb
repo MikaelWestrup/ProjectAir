@@ -1,24 +1,23 @@
 # == Schema Information
 #
-# Table name: paragraphs
+# Table name: attachments
 #
 #  id                        :integer          not null, primary key
 #  name                      :string(255)
 #  number                    :string(255)
 #  description               :text(65535)
 #  up_to_including_amendment :text(65535)
-#  chapter_id                :integer
+#  attachment_type_id        :integer
+#  paragraph_id              :integer
 #  created_at                :datetime         not null
 #  updated_at                :datetime         not null
 #
 
-class Paragraph < ActiveRecord::Base
+class Attachment < ActiveRecord::Base
   # Validations for storing filtered data
-  validates_presence_of :name, :description, :up_to_including_amendment, :chapter_id
+  validates_presence_of :name, :description, :up_to_including_amendment, :attachment_type, :paragraph
 
   # Relations/Associations with other models
-  belongs_to :chapter
-  has_many :attachments
-  has_many :audit_items
-  has_many :audits, :through => :audit_items
+  has_one :attachment_type
+  belongs_to :paragraph
 end

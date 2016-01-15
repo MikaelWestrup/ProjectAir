@@ -1,24 +1,4 @@
 RailsAdmin.config do |config|
-
-  ### Popular gems integration
-
-  ## == Devise ==
-  # config.authenticate_with do
-  #   warden.authenticate! scope: :user
-  # end
-  # config.current_user_method(&:current_user)
-
-  ## == Cancan ==
-  # config.authorize_with :cancan
-
-  ## == Pundit ==
-  # config.authorize_with :pundit
-
-  ## == PaperTrail ==
-  # config.audit_with :paper_trail, 'User', 'PaperTrail::Version' # PaperTrail >= 3.0.0
-
-  ### More at https://github.com/sferik/rails_admin/wiki/Base-configuration
-
   config.actions do
     dashboard                     # mandatory
     index                         # mandatory
@@ -29,10 +9,6 @@ RailsAdmin.config do |config|
     edit
     delete
     show_in_app
-
-    ## With an audit adapter, you can add:
-    # history_index
-    # history_show
   end
 end
 
@@ -43,6 +19,33 @@ RailsAdmin.config do |config|
       list do
         exclude_fields :id, :created_at, :updated_at
       end
+    end
+  end
+end
+
+RailsAdmin.config do |config|
+  config.model 'Regulation' do 
+    edit do
+      field :name
+      field :organization
+    end
+  end
+
+  config.model 'Chapter' do 
+    edit do
+      exclude_fields :code, :paragraphs
+    end
+  end
+
+  config.model 'Paragraph' do 
+    edit do
+      exclude_fields :number, :audit_items, :audits #, :attachments
+    end
+  end
+
+  config.model 'Attachment' do 
+    edit do
+      exclude_fields :attachment_type_id
     end
   end
 end

@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: paragraph_types
+# Table name: attachment_types
 #
 #  id         :integer          not null, primary key
 #  name       :string(255)
@@ -8,10 +8,10 @@
 #  updated_at :datetime         not null
 #
 
-class ParagraphType < ActiveRecord::Base
+class AttachmentType < ActiveRecord::Base
   # Validations for storing filtered data
   validates_presence_of :name
 
   # Relations/Associations with other models
-  has_one :paragraph
+  belongs_to :attachment
 end
