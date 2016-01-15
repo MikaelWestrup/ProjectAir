@@ -3,8 +3,10 @@ class AuditsController < ApplicationController
   before_action :set_audit, only: [:show, :edit, :update, :destroy]
 
   def index
-    @audit_types = AuditType.where(is_parent: true)
-    respond_with @audit_types.as_json(include: :sub_types)
+    @audits = Audit.all
+    respond_with @audits
+    # @audit_types = AuditType.where(is_parent: true)
+    # respond_with @audit_types.as_json(include: :sub_types)
   end
 
   def show
@@ -18,8 +20,7 @@ class AuditsController < ApplicationController
     if @location.save
       @audit = @location.audits.build(audit_params)
       if @audit.save
-        byebug
-        params[:audit][:paragraphs].each { |para| @audit.paragraphs.build(para) }
+        params[:audit][:paragraphs].each { |pa| @audit.audit_items.build(paragraph_id: pa).save }
         render json: @audit, status: :created
       else
         @location.destroy

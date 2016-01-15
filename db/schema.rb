@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160107114334) do
+ActiveRecord::Schema.define(version: 20160115051252) do
+
+  create_table "audit_items", force: :cascade do |t|
+    t.integer  "audit_id",     limit: 4
+    t.integer  "paragraph_id", limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "audit_types", force: :cascade do |t|
     t.string   "name",         limit: 255

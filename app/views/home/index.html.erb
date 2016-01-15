@@ -1,66 +1,8 @@
 <div class="main-content-box" ng-controller="MainCtrl">
-  <div class="left-sec" ng-controller="ChapterIndexCtrl">
-    <div class="iner-box row">
-      <form>
-        <div class="col-md-6 pd-r">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search field" ng-model="searchForm.q" ng-change="search()"/>
-          </div>
-        </div>
-        <div class="col-md-6 custom-dd">
-          <div class="form-group">
-            <select class="form-control" ng-model="searchForm.filter" ng-change="search()">
-              <option>Regulation</option>
-              <option>Chapter</option>
-              <option>Paragraph</option>
-            </select>
-          </div>
-        </div>
-      </form>
-      <div class="col-md-12 main-span mCustomScrollbar">
-        <div class="panel-group" id="accordion" role="tablist">
-          <!-- ng loop start -->
-          <div class="panel panel-default" ng-repeat="chapter in chapters">
-            <div role="tab" id="chapter_{{$index}}" class="panel-heading" ng-class="{'highlight' : $first}">
-              <h4 class="panel-title clearfix">
-                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse_{{$index}}" aria-expanded="true" aria-controls="collapse_{{$index}}" class="expbtn" ng-class="{'collapsed' : !$first}" toggle-class="highlight">
-                </a>
-                <p>{{ chapter.name }}</p>
-                <a class="info" href="javascript:void(0);" title="Info"></a>
-              </h4>
-            </div>
-            <div id="collapse_{{$index}}" aria-labelledby="chapter_{{$index}}" class="panel-collapse collapse" ng-class="{'in' : $first}">
-              <div class="panel-body">
-                <div class="outer-box" ng-repeat="paragraph in chapter.paragraphs">
-                  <span id="{{ paragraph.id }}">
-                    <div class="para-list-type">{{ paragraph.number }}</div>
-                    <div class="para-detail">{{ paragraph.description }}</div>
-                    <a class="info para-info" href="javascript:void(0);" title="Info"></a>
-                  <span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- ng loop end -->
-        </div>
-      </div>
-    </div>
-  </div>
+
+  <%= render partial: "left_section" %>
 
   <%= render partial: "middle_section" %>
   
-  <div class="right-sec">
-    <div class="iner-box row">
-      <form>
-        <div class="col-md-11 pd-r">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search field" />
-          </div>
-        </div>
-      </form>
-      <div class="col-md-12 main-span mCustomScrollbar">
-        
-      </div>
-    </div>
-  </div>
+  <%= render partial: "right_section" %>
 </div>

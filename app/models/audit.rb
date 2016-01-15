@@ -30,4 +30,6 @@ class Audit < ActiveRecord::Base
   has_one :auditor, class_name: 'Employee', foreign_key: 'auditor_id'
   has_one :auditee, class_name: 'Employee', foreign_key: 'auditee_id'
   has_many :fine_tunes
+  has_many :audit_items
+  has_many :paragraphs, :through => :audit_items
 end

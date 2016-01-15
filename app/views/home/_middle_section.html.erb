@@ -29,7 +29,7 @@
                     <li ng-repeat="audit_type in audit_types">
                       <a class="trigger right-caret">{{ audit_type.name }}</a>
                       <ul class="dropdown-menu sub-menu">
-                        <li ng-repeat="sub_type in audit_type.sub_types">
+                        <li ng-repeat="sub_type in audit_type['sub_types']">
                           <a ng-click="setAuditType(sub_type)">{{ sub_type.name }}</a>
                         </li>
                       </ul>
@@ -126,27 +126,6 @@
   <%= render partial: "location" %>
   <%= render partial: "participants_popup" %>
 </div>
-
-
-<style type="text/css">
-  
-  label > input{
-    visibility: hidden;
-    position: absolute;
-  }
-  label > input + img{
-    cursor:pointer;
-    border:2px solid transparent;
-  }
-  label > input:checked + img{
-    border:2px solid #FA9C46;
-    border-radius: 10px;
-  }
-  a { color: #555; }
-  .audit-int p { color: black; }
-
-  .disabled { pointer-events:none; opacity: 0.4; }
-</style>
 
 <script type="text/javascript">
   $(function(){

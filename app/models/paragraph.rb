@@ -20,4 +20,6 @@ class Paragraph < ActiveRecord::Base
   # Relations/Associations with other models
   belongs_to :chapter
   belongs_to :paragraph_type
+  has_many :audit_items
+  has_many :audits, :through => :audit_items
 end

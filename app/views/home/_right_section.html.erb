@@ -1,0 +1,16 @@
+<div class="right-sec">
+  <div class="iner-box row">
+    <form>
+      <div class="col-md-11 pd-r">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search field" />
+        </div>
+      </div>
+    </form>
+    <div class="col-md-12 main-span mCustomScrollbar" ng-controller="AuditCtrl">
+      <div class="row middle-header clearfix">
+        <div class="col-md-3 right-box" ng-repeat="audit in audits"> <div class="span-box">{{ audit.name }}</div> </div>
+      </div>
+    </div>
+  </div>
+</div>
