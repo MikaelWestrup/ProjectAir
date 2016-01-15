@@ -10,9 +10,9 @@ development:
   <<: *default
   database: audit_planning_development
 
-production:
-  <<: *default
-  database: audit_planning_development
+# production:
+#   <<: *default
+#   database: audit_planning_development
 
 # test:
 #   <<: *default
@@ -24,10 +24,10 @@ production:
 #   username: audit_planning
 #   password: <%= ENV['AUDIT_PLANNING_DATABASE_PASSWORD'] %>
 
-# production:
-#   adapter: postgresql
-#   encoding: utf8
-#   host: localhost
-#   pool: 15
-#   password: 
-#   database: audit_planning_production
+production:
+  adapter: postgresql
+  encoding: utf8
+  host: localhost
+  pool: 15
+  password: 
+  database: audit_planning_production
