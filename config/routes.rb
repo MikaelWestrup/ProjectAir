@@ -10,5 +10,8 @@ Rails.application.routes.draw do
     resources :audits
     resources :chapters, only: [:index, :create]
     get 'chapters' => "chapters#search"
+    get 'companies' => "employees#conpanies_list"
+    get 'companies/:id' => "employees#departments_list"
+    get 'audit-types' => "employees#audit_types_list"
   end
 end

@@ -13,6 +13,7 @@
 #
 
 class Paragraph < ActiveRecord::Base
+  before_save :set_paragraph_number
   # Validations for storing filtered data
   validates_presence_of :name, :description, :up_to_including_amendment, :chapter_id
 
@@ -21,4 +22,9 @@ class Paragraph < ActiveRecord::Base
   has_many :attachments
   has_many :audit_items
   has_many :audits, :through => :audit_items
+
+  private
+    def set_paragraph_number
+      self.number = self.name.split(/[()]/)[1].upcase
+    end
 end
