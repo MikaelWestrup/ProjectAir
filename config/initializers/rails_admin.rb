@@ -48,4 +48,28 @@ RailsAdmin.config do |config|
       exclude_fields :attachment_type_id
     end
   end
+
+  config.model 'AuditType' do 
+    edit do
+      exclude_fields :sub_types, :audits
+    end
+  end
+
+  config.model 'Audit' do 
+    edit do
+      exclude_fields :auditor_id, :auditee_id, :fine_tunes, :audit_items
+    end
+  end
+
+  config.model 'Company' do 
+    edit do
+      exclude_fields :departments
+    end
+  end
+
+  config.model 'Department' do 
+    edit do
+      exclude_fields :employees
+    end
+  end
 end
