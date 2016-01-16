@@ -27,6 +27,7 @@
 //= require angular-mocks
 //= require angular-resource
 //= require angular/resources/angular-chosen
+//= require angular-dragdrop-original
 
 //= require angular/app
 //= require angular/services/Audit

@@ -2,122 +2,122 @@
   
   <%= render partial: "info_details" %>
 
-  <div class="middle-sec">
-    <div class="iner-box clearfix">
-      <div class="middle-inner-box clearfix mCustomScrollbar">
-        <form ng-submit="submit()">
-          <!-- <div class="row middle-header clearfix"> -->
-            <!-- <div class="col-md-3"> <div class="span-box">145 a 55(b)</div> </div>
-            <div class="col-md-3"> <div class="span-box">145 a 55(c)</div> </div>
-            <div class="col-md-3"> <div class="span-box">145 a 60(b)</div> </div>
-            <div class="col-md-3"> <div class="span-box">145 a 60(c)</div> </div> -->
-            <span ng-controller="ChapterIndexCtrl">
-              <select chosen multiple id="select-para-list" ng-model="audit.pp">
-                <optgroup ng-repeat="chapter in chapters" label="{{ chapter.name }}">
-                  <option ng-repeat="para in chapter.paragraphs" value="{{ para.id }}">{{ para.name }}</option>
-                </optgroup>
-              </select>
-            </span>
-          <!-- </div> -->
-          <div class="row audit-box">
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="exampleInputEmail1">type of audit</label>
-                <div class="dropdown">
-                  <a href="#" class="btn dropdown-toggle" data-toggle="dropdown">{{ auditType.name || 'Select Audit Type' }}<span class="caret"></span></a>
-                  <ul class="dropdown-menu" id="type_of_audit">
-                    <li ng-repeat="audit_type in audit_types" on-finish-render="ngRepeatFinished">
-                      <a class="trigger right-caret">{{ audit_type.name }}</a>
-                      <ul class="dropdown-menu sub-menu">
-                        <li ng-repeat="sub_type in audit_type['sub_types']">
-                          <a ng-click="setAuditType(sub_type)">{{ sub_type.name }}</a>
-                        </li>
-                      </ul>
-                    </li>
-                  </ul>
+  <div data-drop="true" aria-disabled="false" data-jqyoui-options jqyoui-droppable="{multiple:true}" ng-model="list2">
+    <div class="middle-sec">
+      <div class="iner-box clearfix">
+        <div class="middle-inner-box clearfix mCustomScrollbar">
+          <form ng-submit="submit()">
+            <div class="row middle-header clearfix">
+              <div class="col-md-3" ng-repeat="item in list2 track by $index" ng-model="list2"><div class="span-box">{{item.name}}</div></div>
+              <!-- <span ng-controller="ChapterIndexCtrl">
+                <select chosen multiple id="select-para-list" ng-model="audit.pp">
+                  <optgroup ng-repeat="chapter in chapters" label="{{ chapter.name }}">
+                    <option ng-repeat="para in chapter.paragraphs" value="{{ para.id }}">{{ para.name }}</option>
+                  </optgroup>
+                </select>
+              </span> -->
+            </div>
+            <div class="row audit-box">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">type of audit</label>
+                  <div class="dropdown">
+                    <a href="#" class="btn dropdown-toggle" data-toggle="dropdown">{{ auditType.name || 'Select Audit Type' }}<span class="caret"></span></a>
+                    <ul class="dropdown-menu" id="type_of_audit">
+                      <li ng-repeat="audit_type in audit_types" on-finish-render="ngRepeatFinished">
+                        <a class="trigger right-caret">{{ audit_type.name }}</a>
+                        <ul class="dropdown-menu sub-menu">
+                          <li ng-repeat="sub_type in audit_type['sub_types']">
+                            <a ng-click="setAuditType(sub_type)">{{ sub_type.name }}</a>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">name of audit</label>
+                  <input type="text" class="form-control" ng-model="audit.name" style="height:38px;" />
                 </div>
               </div>
             </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="exampleInputEmail1">name of audit</label>
-                <input type="text" class="form-control" ng-model="audit.name" style="height:38px;" />
+            <div class="row">
+              <div class="col-md-6">
+                <ul class="audit-time-box clearfix">
+                  <li>one time
+                    <label>
+                      <input type="radio" name="ont_time" value=false ng-model="audit.reoccuring"><img src="assets/Large-One-Time.png" alt="" class="img-responsive" />
+                    </label>
+                  </li>
+                  <li>repeating
+                    <label>
+                      <input type="radio" name="ont_time" value=true ng-model="audit.reoccuring"><img src="assets/Large-Reoccurring.png" alt="" class="img-responsive" />
+                    </label>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-md-6 audit-int" ng-class="{'disabled' : audit.reoccuring != 'true'}">
+                <p>Audit Interval</p>
+                <ul class="audit-time-box clearfix">
+                  <li><a ng-click="changeInterval(intervals[0], '-')" ng-hide="intervals.includes(0)">-</a></li>
+                  <li ng-repeat="interval in intervals" ng-click="setInterval(interval)" ng-class="{'active' : interval == rinterval && audit.reoccuring == 'true' }">
+                    <span>{{ interval }}</span>
+                  </li>
+                  <li><a ng-click="changeInterval(intervals[2], '+')" ng-hide="intervals.includes(48)">+</a></li>
+                </ul>
               </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6">
-              <ul class="audit-time-box clearfix">
-                <li>one time
-                  <label>
-                    <input type="radio" name="ont_time" value=false ng-model="audit.reoccuring"><img src="assets/Large-One-Time.png" alt="" class="img-responsive" />
-                  </label>
-                </li>
-                <li>repeating
-                  <label>
-                    <input type="radio" name="ont_time" value=true ng-model="audit.reoccuring"><img src="assets/Large-Reoccurring.png" alt="" class="img-responsive" />
-                  </label>
-                </li>
-              </ul>
+            <div class="row date-middle">
+              <div class="col-md-4 date-box">
+                <ul class="audit-time-box clearfix">
+                  <li>date &amp; time <button type="button" class="btn btn-default" data-toggle="modal" data-target="#dateTimePopup">
+                  <img src="assets/Large-Date-and-Time.png" alt="" class="img-responsive" /></button></li>
+                </ul>
+              </div>
+              <div class="col-md-4 onside">
+                <ul class="audit-time-box clearfix">
+                  <li>onside
+                    <label>
+                      <input type="radio" name="ont_time" value=true ng-model="audit.onside" data-toggle="modal" data-target="#locationPopup">
+                      <img src="assets/Large-Home.png" alt="" class="img-responsive" />
+                    </label>
+                  </li>
+                  <li>desktop
+                    <label>
+                      <input type="radio" name="ont_time" value=false ng-model="audit.onside"><img src="assets/Large-Desktop.png" alt="" class="img-responsive" />
+                    </label>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-md-4 parti">
+                <ul class="audit-time-box clearfix">
+                  <li>participants 
+                    <!-- <button type="button" class="btn btn-default" data-toggle="modal" data-target="#participantsPopup"> -->
+                    <button type="button" class="btn btn-default">
+                      <img src="assets/user.png" alt="" class="img-responsive" />
+                    </button></li>
+                </ul>
+              </div>
             </div>
-            <div class="col-md-6 audit-int" ng-class="{'disabled' : audit.reoccuring != 'true'}">
-              <p>Audit Interval</p>
-              <ul class="audit-time-box clearfix">
-                <li><a ng-click="changeInterval(intervals[0], '-')" ng-hide="intervals.includes(0)">-</a></li>
-                <li ng-repeat="interval in intervals" ng-click="setInterval(interval)" ng-class="{'active' : interval == rinterval && audit.reoccuring == 'true' }">
-                  <span>{{ interval }}</span>
-                </li>
-                <li><a ng-click="changeInterval(intervals[2], '+')" ng-hide="intervals.includes(48)">+</a></li>
-              </ul>
+            <div class="row">
+              <div class="col-md-12 footer-note-box">
+                <label>notes</label>
+                <textarea class="form-control" ng-model="audit.notes"></textarea>
+              </div>
+            </div><br>
+            <div class="row date-middle">
+              <div class="col-md-3"></div>
+              <div class="col-md-3">
+                <button type="submit" class="btn btn-default">Submit</button>
+              </div>
+              <div class="col-md-3">
+                <button type="button" class="btn btn-default">Reset</button>
+              </div>
             </div>
-          </div>
-          <div class="row date-middle">
-            <div class="col-md-4 date-box">
-              <ul class="audit-time-box clearfix">
-                <li>date &amp; time <button type="button" class="btn btn-default" data-toggle="modal" data-target="#dateTimePopup">
-                <img src="assets/Large-Date-and-Time.png" alt="" class="img-responsive" /></button></li>
-              </ul>
-            </div>
-            <div class="col-md-4 onside">
-              <ul class="audit-time-box clearfix">
-                <li>onside
-                  <label>
-                    <input type="radio" name="ont_time" value=true ng-model="audit.onside" data-toggle="modal" data-target="#locationPopup">
-                    <img src="assets/Large-Home.png" alt="" class="img-responsive" />
-                  </label>
-                </li>
-                <li>desktop
-                  <label>
-                    <input type="radio" name="ont_time" value=false ng-model="audit.onside"><img src="assets/Large-Desktop.png" alt="" class="img-responsive" />
-                  </label>
-                </li>
-              </ul>
-            </div>
-            <div class="col-md-4 parti">
-              <ul class="audit-time-box clearfix">
-                <li>participants 
-                  <button type="button" class="btn btn-default" data-toggle="modal" data-target="#participantsPopup">
-                    <img src="assets/user.png" alt="" class="img-responsive" />
-                  </button></li>
-              </ul>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12 footer-note-box">
-              <label>notes</label>
-              <textarea class="form-control" ng-model="audit.notes"></textarea>
-            </div>
-          </div><br>
-          <div class="row date-middle">
-            <div class="col-md-3"></div>
-            <div class="col-md-3">
-              <button type="submit" class="btn btn-default">Submit</button>
-            </div>
-            <div class="col-md-3">
-              <button type="button" class="btn btn-default">Reset</button>
-            </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
   </div>

@@ -1,7 +1,8 @@
 myApp.controller('AuditCtrl', function($scope, Audit){
   $scope.audits = Audit.index();
   $scope.intervals = [6,12,24];
-
+  $scope.auditType = null;
+  
   $scope.submit = function(){
     setParams();
 
@@ -23,7 +24,7 @@ myApp.controller('AuditCtrl', function($scope, Audit){
     }
 
     newAudit = { audit: $scope.audit, location: $scope.locations };
-    Audit.create(newAudit, success, failure);
+    // Audit.create(newAudit, success, failure);
   };
 
   $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent){
@@ -68,14 +69,23 @@ myApp.controller('AuditCtrl', function($scope, Audit){
     $scope.audit["paragraphs"] = getParagraphsList();
   };
 
-  function getParagraphsList () {
-    paras = [];
-    var temp = $("#select-para-list").val();
-    for (var i = temp.length - 1; i >= 0; i--) {
-      paras.push(parseInt(temp[i]));
-    };
+  function getParagraphsList() {
+    var paras = [];
+    angular.forEach($scope.list2, function(value, key) {
+      this.push(value.id);
+    }, paras);
+    // console.log(paras);
     return paras;
-  }
+  };
+
+  // function getParagraphsList () {
+  //   paras = [];
+  //   var temp = $("#select-para-list").val();
+  //   for (var i = temp.length - 1; i >= 0; i--) {
+  //     paras.push(parseInt(temp[i]));
+  //   };
+  //   return paras;
+  // }
 
   function toDateTime(date,time){
     return date + " " + time;
