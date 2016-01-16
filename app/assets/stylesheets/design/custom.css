@@ -7,4 +7,6 @@ a { color: #555; }
 /* Right Section */
 .right-box { width: 50%; cursor: pointer; }
 .right-box:hover .span-box { border-color: #FA9C46; }
+.clickble { cursor: pointer; }
+.clickble:hover .span-box {border-color: #FA9C46; }
 div.ui-datepicker{ font-size:10px; }

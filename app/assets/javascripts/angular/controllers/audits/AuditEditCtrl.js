@@ -43,7 +43,10 @@ myApp.controller('AuditCtrl', function($scope, Audit){
     $scope.edate = $("#end_date").val() + " " + $("#end_time").text();
   };
 
-  $scope.setLocation = function() {
+  $scope.setLocation = function(location) {
+    if (location != null) {
+      $scope.locations = location;
+    };
   };
 
   $scope.changeInterval = function(value, operation){

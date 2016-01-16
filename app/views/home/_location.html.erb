@@ -41,17 +41,16 @@
               <input type="text" class="form-control" placeholder="Location Name" ng-model="locations.name" id="location-name"/>
             </div>
             <div class="col-md-6">
-              <button type="button" class="btn btn-cal" data-dismiss="modal" ng-click="setLocation()" style="margin-top: 14%;">Done</button>
+              <button type="button" class="btn btn-cal" data-dismiss="modal" ng-click="setLocation(null)" style="margin-top: 14%;">Done</button>
             </div>
           </div>
         </form>
       </div>
       <div class="location-list">
         <div class="row middle-header clearfix">
-          <div class="col-md-3"> <div class="span-box">145 a 55(b)</div> </div>
-          <div class="col-md-3"> <div class="span-box">145 a 55(c)</div> </div>
-          <div class="col-md-3"> <div class="span-box">145 a 60(b)</div> </div>
-          <div class="col-md-3"> <div class="span-box">145 a 60(c)</div> </div>
+          <div class="col-md-3 clickble" ng-repeat="location in locations_list" ng-click="setLocation(location)">
+            <div class="span-box">{{ location.name }}</div>
+          </div>
         </div>
       </div>
     </div>

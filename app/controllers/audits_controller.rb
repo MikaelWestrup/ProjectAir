@@ -5,8 +5,6 @@ class AuditsController < ApplicationController
   def index
     @audits = Audit.all
     respond_with @audits
-    # @audit_types = AuditType.where(is_parent: true)
-    # respond_with @audit_types.as_json(include: :sub_types)
   end
 
   def show
@@ -16,7 +14,8 @@ class AuditsController < ApplicationController
   end
 
   def create
-    @location = Location.new(location_params)
+    @location = Location.find_by(id: params[:location][:id], name: params[:location][:name])
+    @location = Location.new(location_params) if @location.blank?
     if @location.save
       @audit = @location.audits.build(audit_params)
       if @audit.save
