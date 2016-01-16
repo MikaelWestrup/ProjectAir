@@ -26,7 +26,7 @@
                 <div class="dropdown">
                   <a href="#" class="btn dropdown-toggle" data-toggle="dropdown">{{ auditType.name || 'Select Audit Type' }}<span class="caret"></span></a>
                   <ul class="dropdown-menu" id="type_of_audit">
-                    <li ng-repeat="audit_type in audit_types">
+                    <li ng-repeat="audit_type in audit_types" on-finish-render="ngRepeatFinished">
                       <a class="trigger right-caret">{{ audit_type.name }}</a>
                       <ul class="dropdown-menu sub-menu">
                         <li ng-repeat="sub_type in audit_type['sub_types']">

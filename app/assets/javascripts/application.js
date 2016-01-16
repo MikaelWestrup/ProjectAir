@@ -19,7 +19,6 @@
 
 //= require design/jquery.mCustomScrollbar.concat.min
 //= require design/jquery-ui.min
-//= require design/custom
 //= require design/chosen.jquery
 
 //= require turbolinks
@@ -35,5 +34,6 @@
 //= require angular/controllers/chapters/ChapterIndexCtrl
 //= require angular/controllers/audits/AuditEditCtrl
 //= require angular/directives/directive
+//= require design/custom
 
 

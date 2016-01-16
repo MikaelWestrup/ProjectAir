@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     get 'chapters' => "chapters#search"
     get 'companies' => "employees#conpanies_list"
     get 'companies/:id' => "employees#departments_list"
-    get 'audit-types' => "employees#audit_types_list"
+    get 'audit-types' => "home#audit_types_list"
+    get 'locations' => "home#location_list"
   end
 end

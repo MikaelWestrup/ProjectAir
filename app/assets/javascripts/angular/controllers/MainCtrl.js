@@ -1,5 +1,6 @@
-myApp.controller('MainCtrl', ['$scope', 'db_data', function($scope, db_data){
-  $scope.audit_types = db_data.audit_types;
+myApp.controller('MainCtrl', ['$scope', 'api', function($scope, api){
+  $scope.audit_types = api.AuditTypes.query();
+  $scope.locations_list = api.Locations.query();
 
   $scope.select_auditor = function(){
     elements = $("#participantsPopup .auditor-list .selected");

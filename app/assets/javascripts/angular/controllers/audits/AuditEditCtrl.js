@@ -26,6 +26,10 @@ myApp.controller('AuditCtrl', function($scope, Audit){
     Audit.create(newAudit, success, failure);
   };
 
+  $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent){
+    DropDownMenu();
+  });
+
   $scope.setAuditType = function(auditType){
     $scope.auditType = auditType;
   };
