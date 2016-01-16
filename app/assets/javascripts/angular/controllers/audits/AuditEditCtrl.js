@@ -24,7 +24,7 @@ myApp.controller('AuditCtrl', function($scope, Audit){
     }
 
     newAudit = { audit: $scope.audit, location: $scope.locations };
-    // Audit.create(newAudit, success, failure);
+    Audit.create(newAudit, success, failure);
   };
 
   $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent){
