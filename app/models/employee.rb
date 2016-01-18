@@ -31,4 +31,6 @@ class Employee < ActiveRecord::Base
   # Relations/Associations with other models
   belongs_to :company
   belongs_to :department
+  has_many :audit_employees
+  has_many :audits, :through => :audit_employees
 end

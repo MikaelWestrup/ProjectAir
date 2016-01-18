@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160115073938) do
+ActiveRecord::Schema.define(version: 20160118121815) do
 
   create_table "attachment_types", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -28,6 +28,14 @@ ActiveRecord::Schema.define(version: 20160115073938) do
     t.integer  "paragraph_id",              limit: 4
     t.datetime "created_at",                              null: false
     t.datetime "updated_at",                              null: false
+  end
+
+  create_table "audit_employees", force: :cascade do |t|
+    t.integer  "audit_id",    limit: 4
+    t.integer  "employee_id", limit: 4
+    t.string   "role",        limit: 255
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "audit_items", force: :cascade do |t|
@@ -53,11 +61,9 @@ ActiveRecord::Schema.define(version: 20160115073938) do
     t.string   "planner",       limit: 255
     t.integer  "location_id",   limit: 4
     t.integer  "interval",      limit: 4
-    t.integer  "auditor_id",    limit: 4
-    t.integer  "auditee_id",    limit: 4
     t.text     "notes",         limit: 65535
     t.boolean  "reoccuring",                  default: false
-    t.boolean  "onside",                      default: false
+    t.boolean  "onsite",                      default: false
     t.datetime "created_at",                                  null: false
     t.datetime "updated_at",                                  null: false
   end

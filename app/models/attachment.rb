@@ -15,7 +15,7 @@
 
 class Attachment < ActiveRecord::Base
   # Validations for storing filtered data
-  validates_presence_of :name, :description, :up_to_including_amendment, :attachment_type, :paragraph
+  validates_presence_of :name, :description, :up_to_including_amendment, :paragraph
 
   # Relations/Associations with other models
   has_one :attachment_type
