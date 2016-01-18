@@ -11,7 +11,9 @@ Rails.application.routes.draw do
     resources :chapters, only: [:index, :create]
     get 'chapters' => "chapters#search"
     get 'companies' => "employees#conpanies_list"
-    get 'companies/:id' => "employees#departments_list"
+    get 'departments' => "employees#departments_list"
+    get 'employees' => "employees#employees_list"
+    get 'employees/auditees/:id' => "employees#auditee_employees_list"
     get 'audit-types' => "home#audit_types_list"
     get 'locations' => "home#location_list"
   end

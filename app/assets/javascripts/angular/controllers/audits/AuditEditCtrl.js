@@ -69,10 +69,16 @@ myApp.controller('AuditCtrl', function($scope, api){
   };
 
   $scope.select_auditor = function(){
+    $scope.auditors = [];
+    $scope.auditees = [];
     elements = $("#participantsPopup .auditor-list .selected");
-    var auditor = [];
+    var auditor = []; var auditee = [];
     $("#participantsPopup .auditor-list .selected").each(function(index){
-      auditor[index] = $(this).attr('value');
+      $scope.auditors[index] = parseInt($(this).attr('value'));
+    });
+
+    $("#participantsPopup .auditee-list .selected").each(function(index){
+      $scope.auditees[index] = parseInt($(this).attr('value'));
     });
   };
 
@@ -84,6 +90,8 @@ myApp.controller('AuditCtrl', function($scope, api){
     $scope.audit["reoccuring"] = $scope.audit["reoccuring"] == "true" ? true : false;
     $scope.audit["onsite"] = $scope.audit["onsite"] == "true" ? true : false;
     $scope.audit["paragraphs"] = getParagraphsList();
+    $scope.audit["auditors"] = $scope.auditors;
+    $scope.audit["auditees"] = $scope.auditees;
   };
 
   function getParagraphsList() {

@@ -6,9 +6,9 @@
           <h4>Auditor</h4>
           <div class="col-md-12 auditor-list main-span mCustomScrollbar">
             <div class="panel-group" role="tablist">
-              <div class="outer-box" style="cursor: pointer;" ng-repeat="i in range(20)" ng-click="toggle = !toggle" ng-class="{ 'selected' : toggle}" value="{{ i }}">
+              <div class="outer-box" style="cursor: pointer;" ng-repeat="employee in employees" ng-click="toggle = !toggle" ng-class="{ 'selected' : toggle}" value="{{ employee.id }}">
                 <!-- <div class="para-list-type"></div> -->
-                <div class="auditor-detail">Auditor 1</div>
+                <div class="auditor-detail">{{ employee.name }}</div>
                 <a class="info para-info" href="javascript:void(0);" title="Info"></a>
               </div>
             </div>
@@ -20,29 +20,21 @@
             <form>
               <div class="col-md-6 custom-dd">
                 <div class="form-group">
-                  <select class="dropdown form-control">
-                    <option>Company 1</option>
-                    <option selected="selected">Company 2</option>
-                    <option>Company 3</option>
-                  </select>
+                  <select class="dropdown form-control" data-ng-model="companySelect" data-ng-options="company.name for company in companies"></select>
                 </div>
               </div>
               <div class="col-md-6 custom-dd">
                 <div class="form-group">
-                  <select class="dropdown form-control">
-                    <option>Department 1</option>
-                    <option selected="selected">Department 2</option>
-                    <option>Department 3</option>
-                  </select>
+                  <select class="dropdown form-control" data-ng-model="departmentSelect" data-ng-options="department.name for department in companySelect.departments" ng-change="auditee_employees()"></select>
                 </div>
               </div>
             </form>
           </div>
-          <div class="col-md-12 auditor-list main-span mCustomScrollbar">
+          <div class="col-md-12 auditee-list main-span mCustomScrollbar">
             <div class="panel-group" role="tablist">
-              <div class="outer-box" style="cursor: pointer;" ng-repeat="i in range(20)" ng-click="toggle = !toggle" ng-class="{ 'selected' : toggle}" value="{{ i }}">
+              <div class="outer-box" style="cursor: pointer;" ng-repeat="employee in auditee_list" ng-click="toggle = !toggle" ng-class="{ 'selected' : toggle}" value="{{ employee.id }}">
                 <!-- <div class="para-list-type"></div> -->
-                <div class="auditor-detail">Auditor 1</div>
+                <div class="auditor-detail">{{ employee.name }}</div>
                 <a class="info para-info" href="javascript:void(0);" title="Info"></a>
               </div>
             </div>
@@ -58,8 +50,8 @@
 
 <style type="text/css">
   .left-sec-popup { border-right: 2px solid #e5e5e5; }
-  .auditor-list { padding-left: 0px; padding-right: 0px; }
-  .auditor-list .panel-group .outer-box { border-radius: 8px; }
+  .auditor-list, .auditee-list { padding-left: 0px; padding-right: 0px; }
+  .auditor-list .panel-group .outer-box, .auditee-list .panel-group .outer-box { border-radius: 8px; }
   .selected { border-color: #f69c4c; }
   .left-sec-popup .main-span, .right-sec-popup .main-span { max-height: 410px ; }
   .left-sec-popup .auditor-list { margin-top: 28%; }

@@ -20,6 +20,8 @@ class AuditsController < ApplicationController
       @audit = @location.audits.build(audit_params)
       if @audit.save
         params[:audit][:paragraphs].each { |pa| @audit.audit_items.build(paragraph_id: pa).save }
+        params[:audit][:auditors].each { |employee| @audit.audit_employees.build(employee_id: employee, role: 'Auditor').save }
+        params[:audit][:auditees].each { |employee| @audit.audit_employees.build(employee_id: employee, role: 'Auditee').save }
         render json: @audit, status: :created
       else
         @location.destroy
