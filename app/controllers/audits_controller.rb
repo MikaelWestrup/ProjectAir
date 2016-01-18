@@ -46,7 +46,7 @@ class AuditsController < ApplicationController
     end
 
     def audit_params
-      params.require(:audit).permit(:name, :reoccuring, :onside, :notes, :audit_type_id, :interval, :period_start, :period_end)
+      params.require(:audit).permit(:name, :reoccuring, :onsite, :notes, :audit_type_id, :interval, :period_start, :period_end)
     end
 
     def location_params

@@ -1,5 +1,5 @@
-myApp.controller('AuditCtrl', function($scope, Audit){
-  $scope.audits = Audit.index();
+myApp.controller('AuditCtrl', function($scope, api){
+  $scope.audits = api.Audit.index();
   $scope.intervals = [6,12,24];
   $scope.auditType = null;
   
@@ -24,7 +24,7 @@ myApp.controller('AuditCtrl', function($scope, Audit){
     }
 
     newAudit = { audit: $scope.audit, location: $scope.locations };
-    Audit.create(newAudit, success, failure);
+    api.Audit.create(newAudit, success, failure);
   };
 
   $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent){
@@ -59,13 +59,30 @@ myApp.controller('AuditCtrl', function($scope, Audit){
     };
   };
 
+  $scope.auditee_employees = function() {
+    if ($scope.departmentSelect) {
+      $scope.auditee_list = api.AuditeeEmployees.query({id: $scope.departmentSelect.id});
+    }
+    else{
+      $scope.auditee_list = null;
+    };
+  };
+
+  $scope.select_auditor = function(){
+    elements = $("#participantsPopup .auditor-list .selected");
+    var auditor = [];
+    $("#participantsPopup .auditor-list .selected").each(function(index){
+      auditor[index] = $(this).attr('value');
+    });
+  };
+
   function setParams(){
     $scope.audit["audit_type_id"] = ($scope.auditType ? $scope.auditType.id : null);
     $scope.audit["interval"] = ($scope.audit.reoccuring == 'true' ? ($scope.rinterval || 0) : (0));
     $scope.audit["period_start"] = $scope.sdate || null;
     $scope.audit["period_end"] = $scope.edate || null;
     $scope.audit["reoccuring"] = $scope.audit["reoccuring"] == "true" ? true : false;
-    $scope.audit["onside"] = $scope.audit["onside"] == "true" ? true : false;
+    $scope.audit["onsite"] = $scope.audit["onsite"] == "true" ? true : false;
     $scope.audit["paragraphs"] = getParagraphsList();
   };
 
@@ -74,18 +91,8 @@ myApp.controller('AuditCtrl', function($scope, Audit){
     angular.forEach($scope.list2, function(value, key) {
       this.push(value.id);
     }, paras);
-    // console.log(paras);
     return paras;
   };
-
-  // function getParagraphsList () {
-  //   paras = [];
-  //   var temp = $("#select-para-list").val();
-  //   for (var i = temp.length - 1; i >= 0; i--) {
-  //     paras.push(parseInt(temp[i]));
-  //   };
-  //   return paras;
-  // }
 
   function toDateTime(date,time){
     return date + " " + time;

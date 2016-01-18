@@ -10,11 +10,9 @@
 #  planner       :string(255)
 #  location_id   :integer
 #  interval      :integer
-#  auditor_id    :integer
-#  auditee_id    :integer
 #  notes         :text(65535)
 #  reoccuring    :boolean          default(FALSE)
-#  onside        :boolean          default(FALSE)
+#  onsite        :boolean          default(FALSE)
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #
