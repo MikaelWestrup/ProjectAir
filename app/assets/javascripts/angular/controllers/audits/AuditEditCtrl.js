@@ -113,4 +113,8 @@ myApp.controller('AuditCtrl', function($scope, api){
     }
     return arr;
   };
+
+  $scope.myCallback = function(event, ui){
+    console.log('Dropped into something');
+  };
 });
