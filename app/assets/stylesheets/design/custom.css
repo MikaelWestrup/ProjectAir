@@ -10,3 +10,33 @@ a { color: #555; }
 .clickble { cursor: pointer; }
 .clickble:hover .span-box {border-color: #FA9C46; }
 div.ui-datepicker{ font-size:10px; }
+
+/* Location Popup css */
+.fine-tune .form-group .form-control { display: -webkit-inline-box; width: 48%; padding-left: 0px; padding-right: 0px; }
+.fine-tune .form-group .fc-lg { width: 100%; }
+.fine-tune .footer-cal { margin-top: 2%; margin-bottom: 2%; }
+.fine-tune .form-control:focus, .fine-tune .footer-cal .btn:hover { border: 2px solid #FA9C46; box-shadow: none; }
+ul#st-menu { border-radius: 5px; }
+ul#st-menu > li:hover, ul#st-menu > li:focus { background: #fa9c46; border: 1px solid #fa9c46; color: #fff; }
+#locationPopup .cal-outer-box { padding-left: 12px; padding-right: 12px; }
+.location-form { border: 2px solid #e5e5e5; position: fixed; max-width: 65%; padding-bottom: 8px; margin-top: -5px; border-radius: 16px; }
+.location-form .form-control { border: 2px solid #e5e5e5; border-radius: 10px ; }
+.location-form .form-control:focus { border: 2px solid #FA9C46; box-shadow: none; border-radius: 10px ; }
+.location-list { padding-top: 87%; }
+
+/* Fine tune Popup css*/
+.fine-tune .form-group .form-control { display: -webkit-inline-box; width: 48%; padding-left: 0px; padding-right: 0px; }
+.fine-tune .form-group .fc-lg { width: 100%; }
+.fine-tune .footer-cal { margin-top: 2%; margin-bottom: 2%; }
+.fine-tune .form-control:focus, .fine-tune .footer-cal .btn:hover { border: 2px solid #FA9C46; box-shadow: none; }
+ul#st-menu { border-radius: 5px; }
+ul#st-menu > li:hover, ul#st-menu > li:focus { background: #fa9c46; border: 1px solid #fa9c46; color: #fff; }
+#locationPopup .cal-outer-box { padding-left: 12px; padding-right: 12px; }
+
+/* Participants Popup css */
+.left-sec-popup { border-right: 2px solid #e5e5e5; }
+.auditor-list, .auditee-list { padding-left: 0px; padding-right: 0px; }
+.auditor-list .panel-group .outer-box, .auditee-list .panel-group .outer-box { border-radius: 8px; }
+.selected { border-color: #f69c4c; }
+.left-sec-popup .main-span, .right-sec-popup .main-span { max-height: 410px ; }
+.left-sec-popup .auditor-list { margin-top: 28%; }

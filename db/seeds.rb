@@ -1,32 +1,26 @@
+# Initialize Attachments types
 AttachmentType.create([{name: "AMC"}, {name: "GM"}])
 
-# Regulation.create([
-#   {organization: "Organization Test 1", name: "Regulation Test 1"},
-#   {organization: "Organization Test 2", name: "Regulation Test 2"}
-# ])
+# Dummy data for regulations table
+regulation = Regulation.create(name: "Commission Regulation (EU) No 1321/2014 of 26 November", organization: "IASA")
 
-# Chapter.create([
-#   {name: "Name Test 1", ctype: "Ctype Test 1", annex: "Annex Test 1", code: "Chapter code Test 1", regulation_id: 1},
-#   {name: "Name Test 2", ctype: "Ctype Test 2", annex: "Annex Test 2", code: "Chapter code Test 2", regulation_id: 2}
-# ])
+# Dummy data for chapters table and its paragraphs
+# first record
+chapter = regulation.chapters.create(name: "145.A.35 Certifying staff and support staff", ctype: "Part-145", annex: "II")
+  chapter.paragraphs.create(name: "145.A.35(a)", description: "In addition to the appropriate requirements of 145.A.30(g) and (h), the organisation shall ensure that certifying staff and support staff have an adequate understanding of the relevant aircraft and/or components to be maintained together......", up_to_including_amendment: "Commission Regulation (EU) 2015/1088")
+  chapter.paragraphs.create(name: "145.A.35(b)", description: "Paragraph B More text anf so on Extra information", up_to_including_amendment: "Commission Regulation (EU) 2015/1088")
 
-# number = ['A', 'B', 'C', 'D', 'E', 'F']
+# second record
+chapter = regulation.chapters.create(name: "145.A.36 Next Chapter with pilots", ctype: "Part-145", annex: "II")
+  chapter.paragraphs.create(name: "145.A.36.(a)", description: "Pilots must have active license", up_to_including_amendment: "Commission Regulation (EU) 2015/1088")
 
-# (1..2).each do |chapter|
-#   (1..3).each do |para|
-#     Paragraph.create(
-#       name: "para number test #{para}",
-#       number: number[para],
-#       description: "description test #{para}",
-#       up_to_including_amendment: "up to and including amendment test #{para}",
-#       paragraph_type_id: para, chapter_id: chapter
-#     )
-#   end
-# end
+# Dummy data for companies table and its departments
+company = Company.create(name: "Glenn Air")
+  departments = company.departments.create(name: "Part-M")
 
-# (1...3).each do |t|
-#   audit = AuditType.create(name: "Audit Type #{t}", is_parent: true, main_type_id: nil)
-#   (1...3).each do |st|
-#     audit.sub_types.build(name: "Sub Audit Type #{t}-#{st}").save
-#   end
-# end
+# Dummy data for employees table
+departments.employees.create(name: "Glenn Glenn", address: "Glennroad 4", office_phone: "+46735235222", cell_phone: "+46735235222", email: "glenn@glennair.com", role: "Auditor", company_id: company.id)
+
+# Dummy data for locations table
+Location.create(name: "Location First", country: "Country", airport: "Airport", address: "Address", zipcode: "111111", town: "Town/City", additional_details: "Additional Details")
+Location.create(name: "Arlanda SAS", country: "Sweden", airport: "Arlanda", address: "Märsta", zipcode: "99999", town: "Märsta")
