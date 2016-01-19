@@ -2,7 +2,8 @@ myApp.controller('AuditCtrl', function($scope, api){
   $scope.audits = api.Audit.index();
   $scope.intervals = [6,12,24];
   $scope.auditType = null;
-  
+  $scope.fine_tunes = [];
+
   $scope.submit = function(){
     setParams();
 
@@ -82,6 +83,26 @@ myApp.controller('AuditCtrl', function($scope, api){
     });
   };
 
+  $scope.addFineTune = function() {
+    arr = {"date": null, "start_time": {"hour": null, "min": null}, "end_time": {"hour": null, "min": null}, "paragraph": null, "note": null};
+    if (validate_fine_tune()) {
+      $scope.fine_tunes.push(arr);
+    };
+  };
+
+  $scope.show_date = function(date) {
+    return new Date(date).toDateString()
+  };
+
+  function validate_fine_tune() {
+    size = $scope.fine_tunes.length;
+    if (size == 0) { return true; }
+    else {
+      ft = $scope.fine_tunes[size-1];
+      return (ft.start_time.hour && ft.start_time.min && ft.end_time.hour && ft.end_time.min && ft.paragraph) ? true : false;
+    };
+  };
+
   function setParams(){
     $scope.audit["audit_type_id"] = ($scope.auditType ? $scope.auditType.id : null);
     $scope.audit["interval"] = ($scope.audit.reoccuring == 'true' ? ($scope.rinterval || 0) : (0));
@@ -90,8 +111,8 @@ myApp.controller('AuditCtrl', function($scope, api){
     $scope.audit["reoccuring"] = $scope.audit["reoccuring"] == "true" ? true : false;
     $scope.audit["onsite"] = $scope.audit["onsite"] == "true" ? true : false;
     $scope.audit["paragraphs"] = getParagraphsList();
-    $scope.audit["auditors"] = $scope.auditors;
-    $scope.audit["auditees"] = $scope.auditees;
+    // $scope.audit["auditors"] = $scope.auditors;
+    // $scope.audit["auditees"] = $scope.auditees;
   };
 
   function getParagraphsList() {

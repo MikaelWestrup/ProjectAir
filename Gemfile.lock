@@ -40,6 +40,7 @@ GEM
       angularjs-rails
       jquery-rails
       jquery-ui-rails
+    angular-ui-bootstrap-rails (0.14.3)
     angularjs-rails (1.4.8)
     annotate (2.6.10)
       activerecord (>= 3.2, <= 4.3)
@@ -224,6 +225,7 @@ PLATFORMS
 
 DEPENDENCIES
   angular-dragdrop-rails
+  angular-ui-bootstrap-rails
   angularjs-rails
   annotate
   bootstrap3-datetimepicker-rails (~> 4.17.37)

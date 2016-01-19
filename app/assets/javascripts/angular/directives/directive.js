@@ -21,3 +21,82 @@ myApp.directive('onFinishRender', function($timeout) {
     }
   };
 });
+
+myApp.directive('hourTimePicker', function() {
+  return {
+    restrict: 'E',
+    require: 'ngModel',
+    replace: true,
+    link: function(scope, element, attrs) {
+      t = [];
+      for (var i = 0; i < 24; i++) {
+        if (i < 10) { t[i] = '0'+ i.toString(); } else { t[i] = i; };
+      };
+      scope.hours = t;
+    },
+    template: '<select name="hourtimepicker" class="form-control">\
+    <option value="{{hour}}" ng-repeat="hour in hours">{{hour}}</option>\
+    </select>'
+  };
+});
+
+myApp.directive('minuteTimePicker', function() {
+  return {
+    restrict: 'E',
+    require: 'ngModel',
+    replace: true,
+    link: function(scope, element, attrs) {
+      scope.minutes = ['00','15','30','45'];
+    },
+    template: '<select name="minutetimepicker" class="form-control">\
+    <option value="{{minute}}" ng-repeat="minute in minutes">{{minute}}</option>\
+    </select>'
+  };
+});
+//-----------------------------------------------------------
+myApp.directive("startDateCalendar", [
+  function() {
+    return function(scope, element, attrs) {
+      
+    scope.$watch("campaign.end_at", (function(newValue, oldValue) {
+      element.datepicker("option", "maxDate", newValue);
+    }), true);
+
+      
+      return element.datepicker({
+        dateFormat: "mm-dd-yy",
+        // numberOfMonths: 2,
+        minDate: new Date(),
+        maxDate: scope.campaign.end_at,
+        // beforeShowDay: $.datepicker.noWeekends,
+        onSelect: function(date) {
+          scope.campaign.start_at = date;
+          scope.$apply();
+        }
+      });
+    };
+  }
+
+]);
+
+myApp.directive("endDateCalendar", [
+  function() {
+    return function(scope, element, attrs) {
+    scope.$watch("campaign.start_at", (function(newValue, oldValue) {
+      element.datepicker("option", "minDate", newValue);
+    }), true);
+
+      return element.datepicker({
+        dateFormat: "mm-dd-yy",
+        // numberOfMonths: 2,
+        minDate: scope.campaign.start_at,
+        defaultDate: scope.campaign.end_at,
+        // beforeShowDay: $.datepicker.noWeekends,
+        onSelect: function(date) {
+          scope.campaign.end_at = date;
+          return scope.$apply();
+        }
+      });
+    };
+  }
+]);

@@ -9,8 +9,10 @@
     </form>
     <div class="col-md-12 main-span mCustomScrollbar" ng-controller="AuditCtrl">
       <div class="row middle-header clearfix">
-        <div class="col-md-3 right-box" ng-repeat="audit in audits"> <div class="span-box">{{ audit.name }}</div> </div>
+        <div class="col-md-3 right-box" ng-repeat="audit in audits"> <div class="span-box" data-toggle="modal" data-target="#showAuditPopup" ng-click="showAudit(audit)">{{ audit.name }}</div> </div>
       </div>
     </div>
   </div>
 </div>
+
+<%= render partial: "home/popups/show_audit" %>

@@ -26,7 +26,10 @@
 //= require angular
 //= require angular-mocks
 //= require angular-resource
+//= require angular-animate
 //= require angular-dragdrop-original
+
+//= require angular-ui-bootstrap
 
 //= require angular/app
 //= require angular/services/service

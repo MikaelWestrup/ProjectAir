@@ -1,38 +1,27 @@
-<div class="fine-tune">
-  <h4>26-JAN-2016</h4>
+<div class="fine-tune" ng-repeat="ft in fine_tunes">
+  <h4>{{ show_date(campaign.start_at) }}</h4>
+  <div class="date-section">
+    <div start-date-calendar="" ng-model="campaign.start_at"></div>
+  </div>
   <div class="row">
     <div class="col-md-4">
       <p>Start</p>
       <div class="form-group">
-        <select class="form-control">
-          <option value="08">08</option>
-          <option value="09">09</option>
-        </select>
-        <select name="colors" class="form-control">
-          <option value="30">30</option>
-          <option value="40">40</option>
-        </select>
+        <hour-time-picker ng-model="ft.start_time.hour"></hour-time-picker>
+        <minute-time-picker ng-model="ft.start_time.min"></minute-time-picker>
       </div>
     </div>
     <div class="col-md-4">
       <p>Stop</p>
       <div class="form-group">
-        <select name="colors" class="form-control">
-          <option value="08">08</option>
-          <option value="09">09</option>
-        </select>
-        <select name="colors" class="form-control">
-          <option value="30">30</option>
-          <option value="40">40</option>
-        </select>
+        <hour-time-picker ng-model="ft.end_time.hour"></hour-time-picker>
+        <minute-time-picker ng-model="ft.end_time.min"></minute-time-picker>
       </div>
     </div>
     <div class="col-md-4">
       <p>Paragraphs</p>
       <div class="form-group">
-        <select name="colors" class="form-control fc-lg">
-          <option>145.A.35(A)</option>
-          <option>145.A.35(B)</option>
+        <select name="colors" class="form-control fc-lg" ng-model="ft.paragraph" ng-options="item.id as item.name for item in list2">
         </select>
       </div>
     </div>
@@ -40,10 +29,11 @@
   <div class="row">
     <div class="col-md-12">
       <p>Note</p>
-      <input type="text" class="form-control" />
+      <input type="text" class="form-control" ng-model="ft.note" />
     </div>
-  </div>
-  <div class="footer-cal">
-    <button type="button" class="btn btn-default">+</button>
-  </div>
-</div><br>
+  </div><br>
+</div>
+<div class="footer-cal">
+  <button type="button" class="btn btn-default" ng-click="addFineTune()">+</button>
+</div>
+<br>
