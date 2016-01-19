@@ -26,11 +26,10 @@
 //= require angular
 //= require angular-mocks
 //= require angular-resource
-//= require angular/resources/angular-chosen
 //= require angular-dragdrop-original
 
 //= require angular/app
-//= require angular/services/Audit
+//= require angular/services/service
 //= require angular/controllers/MainCtrl
 //= require angular/controllers/chapters/ChapterIndexCtrl
 //= require angular/controllers/audits/AuditEditCtrl

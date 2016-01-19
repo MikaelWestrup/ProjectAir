@@ -1,15 +1,3 @@
-myApp.factory("Audit", function($resource) {
-  return $resource("/api/audits/:id", { id: "@id" },
-    {
-      'index':   { method: 'GET', isArray: true },
-      'create':  { method: 'POST' },
-      'show':    { method: 'GET', isArray: false },
-      'update':  { method: 'PUT' },
-      'destroy': { method: 'DELETE' }
-    }
-  );
-});
-
 myApp.factory("Chapter", function($resource) {
   return $resource("/api/chapters/:id", { id: "@id" },
     {

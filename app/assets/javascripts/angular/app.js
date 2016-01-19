@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ["ngResource","ngDragDrop","angular.chosen"]);
+var myApp = angular.module('myApp', ["ngResource","ngDragDrop"]);
 
 myApp.config(function($httpProvider) {
   $httpProvider.defaults.headers.common['X-CSRF-Token'] =
