@@ -1,0 +1,49 @@
+<div class="modal fade" id="participantsPopup" tabindex="-1" role="dialog" aria-labelledby="participantsPopupLabel">
+  <div class="modal-dialog" role="document" style="margin-right: 21%;">
+    <div class="cal-outer-box" style="max-width: 427px;">
+      <div class="row">
+        <div class="col-xs-6 left-sec-popup">
+          <h4>Auditor</h4>
+          <div class="col-md-12 auditor-list main-span mCustomScrollbar">
+            <div class="panel-group" role="tablist">
+              <div class="outer-box" style="cursor: pointer;" ng-repeat="employee in employees" ng-click="toggle = !toggle" ng-class="{ 'selected' : toggle}" value="{{ employee.id }}">
+                <!-- <div class="para-list-type"></div> -->
+                <div class="auditor-detail">{{ employee.name }}</div>
+                <a class="info para-info" href="javascript:void(0);" title="Info"></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-6 right-sec-popup">
+          <h4>Auditee</h4>
+          <div class="iner-box row">
+            <form>
+              <div class="col-md-6 custom-dd">
+                <div class="form-group">
+                  <select class="dropdown form-control" data-ng-model="companySelect" data-ng-options="company.name for company in companies"></select>
+                </div>
+              </div>
+              <div class="col-md-6 custom-dd">
+                <div class="form-group">
+                  <select class="dropdown form-control" data-ng-model="departmentSelect" data-ng-options="department.name for department in companySelect.departments" ng-change="auditee_employees()"></select>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="col-md-12 auditee-list main-span mCustomScrollbar">
+            <div class="panel-group" role="tablist">
+              <div class="outer-box" style="cursor: pointer;" ng-repeat="employee in auditee_list" ng-click="toggle = !toggle" ng-class="{ 'selected' : toggle}" value="{{ employee.id }}">
+                <!-- <div class="para-list-type"></div> -->
+                <div class="auditor-detail">{{ employee.name }}</div>
+                <a class="info para-info" href="javascript:void(0);" title="Info"></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><br>
+      <div class="footer-cal">
+        <button type="button" class="btn btn-cal" ng-click="select_auditor()" data-dismiss="modal">Done</button>
+      </div>
+    </div>
+  </div>
+</div>

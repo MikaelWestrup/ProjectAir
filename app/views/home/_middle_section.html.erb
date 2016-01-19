@@ -1,6 +1,6 @@
 <div class="outer-middle-box" ng-controller="AuditCtrl">
   
-  <%= render partial: "info_details" %>
+  <%= render partial: "home/popups/info_details" %>
 
   <div data-drop="true" aria-disabled="false" data-jqyoui-options jqyoui-droppable="{multiple:true, onDrop: 'myCallback'}" ng-model="list2">
     <div class="middle-sec">
@@ -120,10 +120,10 @@
       </div>
     </div>
   </div>
-  <%= render partial: "date_time" %>
-  <%= render partial: "fine_tune" %>
-  <%= render partial: "location" %>
-  <%= render partial: "participants_popup" %>
+  <%= render partial: "home/popups/date_time" %>
+  <%= render partial: "home/popups/fine_tune" %>
+  <%= render partial: "home/popups/location" %>
+  <%= render partial: "home/popups/participants_popup" %>
 </div>
 
 <script type="text/javascript">
