@@ -117,8 +117,8 @@ myApp.controller('AuditCtrl', ['$scope', 'api', function($scope, api){
     $scope.audit["reoccuring"] = $scope.audit["reoccuring"] == "true" ? true : false;
     $scope.audit["onsite"] = $scope.audit["onsite"] == "true" ? true : false;
     $scope.audit["paragraphs"] = getParagraphsList();
-    // $scope.audit["auditors"] = $scope.auditors;
-    // $scope.audit["auditees"] = $scope.auditees;
+    $scope.audit["auditors"] = $scope.auditors;
+    $scope.audit["auditees"] = $scope.auditees;
   };
 
   function getParagraphsList() {
