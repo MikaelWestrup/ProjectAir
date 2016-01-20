@@ -8,14 +8,9 @@
         <div class="middle-inner-box clearfix mCustomScrollbar">
           <form ng-submit="submit()">
             <div class="row middle-header clearfix">
-              <div class="col-md-3" ng-repeat="item in list2 track by $index" ng-model="list2"><div class="span-box">{{item.name}}</div></div>
-              <!-- <span ng-controller="ChapterIndexCtrl">
-                <select chosen multiple id="select-para-list" ng-model="audit.pp">
-                  <optgroup ng-repeat="chapter in chapters" label="{{ chapter.name }}">
-                    <option ng-repeat="para in chapter.paragraphs" value="{{ para.id }}">{{ para.name }}</option>
-                  </optgroup>
-                </select>
-              </span> -->
+              <div class="col-md-3" ng-repeat="item in list2 track by $index" ng-model="list2">
+                <div class="span-box" ng-click="showInfo(item)">{{item.name}}</div>
+              </div>
             </div>
             <div class="row audit-box">
               <div class="col-md-6">
@@ -125,9 +120,3 @@
   <%= render partial: "home/popups/location" %>
   <%= render partial: "home/popups/participants_popup" %>
 </div>
-
-<script type="text/javascript">
-  $(function(){
-    $("#select-para-list").chosen();
-  });
-</script>

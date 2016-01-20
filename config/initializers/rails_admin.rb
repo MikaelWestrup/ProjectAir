@@ -25,6 +25,7 @@ end
 
 RailsAdmin.config do |config|
   config.model 'Regulation' do 
+    hide_fields
     edit do
       field :name
       field :organization
@@ -32,44 +33,80 @@ RailsAdmin.config do |config|
   end
 
   config.model 'Chapter' do 
+    hide_fields
+    list do
+      exclude_fields :code
+    end
     edit do
       exclude_fields :code, :paragraphs
     end
   end
 
   config.model 'Paragraph' do 
+    hide_fields
+    list do
+      exclude_fields :number
+    end
     edit do
       exclude_fields :number, :audit_items, :audits #, :attachments
     end
   end
 
   config.model 'Attachment' do 
+    hide_fields
+    list do
+      exclude_fields :number
+    end
     edit do
-      exclude_fields :attachment_type_id
+      exclude_fields :number
+    end
+  end
+
+  config.model 'AttachmentType' do 
+    hide_fields
+    edit do
+      exclude_fields :attachments
     end
   end
 
   config.model 'AuditType' do 
+    hide_fields
     edit do
       exclude_fields :sub_types, :audits
     end
   end
 
   config.model 'Audit' do 
+    hide_fields
     edit do
       exclude_fields :auditor_id, :auditee_id, :fine_tunes, :audit_items
     end
   end
 
   config.model 'Company' do 
+    hide_fields
+    list do
+      exclude_fields :code
+    end
     edit do
       exclude_fields :departments
     end
   end
 
   config.model 'Department' do 
+    hide_fields
+    list do
+      exclude_fields :code
+    end
     edit do
       exclude_fields :employees
     end
   end
+
+  private
+    def hide_fields
+      list do
+        exclude_fields :id, :created_at, :updated_at
+      end
+    end
 end

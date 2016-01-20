@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   scope "api", defaults: {format: :json} do
     resources :audits
     resources :chapters, only: [:index, :create]
+    get 'chapters/paragraph/:id' =>  'chapters#show_paragraph'
     get 'chapters' => "chapters#search"
     get 'companies' => "employees#conpanies_list"
     get 'departments' => "employees#departments_list"

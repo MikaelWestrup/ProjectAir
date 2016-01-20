@@ -1,7 +1,7 @@
 <div class="fine-tune" ng-repeat="ft in fine_tunes">
   <h4>{{ show_date(campaign.start_at) }}</h4>
   <div class="date-section">
-    <div start-date-calendar="" ng-model="campaign.start_at"></div>
+    <div start-date-calendar="" ng-model="ft.date"></div>
   </div>
   <div class="row">
     <div class="col-md-4">

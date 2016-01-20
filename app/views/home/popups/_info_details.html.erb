@@ -1,7 +1,10 @@
-<div class="info-box-outer">
-  <div class="info-box mCustomScrollbar">
-    <p>Information from AMC, GM and linked regulation paragraph.</p>
-    <p>Information from AMC, GM and linked regulation paragraph.</p>
-    <p>Information from AMC, GM and linked regulation paragraph.</p>
+<div class="info-box-outer" id="paragraph-info">
+  <div class="info-box mCustomScrollbar hide">
+    <p>{{ paragraph_info.description }}</p>
+    <div ng-repeat="attachment in paragraph_info.attachments">
+      <p>Attachment Type : {{ attachment.attachment_type.name }}</p>
+      <p>{{ attachment.name }}</p>
+      <p>{{ attachment.description }}</p>
+    </div>
   </div>
 </div>

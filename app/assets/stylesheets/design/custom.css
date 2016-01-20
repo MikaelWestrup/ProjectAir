@@ -4,6 +4,7 @@ label > input:checked + img{ border:2px solid #FA9C46; border-radius: 10px; }
 a { color: #555; }
 .audit-int p { color: black; }
 .disabled { pointer-events:none; opacity: 0.4; }
+
 /* Right Section */
 .right-box { width: 50%; cursor: pointer; }
 .right-box:hover .span-box { border-color: #FA9C46; }
@@ -40,3 +41,8 @@ ul#st-menu > li:hover, ul#st-menu > li:focus { background: #fa9c46; border: 1px 
 .selected { border-color: #f69c4c; }
 .left-sec-popup .main-span, .right-sec-popup .main-span { max-height: 410px ; }
 .left-sec-popup .auditor-list { margin-top: 28%; }
+
+/* middel section */
+/* draged paragraphs tabs */
+.middle-sec .middle-header .col-md-3 .span-box { cursor: pointer; }
+.middle-sec .middle-header .col-md-3 .span-box:hover { border-color: #FA9C46; }

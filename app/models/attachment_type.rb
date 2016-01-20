@@ -13,5 +13,5 @@ class AttachmentType < ActiveRecord::Base
   validates_presence_of :name
 
   # Relations/Associations with other models
-  belongs_to :attachment
+  has_many :attachments
 end

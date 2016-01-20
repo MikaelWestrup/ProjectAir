@@ -14,10 +14,16 @@
 #
 
 class Attachment < ActiveRecord::Base
+  before_save :set_attachment_number
   # Validations for storing filtered data
   validates_presence_of :name, :description, :up_to_including_amendment, :paragraph
 
   # Relations/Associations with other models
-  has_one :attachment_type
+  belongs_to :attachment_type
   belongs_to :paragraph
+
+  private
+    def set_attachment_number
+      self.number = self.name.split(/[()]/)[1].upcase
+    end
 end
