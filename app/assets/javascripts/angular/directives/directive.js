@@ -61,8 +61,7 @@ myApp.directive("startDateCalendar", [
     scope.$watch("campaign.end_at", (function(newValue, oldValue) {
       element.datepicker("option", "maxDate", newValue);
     }), true);
-
-      
+    
       return element.datepicker({
         dateFormat: "mm-dd-yy",
         // numberOfMonths: 2,

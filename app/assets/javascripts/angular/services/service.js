@@ -15,6 +15,7 @@ myApp.factory('api', ['$resource',
       AuditeeEmployees: $resource('/api/employees/auditees/:id', {id: '@id'}),
       AuditTypes:       $resource('/api/audit-types/:id', {id: '@id'}),
       Chapters:         $resource("/api/chapters/:id", { id: "@id" }),
+      ParagraphInfo:    $resource("/api/chapters/paragraph/:id", { id: "@id" }),
       Audit:            $resource("/api/audits/:id", { id: "@id" },
         {
           'index':   { method: 'GET', isArray: true },

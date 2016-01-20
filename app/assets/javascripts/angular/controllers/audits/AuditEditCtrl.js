@@ -1,8 +1,10 @@
-myApp.controller('AuditCtrl', function($scope, api){
+myApp.controller('AuditCtrl', ['$scope', 'api', function($scope, api){
+  // var mainCtrl = $scope.$new();
+  // $controller('MainCtrl',{$scope : mainCtrl });
   $scope.audits = api.Audit.index();
   $scope.intervals = [6,12,24];
   $scope.auditType = null;
-  $scope.fine_tunes = [];
+  $scope.fine_tunes = []; add_ft(); // Initialize one object at starting
 
   $scope.submit = function(){
     setParams();
@@ -84,14 +86,18 @@ myApp.controller('AuditCtrl', function($scope, api){
   };
 
   $scope.addFineTune = function() {
-    arr = {"date": null, "start_time": {"hour": null, "min": null}, "end_time": {"hour": null, "min": null}, "paragraph": null, "note": null};
-    if (validate_fine_tune()) {
-      $scope.fine_tunes.push(arr);
-    };
+    add_ft();
   };
 
   $scope.show_date = function(date) {
     return new Date(date).toDateString()
+  };
+
+  function add_ft() {
+    arr = {"date": null, "start_time": {"hour": null, "min": null}, "end_time": {"hour": null, "min": null}, "paragraph": null, "note": null};
+    if (validate_fine_tune()) {
+      $scope.fine_tunes.push(arr);
+    };
   };
 
   function validate_fine_tune() {
@@ -138,4 +144,4 @@ myApp.controller('AuditCtrl', function($scope, api){
   $scope.myCallback = function(event, ui){
     console.log('Dropped into something');
   };
-});
+}]);
