@@ -1,7 +1,9 @@
 <div class="fine-tune" ng-repeat="ft in fine_tunes">
-  <h4>{{ show_date(campaign.start_at) }}</h4>
-  <div class="date-section">
-    <div start-date-calendar="" ng-model="ft.date"></div>
+  <div class="select-date">
+    <h4 ng-click="aa(true, $index)">{{ show_date(ft.date) || 'Select Date' }}</h4>
+    <div class="date-section">
+      <div class="date-picker" finetune-datepicker="" ng-model="ft.date" ng-class="{'hide' : $index != open_id}" ng-change="aa(false, null)"></div>
+    </div>
   </div>
   <div class="row">
     <div class="col-md-4">

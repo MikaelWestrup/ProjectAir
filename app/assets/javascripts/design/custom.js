@@ -19,7 +19,7 @@ function DropDownMenu(){
 $(document).ready(function(){
   // date picker
   $( "#start_date, #end_date" ).datepicker({
-  	dateFormat: 'dd-mm-yy',
+  	dateFormat: 'mm-dd-yy',
     inline: true,
   });
 

@@ -5,6 +5,8 @@ myApp.controller('AuditCtrl', ['$scope', 'api', function($scope, api){
   $scope.intervals = [6,12,24];
   $scope.auditType = null;
   $scope.fine_tunes = []; add_ft(); // Initialize one object at starting
+  $scope.sdate = null;
+  $scope.edate = null;
 
   $scope.submit = function(){
     setParams();
@@ -13,7 +15,6 @@ myApp.controller('AuditCtrl', ['$scope', 'api', function($scope, api){
       console.log("success", response);
       alert("Audit is successfully created.");
       window.location.reload();
-      // $scope.audit = $scope.locations = {};
     }
 
     function failure(response) {
@@ -33,6 +34,18 @@ myApp.controller('AuditCtrl', ['$scope', 'api', function($scope, api){
   $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent){
     DropDownMenu();
   });
+
+  $scope.aa = function(type, id) {
+    if (type) {
+      min = $scope.sdate.split(' ')[0];
+      max = $scope.edate.split(' ')[0];
+      $scope.open_id = id;
+      this.changeText(min,max);
+    }
+    else{
+      $scope.open_id = null;
+    };
+  };
 
   $scope.setAuditType = function(auditType){
     $scope.auditType = auditType;
@@ -90,7 +103,9 @@ myApp.controller('AuditCtrl', ['$scope', 'api', function($scope, api){
   };
 
   $scope.show_date = function(date) {
-    return new Date(date).toDateString()
+    if (date != null) {
+      return new Date(date).toDateString()
+    };
   };
 
   function add_ft() {

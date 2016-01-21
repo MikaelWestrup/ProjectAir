@@ -9,6 +9,8 @@ myApp.directive('toggleClass', function() {
   };
 });
 
+//-----------------------------------------------------------
+
 myApp.directive('onFinishRender', function($timeout) {
   return {
     restrict: 'A',
@@ -21,6 +23,8 @@ myApp.directive('onFinishRender', function($timeout) {
     }
   };
 });
+
+//-----------------------------------------------------------
 
 myApp.directive('hourTimePicker', function() {
   return {
@@ -40,6 +44,8 @@ myApp.directive('hourTimePicker', function() {
   };
 });
 
+//-----------------------------------------------------------
+
 myApp.directive('minuteTimePicker', function() {
   return {
     restrict: 'E',
@@ -53,49 +59,51 @@ myApp.directive('minuteTimePicker', function() {
     </select>'
   };
 });
+
 //-----------------------------------------------------------
-myApp.directive("startDateCalendar", [
-  function() {
-    return function(scope, element, attrs) {
-      
-    scope.$watch("campaign.end_at", (function(newValue, oldValue) {
-      element.datepicker("option", "maxDate", newValue);
-    }), true);
-    
-      return element.datepicker({
-        dateFormat: "mm-dd-yy",
-        // numberOfMonths: 2,
-        minDate: new Date(),
-        maxDate: scope.campaign.end_at,
-        // beforeShowDay: $.datepicker.noWeekends,
-        onSelect: function(date) {
-          scope.campaign.start_at = date;
-          scope.$apply();
-        }
-      });
-    };
-  }
 
-]);
+myApp.directive("finetuneDatepicker", function() {
+  return {
+    require: 'ngModel',
+    link: function(scope, element, attrs, ngModel) {
+      scope.changeText = function(min, max) {
+        element.datepicker({
+          dateFormat: "mm-dd-yy",
+          minDate: new Date(min),
+          maxDate: new Date(max),
+          onSelect: function(date) {
+            scope.$apply(function(){
+              ngModel.$setViewValue(date);
+              ngModel.$viewValue = date;
+              ngModel.$render();
+            });
+          }
+        });
+      };
+    }
+  };
+});
 
-myApp.directive("endDateCalendar", [
-  function() {
-    return function(scope, element, attrs) {
-    scope.$watch("campaign.start_at", (function(newValue, oldValue) {
-      element.datepicker("option", "minDate", newValue);
-    }), true);
+//-----------------------------------------------------------
 
-      return element.datepicker({
-        dateFormat: "mm-dd-yy",
-        // numberOfMonths: 2,
-        minDate: scope.campaign.start_at,
-        defaultDate: scope.campaign.end_at,
-        // beforeShowDay: $.datepicker.noWeekends,
-        onSelect: function(date) {
-          scope.campaign.end_at = date;
-          return scope.$apply();
-        }
-      });
-    };
-  }
-]);
+// myApp.directive("endDateCalendar", [
+//   function() {
+//     return function(scope, element, attrs) {
+//     scope.$watch("campaign.start_at", (function(newValue, oldValue) {
+//       element.datepicker("option", "minDate", newValue);
+//     }), true);
+
+//       return element.datepicker({
+//         dateFormat: "mm-dd-yy",
+//         // numberOfMonths: 2,
+//         minDate: scope.campaign.start_at,
+//         defaultDate: scope.campaign.end_at,
+//         // beforeShowDay: $.datepicker.noWeekends,
+//         onSelect: function(date) {
+//           scope.campaign.end_at = date;
+//           return scope.$apply();
+//         }
+//       });
+//     };
+//   }
+// ]);
