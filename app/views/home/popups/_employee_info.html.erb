@@ -1,0 +1,40 @@
+<div class="modal fade" id="employeeInfoPopup" tabindex="-1" role="dialog" aria-labelledby="employeeInfoPopupLabel">
+  <div class="modal-dialog" role="document">
+    <div class="cal-outer-box" style="max-width: 427px;">
+      <div class="row emp-info">
+        <div class="col-md-3 col-lg-3 " align="center">
+          <img alt="Employee {{ employee_info.name }} Pic" src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png" class="img-circle img-responsive">
+        </div>
+        <div class=" col-md-9 col-lg-9 "> 
+          <table class="table">
+            <tbody>
+              <tr>
+                <td>Name:</td>
+                <td>{{ employee_info.name }}</td>
+              </tr>
+              <tr>
+                <td>Position:</td>
+                <td>{{ employee_info.role }}</td>
+              </tr>
+              <tr>
+                <td>Offie Phone:</td>
+                <td>{{ employee_info.office_phone }}</td>
+              </tr>
+              <tr>
+                <td>Mobile Phone:</td>
+                <td>{{ employee_info.cell_phone }}</td>
+              </tr>
+              <tr>
+                <td>Email</td>
+                <td style="text-transform: none;">{{ employee_info.email }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="footer-cal">
+        <button type="button" class="btn btn-cal" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -46,3 +46,7 @@ ul#st-menu > li:hover, ul#st-menu > li:focus { background: #fa9c46; border: 1px 
 /* draged paragraphs tabs */
 .middle-sec .middle-header .col-md-3 .span-box { cursor: pointer; }
 .middle-sec .middle-header .col-md-3 .span-box:hover { border-color: #FA9C46; }
+
+/* Employee Info Popup */
+.emp-info .table { text-align: left }
+#employeeInfoPopup table tbody tr td { text-transform: capitalize; }

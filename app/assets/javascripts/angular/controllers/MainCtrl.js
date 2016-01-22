@@ -22,4 +22,8 @@ myApp.controller('MainCtrl', ['$scope', 'api', function($scope, api){
     res ? $("#paragraph-info .info-box").toggleClass('hide') : $("#paragraph-info .info-box").removeClass('hide');
   };
   //------------------------
+  $scope.employeeInfo = function(index) {
+    $scope.employee_info = $scope.employees[index];
+  };
+  //------------------------
 }]);

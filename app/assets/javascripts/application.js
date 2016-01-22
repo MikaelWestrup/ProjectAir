@@ -34,8 +34,8 @@
 //= require angular/app
 //= require angular/services/service
 //= require angular/controllers/MainCtrl
-//= require angular/controllers/chapters/ChapterIndexCtrl
-//= require angular/controllers/audits/AuditEditCtrl
+//= require angular/controllers/chapters/ChapterCtrl
+//= require angular/controllers/audits/AuditCtrl
 //= require angular/directives/directive
 //= require design/custom
 

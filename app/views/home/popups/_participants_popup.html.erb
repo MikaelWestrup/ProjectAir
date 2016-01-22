@@ -9,7 +9,7 @@
               <div class="outer-box" style="cursor: pointer;" ng-repeat="employee in employees" ng-click="toggle = !toggle" ng-class="{ 'selected' : toggle}" value="{{ employee.id }}">
                 <!-- <div class="para-list-type"></div> -->
                 <div class="auditor-detail">{{ employee.name }}</div>
-                <a class="info para-info" href="javascript:void(0);" title="Info"></a>
+                <a class="info para-info" ng-click="employeeInfo($index)" title="Info" data-toggle="modal" data-target="#employeeInfoPopup"></a>
               </div>
             </div>
           </div>
@@ -35,7 +35,7 @@
               <div class="outer-box" style="cursor: pointer;" ng-repeat="employee in auditee_list" ng-click="toggle = !toggle" ng-class="{ 'selected' : toggle}" value="{{ employee.id }}">
                 <!-- <div class="para-list-type"></div> -->
                 <div class="auditor-detail">{{ employee.name }}</div>
-                <a class="info para-info" href="javascript:void(0);" title="Info"></a>
+                <a class="info para-info" ng-click="employeeInfo($index)" title="Info" data-toggle="modal" data-target="#employeeInfoPopup"></a>
               </div>
             </div>
           </div>
