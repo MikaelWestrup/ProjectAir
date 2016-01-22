@@ -1,6 +1,7 @@
 class AuditsController < ApplicationController
   respond_to :json
   before_action :set_audit, only: [:show, :edit, :update, :destroy]
+  before_action :change_date_format, only: :create
 
   def index
     @audits = Audit.all
@@ -28,6 +29,15 @@ class AuditsController < ApplicationController
         if params[:audit][:auditees].present?
           params[:audit][:auditees].each { |employee| @audit.audit_employees.build(employee_id: employee, role: 'Auditee').save }
         end
+        if params[:audit][:fine_tunes].present?
+          params[:audit][:fine_tunes].each do |fine_tune|
+            @audit.fine_tunes.build( ddate: Date.strptime(fine_tune[:date], "%m-%d-%Y"),
+              start_hour: change_time(fine_tune[:start_time][:hour], fine_tune[:start_time][:min]),
+              end_hour: change_time(fine_tune[:end_time][:hour], fine_tune[:end_time][:min]),
+              notes: fine_tune[:note], paragraph_id: fine_tune[:paragraph]
+            ).save
+          end
+        end
         render json: @audit, status: :created
       else
         # @location.destroy
@@ -51,6 +61,15 @@ class AuditsController < ApplicationController
   private
     def set_audit
       @audit = Audit.find(params[:id])
+    end
+
+    def change_date_format
+      params[:audit][:period_start] = DateTime.strptime(params[:audit][:period_start], "%m-%d-%Y %H:%M")
+      params[:audit][:period_end] = DateTime.strptime(params[:audit][:period_end], "%m-%d-%Y %H:%M")
+    end
+
+    def change_time(hour,min)
+      Time.strptime("#{hour}:#{min}", "%H:%M")
     end
 
     def audit_params

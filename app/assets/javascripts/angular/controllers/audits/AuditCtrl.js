@@ -122,13 +122,14 @@ myApp.controller('AuditCtrl', ['$scope', 'api', function($scope, api){
   function setParams(){
     $scope.audit["audit_type_id"] = ($scope.auditType ? $scope.auditType.id : null);
     $scope.audit["interval"] = ($scope.audit.reoccuring == 'true' ? ($scope.rinterval || 0) : (0));
-    $scope.audit["period_start"] = $scope.sdate || null;
-    $scope.audit["period_end"] = $scope.edate || null;
+    $scope.audit["period_start"] = $scope.audit_date.start.date + " " + $scope.audit_date.start.time;
+    $scope.audit["period_end"] = $scope.audit_date.end.date + " " + $scope.audit_date.end.time;
     $scope.audit["reoccuring"] = $scope.audit["reoccuring"] == "true" ? true : false;
     $scope.audit["onsite"] = $scope.audit["onsite"] == "true" ? true : false;
     $scope.audit["paragraphs"] = getParagraphsList();
     $scope.audit["auditors"] = $scope.auditors;
     $scope.audit["auditees"] = $scope.auditees;
+    $scope.audit["fine_tunes"] = $scope.fine_tunes;
   };
 
   function getParagraphsList() {
