@@ -9,58 +9,17 @@ function DropDownMenu(){
     current.toggle();
     e.stopPropagation();
   });
+
   $(".dropdown-menu > li > a:not(.trigger)").on("click",function(){
     var root=$(this).closest('.dropdown');
-    // root.find('.left-caret').toggleClass('right-caret left-caret');
     root.find('.sub-menu:visible').hide();
   });
 };
 
 $(document).ready(function(){
-  // date picker
-  $( "#start_date, #end_date" ).datepicker({
-  	dateFormat: 'mm-dd-yy',
-    inline: true,
-  });
-
   // dropdown
   $( "#speed, #speed1" ).selectmenu();
-
   DropDownMenu();
-});
-
-$(function() {
-  $( "#slider-range-max" ).slider({
-    range: "max",
-    min: 1,
-    max: 1439,
-    value: 600,
-    slide: function( event, ui ) {
-      var hours1 = Math.floor(ui.value / 60);
-      var minutes1 = ui.value - (hours1 * 60);
-
-      if (hours1.length == 1) hours1 = '0' + hours1;
-      if (minutes1.length == 1) minutes1 = '0' + minutes1;
-      if (minutes1 == 0) minutes1 = '00';
-      $( "#start_time" ).text(hours1 + ':' + minutes1);
-    }
-  });
-  // $( "#amount" ).val( $( "#slider-range-max" ).slider( "value" ) );
-  $( "#slider-range-max1" ).slider({
-    range: "max",
-    min: 1,
-    max: 1439,
-    value: 600,
-    slide: function( event, ui ) {
-      var hours1 = Math.floor(ui.value / 60);
-      var minutes1 = ui.value - (hours1 * 60);
-
-      if (hours1.length == 1) hours1 = '0' + hours1;
-      if (minutes1.length == 1) minutes1 = '0' + minutes1;
-      if (minutes1 == 0) minutes1 = '00';
-      $( "#end_time" ).text(hours1 + ':' + minutes1);
-    }
-  });
 });
 
 

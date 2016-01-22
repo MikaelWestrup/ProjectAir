@@ -2,7 +2,7 @@
   <div class="select-date">
     <h4 ng-click="aa(true, $index)">{{ show_date(ft.date) || 'Select Date' }}</h4>
     <div class="date-section">
-      <div class="date-picker" finetune-datepicker="" ng-model="ft.date" ng-class="{'hide' : $index != open_id}" ng-change="aa(false, null)"></div>
+      <div finetune-datepicker="" ng-model="ft.date" ng-class="{'hide' : $index != open_id}" ng-change="aa(false, null)"></div>
     </div>
   </div>
   <div class="row">

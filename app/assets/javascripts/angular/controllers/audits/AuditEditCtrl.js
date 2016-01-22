@@ -1,12 +1,9 @@
 myApp.controller('AuditCtrl', ['$scope', 'api', function($scope, api){
-  // var mainCtrl = $scope.$new();
-  // $controller('MainCtrl',{$scope : mainCtrl });
   $scope.audits = api.Audit.index();
   $scope.intervals = [6,12,24];
   $scope.auditType = null;
   $scope.fine_tunes = []; add_ft(); // Initialize one object at starting
-  $scope.sdate = null;
-  $scope.edate = null;
+  $scope.audit_date = {"start": {"date": null, "time": "10:00"}, "end": {"date": null, "time": "10:00"}};
 
   $scope.submit = function(){
     setParams();
@@ -37,16 +34,14 @@ myApp.controller('AuditCtrl', ['$scope', 'api', function($scope, api){
 
   $scope.aa = function(type, id) {
     if (type) {
-      min = $scope.sdate.split(' ')[0];
-      max = $scope.edate.split(' ')[0];
       $scope.open_id = id;
-      this.changeText(min,max);
+      this.changeText($scope.audit_date.start.date, $scope.audit_date.end.date);
     }
     else{
       $scope.open_id = null;
     };
   };
-
+  
   $scope.setAuditType = function(auditType){
     $scope.auditType = auditType;
   };
@@ -56,8 +51,8 @@ myApp.controller('AuditCtrl', ['$scope', 'api', function($scope, api){
   };
 
   $scope.setDateTime = function(){
-    $scope.sdate = $("#start_date").val() + " " + $("#start_time").text();
-    $scope.edate = $("#end_date").val() + " " + $("#end_time").text();
+    // $scope.sdate = $("#start_date").val() + " " + $("#start_time").text();
+    // $scope.edate = $("#end_date").val() + " " + $("#end_time").text();
   };
 
   $scope.setLocation = function(location) {

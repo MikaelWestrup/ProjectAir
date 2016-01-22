@@ -26,7 +26,8 @@ myApp.directive('onFinishRender', function($timeout) {
 
 //-----------------------------------------------------------
 
-myApp.directive('hourTimePicker', function() {
+// myApp.directive('hourTimePicker', function() {
+myApp.directive('selectHourTime', function() {
   return {
     restrict: 'E',
     require: 'ngModel',
@@ -46,7 +47,8 @@ myApp.directive('hourTimePicker', function() {
 
 //-----------------------------------------------------------
 
-myApp.directive('minuteTimePicker', function() {
+// myApp.directive('minuteTimePicker', function() {
+myApp.directive('selectMinuteTime', function() {
   return {
     restrict: 'E',
     require: 'ngModel',
@@ -86,24 +88,51 @@ myApp.directive("finetuneDatepicker", function() {
 
 //-----------------------------------------------------------
 
-// myApp.directive("endDateCalendar", [
-//   function() {
-//     return function(scope, element, attrs) {
-//     scope.$watch("campaign.start_at", (function(newValue, oldValue) {
-//       element.datepicker("option", "minDate", newValue);
-//     }), true);
+myApp.directive("customDatepicker", function() {
+  return {
+    require: 'ngModel',
+    link: function(scope, element, attrs, ngModel) {
+      element.datepicker({
+        dateFormat: "mm-dd-yy",
+        minDate: new Date(),
+        // maxDate: new Date(max),
+        onSelect: function(date) {
+          scope.$apply(function(){
+            ngModel.$setViewValue(date);
+            ngModel.$viewValue = date;
+            ngModel.$render();
+          });
+        }
+      });
+    }
+  };
+});
 
-//       return element.datepicker({
-//         dateFormat: "mm-dd-yy",
-//         // numberOfMonths: 2,
-//         minDate: scope.campaign.start_at,
-//         defaultDate: scope.campaign.end_at,
-//         // beforeShowDay: $.datepicker.noWeekends,
-//         onSelect: function(date) {
-//           scope.campaign.end_at = date;
-//           return scope.$apply();
-//         }
-//       });
-//     };
-//   }
-// ]);
+//-----------------------------------------------------------
+
+myApp.directive("rangeTimeSlider", function() {
+  return {
+    require: 'ngModel',
+    link: function(scope, element, attrs, ngModel) {
+      element.slider({
+        range: "max",
+        min: 1,
+        max: 1439,
+        value: 600,
+        slide: function( event, ui ) {
+          var hours1 = Math.floor(ui.value / 60);
+          var minutes1 = ui.value - (hours1 * 60);
+          if (hours1 < 10) hours1 = '0' + hours1;
+          if (minutes1 < 10) minutes1 = '0' + minutes1;
+          scope.$apply(function(){
+            ngModel.$setViewValue(hours1 + ':' + minutes1);
+            ngModel.$viewValue = hours1 + ':' + minutes1;
+            ngModel.$render();
+          });
+        }
+      });
+    }
+  };
+});
+
+//-----------------------------------------------------------

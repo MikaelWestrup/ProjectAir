@@ -9,12 +9,6 @@ myApp.controller('MainCtrl', ['$scope', 'api', function($scope, api){
     $scope.show_audit = audit;
   };
 
-  // today = new Date()  
-  // $scope.campaign = {
-  //   start_at: new Date(),
-  //   end_at: today.setDate(today.getDate() + 10)
-  // };
-
   //------------------------
   $scope.showInfo = function(paragraph) {
     res = true;
