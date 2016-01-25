@@ -1,4 +1,17 @@
 <div class="left-sec" ng-controller="ChapterCtrl">
+  <script type="text/ng-template" id="group-template.html">
+    <div class="panel panel-default">
+      <h4 class="panel-heading panel-title clearfix" ng-class="{'highlight' : isOpen}">
+        <a class="expbtn accordion-toggle" ng-class="{'collapsed' : !isOpen}" ng-click="toggleOpen()"></a>
+        <p>{{ heading }}</p>
+        <a class="info" href="javascript:void(0);" title="Info"></a>
+      </h4>
+      <div class="panel-collapse" uib-collapse="!isOpen">
+        <div class="panel-body" ng-transclude></div>
+      </div>
+    </div>
+  </script>
+  
   <!-- <div data-drop="true" aria-disabled="false" data-jqyoui-options jqyoui-droppable="{multiple:true}" ng-model="list1"> -->
     <div class="iner-box row">
       <form>
@@ -20,7 +33,18 @@
       <div class="col-md-12 main-span mCustomScrollbar">
         <div class="panel-group" id="accordion" role="tablist">
           <!-- ng loop start -->
-          <div class="panel panel-default" ng-repeat="chapter in chapters">
+          <uib-accordion close-others="false">
+            <uib-accordion-group heading="{{chapter.name}}" ng-repeat="chapter in chapters" template-url="group-template.html" is-open="suffle.isOpen" ng-init="suffle.isOpen = $first">
+              <div class="outer-box" ng-repeat="paragraph in chapter.paragraphs" ng-model="chapter.paragraphs" data-drag="true" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}" jqyoui-draggable="{index: $index,placeholder:'keep',animate:false}">
+                <span id="{{ paragraph.id }}">
+                  <div class="para-list-type">{{ paragraph.number }}</div>
+                  <div class="para-detail">{{ paragraph.description }}</div>
+                  <a class="info para-info" href="javascript:void(0);" title="Info" ng-click="showInfo(paragraph)"></a>
+                <span>
+              </div>
+              </uib-accordion-group>
+          </uib-accordion>
+          <!-- <div class="panel panel-default" ng-repeat="chapter in chapters">
             <div role="tab" id="chapter_{{$index}}" class="panel-heading" ng-class="{'highlight' : $first}">
               <h4 class="panel-title clearfix">
                 <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse_{{$index}}" aria-expanded="true" aria-controls="collapse_{{$index}}" class="expbtn" ng-class="{'collapsed' : !$first}" toggle-class="highlight">
@@ -40,7 +64,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
           <!-- ng loop end -->
         </div>
       </div>

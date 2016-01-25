@@ -28,8 +28,7 @@
 //= require angular-resource
 //= require angular-animate
 //= require angular-dragdrop-original
-
-//= require angular-ui-bootstrap
+//= require angular/resources/ui-bootstrap-tpls-1.1.0
 
 //= require angular/app
 //= require angular/services/service
