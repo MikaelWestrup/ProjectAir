@@ -1,6 +1,13 @@
 # Initialize Attachments types
 AttachmentType.create([{name: "AMC"}, {name: "GM"}])
 
+# Dummy data for audit types table
+audit_type = AuditType.create(name: 'Part-M', is_parent: true)
+  audit_type.sub_types.create(name: 'Tool Control', is_parent: false)
+
+audit_type = AuditType.create(name: 'Part-145', is_parent: true)
+  audit_type.sub_types.create(name: 'Contractor Audit', is_parent: false)
+
 # Dummy data for regulations table
 regulation = Regulation.create(name: "Commission Regulation (EU) No 1321/2014 of 26 November", organization: "IASA")
 
