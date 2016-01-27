@@ -14,5 +14,5 @@ class Regulation < ActiveRecord::Base
   validates_presence_of :name, :organization
 
   # Relations/Associations with other models
-  has_many :chapters
+  has_many :chapters, dependent: :destroy
 end

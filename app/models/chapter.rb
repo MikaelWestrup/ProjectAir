@@ -20,7 +20,7 @@ class Chapter < ActiveRecord::Base
 
   # Relations/Associations with other models
   belongs_to :regulation
-  has_many :paragraphs
+  has_many :paragraphs, dependent: :destroy
 
   private
     def set_chapter_code

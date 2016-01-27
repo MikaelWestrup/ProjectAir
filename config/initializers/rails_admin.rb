@@ -78,8 +78,12 @@ RailsAdmin.config do |config|
 
   config.model 'Audit' do 
     hide_fields
+    list do
+      exclude_fields :auditor_employees, :auditee_employees, :fine_tunes, :audit_items, :onsite, :reoccuring,
+        :auditors, :auditees, :notes, :planner, :interval
+    end
     edit do
-      exclude_fields :auditor_id, :auditee_id, :fine_tunes, :audit_items
+      exclude_fields :auditor_employees, :auditee_employees, :fine_tunes, :audit_items, :onsite, :reoccuring
     end
   end
 
@@ -100,6 +104,16 @@ RailsAdmin.config do |config|
     end
     edit do
       exclude_fields :employees
+    end
+  end
+
+  config.model 'Employee' do
+    hide_fields
+    list do
+      exclude_fields :audits, :auditor_employees, :auditee_employees, :role
+    end
+    edit do
+      exclude_fields :audits, :auditor_employees, :auditee_employees
     end
   end
 

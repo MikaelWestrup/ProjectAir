@@ -18,6 +18,7 @@
 #
 
 class Audit < ActiveRecord::Base
+  before_save :check_parameters
   # Validations for storing filtered data
   validates_presence_of :name, :period_start, :period_end
   validates_presence_of :audit_type#, :location 
@@ -25,10 +26,23 @@ class Audit < ActiveRecord::Base
   # Relations/Associations with other models
   belongs_to :location
   belongs_to :audit_type
-  has_many :auditors, ->(o) { where "`audit_employees`.`role` = 'Auditor'" }, :through => :audit_employees, :source => :employee
-  has_many :auditees, ->(o) { where "`audit_employees`.`role` = 'Auditee'" }, :through => :audit_employees, :source => :employee
-  has_many :fine_tunes
-  has_many :audit_items
-  has_many :audit_employees
-  has_many :paragraphs, :through => :audit_items
+  has_many :auditor_employees, dependent: :destroy
+  has_many :fine_tunes, dependent: :destroy
+  has_many :audit_items, dependent: :destroy
+  has_many :auditee_employees, dependent: :destroy
+  has_many :paragraphs, :through => :audit_items, dependent: :destroy
+  has_many :auditors, :through => :auditor_employees, :source => :employee
+  has_many :auditees, :through => :auditee_employees, :source => :employee
+
+  private
+    def check_parameters
+      self.onsite = self.location.present? ? true : false
+      if self.interval.present? && self.interval > 0
+        self.reoccuring = true
+      else
+        self.interval = nil
+        self.reoccuring = false
+      end
+      return self
+    end
 end

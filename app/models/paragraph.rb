@@ -19,8 +19,8 @@ class Paragraph < ActiveRecord::Base
 
   # Relations/Associations with other models
   belongs_to :chapter
-  has_many :attachments
-  has_many :audit_items
+  has_many :attachments, dependent: :destroy
+  has_many :audit_items, dependent: :destroy
   has_many :audits, :through => :audit_items
 
   private

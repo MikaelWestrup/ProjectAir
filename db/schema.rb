@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160118121815) do
+ActiveRecord::Schema.define(version: 20160127074741) do
 
   create_table "attachment_types", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -30,14 +30,6 @@ ActiveRecord::Schema.define(version: 20160118121815) do
     t.datetime "updated_at",                              null: false
   end
 
-  create_table "audit_employees", force: :cascade do |t|
-    t.integer  "audit_id",    limit: 4
-    t.integer  "employee_id", limit: 4
-    t.string   "role",        limit: 255
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-  end
-
   create_table "audit_items", force: :cascade do |t|
     t.integer  "audit_id",     limit: 4
     t.integer  "paragraph_id", limit: 4
@@ -51,6 +43,20 @@ ActiveRecord::Schema.define(version: 20160118121815) do
     t.integer  "main_type_id", limit: 4
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
+  end
+
+  create_table "auditee_employees", force: :cascade do |t|
+    t.integer  "audit_id",    limit: 4
+    t.integer  "employee_id", limit: 4
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  create_table "auditor_employees", force: :cascade do |t|
+    t.integer  "audit_id",    limit: 4
+    t.integer  "employee_id", limit: 4
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
   end
 
   create_table "audits", force: :cascade do |t|
