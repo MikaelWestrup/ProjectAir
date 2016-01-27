@@ -13,10 +13,6 @@
 //= require jquery.min
 //= require jquery_ujs
 
-//= require twitter/bootstrap
-//= require moment
-//= require bootstrap-datetimepicker
-
 //= require design/jquery.mCustomScrollbar.concat.min
 //= require design/jquery-ui.min
 //= require design/chosen.jquery

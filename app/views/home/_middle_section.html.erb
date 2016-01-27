@@ -6,7 +6,7 @@
     <div class="middle-sec">
       <div class="iner-box clearfix">
         <div class="middle-inner-box clearfix mCustomScrollbar">
-          <form ng-submit="submit()">
+          <form ng-submit="submit()" name="auditForm">
             <div class="row middle-header clearfix">
               <div class="col-md-3" ng-repeat="item in list2 track by $index" ng-model="list2">
                 <div class="span-box" ng-click="showInfo(item)">{{item.name}}</div>
@@ -43,12 +43,14 @@
                 <ul class="audit-time-box clearfix">
                   <li>one time
                     <label>
-                      <input type="radio" name="ont_time" value=false ng-model="audit.reoccuring"><img src="assets/Large-One-Time.png" alt="" class="img-responsive" />
+                      <input type="radio" name="ont_time" value=false ng-model="audit.reoccuring">
+                        <img src="assets/Large-One-Time.png" alt="" class="img-responsive" />
                     </label>
                   </li>
                   <li>repeating
                     <label>
-                      <input type="radio" name="ont_time" value=true ng-model="audit.reoccuring"><img src="assets/Large-Reoccurring.png" alt="" class="img-responsive" />
+                      <input type="radio" name="ont_time" value=true ng-model="audit.reoccuring">
+                        <img src="assets/Large-Reoccurring.png" alt="" class="img-responsive" />
                     </label>
                   </li>
                 </ul>

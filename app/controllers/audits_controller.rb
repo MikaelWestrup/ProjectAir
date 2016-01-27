@@ -24,10 +24,10 @@ class AuditsController < ApplicationController
           params[:audit][:paragraphs].each { |pa| @audit.audit_items.build(paragraph_id: pa).save }
         end
         if params[:audit][:auditors].present?
-          params[:audit][:auditors].each { |employee| @audit.audit_employees.build(employee_id: employee, role: 'Auditor').save }
+          params[:audit][:auditors].each { |employee| @audit.auditors.build(employee_id: employee).save }
         end
         if params[:audit][:auditees].present?
-          params[:audit][:auditees].each { |employee| @audit.audit_employees.build(employee_id: employee, role: 'Auditee').save }
+          params[:audit][:auditees].each { |employee| @audit.auditees.build(employee_id: employee).save }
         end
         if params[:audit][:fine_tunes].present?
           params[:audit][:fine_tunes].each do |fine_tune|
