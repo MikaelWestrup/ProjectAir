@@ -9,7 +9,12 @@
     </form>
     <div class="col-md-12 main-span mCustomScrollbar" ng-controller="AuditCtrl">
       <div class="row middle-header clearfix">
-        <div class="col-md-3 right-box" ng-repeat="audit in audits"> <div class="span-box" data-toggle="modal" data-target="#showAuditPopup" ng-click="showAudit(audit)">{{ audit.name }}</div> </div>
+        <div class="col-md-3 right-box" ng-repeat="audit in audits">
+          <div class="span-box">
+            <span data-toggle="modal" data-target="#showAuditPopup" ng-click="showAudit(audit)">{{ audit.name }} </span>
+            <a confirmed-click="delete_audit(audit)" ng-confirm-click="Would you realy wanna delete this audit?"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+          </div>
+        </div>
       </div>
     </div>
   </div>

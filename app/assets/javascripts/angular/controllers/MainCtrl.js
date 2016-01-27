@@ -1,9 +1,12 @@
 myApp.controller('MainCtrl', ['$scope', 'api', function($scope, api){
+  // Import resources and Listing data
   $scope.audit_types = api.AuditTypes.query();
   $scope.locations_list = api.Locations.query();
-  $scope.list2 = [];
   $scope.companies = api.Companies.query();
   $scope.employees = api.Employees.query();
+  
+  // Initialize elements with default values
+  $scope.list2 = [];
 
   $scope.showAudit = function(audit){
     $scope.show_audit = audit;

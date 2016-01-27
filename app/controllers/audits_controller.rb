@@ -24,10 +24,10 @@ class AuditsController < ApplicationController
           params[:audit][:paragraphs].each { |pa| @audit.audit_items.build(paragraph_id: pa).save }
         end
         if params[:audit][:auditors].present?
-          params[:audit][:auditors].each { |employee| @audit.auditors.build(employee_id: employee).save }
+          params[:audit][:auditors].each { |employee| @audit.auditor_employees.build(employee_id: employee).save }
         end
         if params[:audit][:auditees].present?
-          params[:audit][:auditees].each { |employee| @audit.auditees.build(employee_id: employee).save }
+          params[:audit][:auditees].each { |employee| @audit.auditee_employees.build(employee_id: employee).save }
         end
         if params[:audit][:fine_tunes].present?
           params[:audit][:fine_tunes].each do |fine_tune|
@@ -54,8 +54,8 @@ class AuditsController < ApplicationController
   end
 
   def destroy
-    # @audit.destroy
-    # redirect_to audits_url, notice: 'Audit was successfully destroyed.'
+    Audit.find(params[:id]).destroy
+    head :no_content
   end
 
   private

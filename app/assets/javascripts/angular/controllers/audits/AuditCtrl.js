@@ -1,19 +1,25 @@
 myApp.controller('AuditCtrl', ['$scope', 'api', function($scope, api){
+  // Import resources and Listing data
   $scope.audits = api.Audit.index();
-  $scope.intervals = [6,12,24];
-  $scope.auditType = null;
-  $scope.fine_tunes = []; add_ft(); // Initialize one object at starting
-  $scope.audit_date = {"start": {"date": null, "time": "10:00"}, "end": {"date": null, "time": "10:00"}};
+
+  // Initialize elements with default values
+  initialize();
+
+  function initialize() {
+    $scope.intervals = [6,12,24];
+    $scope.auditType = null;
+    $scope.fine_tunes = []; add_ft(); // Initialize one object at starting
+    $scope.audit_date = {"start": {"date": null, "time": "10:00"}, "end": {"date": null, "time": "10:00"}};
+    $scope.audit = null;
+  };
 
   $scope.submit = function(){
     setParams();
-
     function success(response) {
       console.log("success", response);
       alert("Audit is successfully created.");
       window.location.reload();
     }
-
     function failure(response) {
       console.log("failure", response);
       // _.each(response.data, function(errors, key) {
@@ -23,7 +29,6 @@ myApp.controller('AuditCtrl', ['$scope', 'api', function($scope, api){
       //   });
       // });
     }
-
     newAudit = { audit: $scope.audit, location: $scope.locations };
     api.Audit.create(newAudit, success, failure);
   };
@@ -40,6 +45,16 @@ myApp.controller('AuditCtrl', ['$scope', 'api', function($scope, api){
     else{
       $scope.open_id = null;
     };
+  };
+
+  $scope.reset = function() {
+    initialize();
+    $scope.list2 = [];
+  };
+
+  $scope.delete_audit = function(audit) {
+    api.Audit.destroy({id: audit.id});
+    $scope.audits = api.Audit.index();
   };
   
   $scope.setAuditType = function(auditType){
