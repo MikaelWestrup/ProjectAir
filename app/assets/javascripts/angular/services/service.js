@@ -11,11 +11,16 @@ myApp.factory('api', ['$resource',
     return {
       Companies:        $resource('/api/companies/:id', {id: '@id'}),
       Locations:        $resource('/api/locations/:id', {id: '@id'}),
-      Employees:        $resource('/api/employees/:id', {id: '@id'}),
       AuditeeEmployees: $resource('/api/employees/auditees/:id', {id: '@id'}),
       AuditTypes:       $resource('/api/audit-types/:id', {id: '@id'}),
       Chapters:         $resource("/api/chapters/:id", { id: "@id" }),
       ParagraphInfo:    $resource("/api/chapters/paragraph/:id", { id: "@id" }),
+      Employee:        $resource('/api/employees/:id', {id: '@id'},
+        {
+          'index':   { method: 'GET', isArray: true },
+          'show':    { method: 'GET', isArray: false }
+        }
+      ),
       Audit:            $resource("/api/audits/:id", { id: "@id" },
         {
           'index':   { method: 'GET', isArray: true },

@@ -3,7 +3,7 @@
     <div class="cal-outer-box" style="max-width: 427px;">
       <div class="row emp-info">
         <div class="col-md-3 col-lg-3 " align="center">
-          <img alt="Employee {{ employee_info.name }} Pic" src="assets/profile-pic.png" class="img-circle img-responsive">
+          <img alt="Employee {{ employee_info.name }} Pic" ng-src="{{employee_info.avatar_file_name || 'assets/profile-pic.png'}}" class="img-circle img-responsive">
         </div>
         <div class=" col-md-9 col-lg-9 "> 
           <table class="table">

@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     get 'companies' => "employees#conpanies_list"
     get 'departments' => "employees#departments_list"
     get 'employees' => "employees#employees_list"
+    get 'employees/:id' => "employees#show"
     get 'employees/auditees/:id' => "employees#auditee_employees_list"
     get 'audit-types' => "home#audit_types_list"
     get 'locations' => "home#location_list"

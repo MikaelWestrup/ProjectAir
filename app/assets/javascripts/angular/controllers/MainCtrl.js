@@ -3,7 +3,7 @@ myApp.controller('MainCtrl', ['$scope', 'api', function($scope, api){
   $scope.audit_types = api.AuditTypes.query();
   $scope.locations_list = api.Locations.query();
   $scope.companies = api.Companies.query();
-  $scope.employees = api.Employees.query();
+  $scope.employees = api.Employee.index();
   
   // Initialize elements with default values
   $scope.list2 = [];
@@ -25,8 +25,8 @@ myApp.controller('MainCtrl', ['$scope', 'api', function($scope, api){
     res ? $("#paragraph-info .info-box").toggleClass('hide') : $("#paragraph-info .info-box").removeClass('hide');
   };
   //------------------------
-  $scope.employeeInfo = function(index) {
-    $scope.employee_info = $scope.employees[index];
+  $scope.employeeInfo = function(employee) {
+    $scope.employee_info = api.Employee.show({id: employee.id});
   };
   //------------------------
 }]);
