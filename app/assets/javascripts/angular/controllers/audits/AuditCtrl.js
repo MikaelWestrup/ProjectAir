@@ -168,6 +168,22 @@ myApp.controller('AuditCtrl', ['$scope', 'api', function($scope, api){
   };
 
   $scope.myCallback = function(event, ui){
-    console.log('Dropped into something');
+    length = $scope.list2.length;
+    item = $scope.list2[length-1];
+    $scope.list2.pop();
+    if($scope.list2.includes(item)){
+      window.alert("This paragraph is already added for audit");
+    }
+    else{
+      $scope.list2.push(item);
+      // console.log('Dropped into something');
+    };
+  };
+
+  $scope.removeItemFromList = function(item) {
+    if ($scope.list2.includes(item)) {
+      index = $scope.list2.indexOf(item);
+      $scope.list2.splice(index,1);
+    };
   };
 }]);

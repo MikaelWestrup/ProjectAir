@@ -11,8 +11,7 @@
       </div>
     </div>
   </script>
-  
-  <!-- <div data-drop="true" aria-disabled="false" data-jqyoui-options jqyoui-droppable="{multiple:true}" ng-model="list1"> -->
+
     <div class="iner-box row">
       <form>
         <div class="col-md-6 pd-r">
@@ -35,7 +34,7 @@
           <!-- ng loop start -->
           <uib-accordion close-others="false">
             <uib-accordion-group heading="{{chapter.name}}" ng-repeat="chapter in chapters" template-url="group-template.html" is-open="suffle.isOpen" ng-init="suffle.isOpen = $first">
-              <div class="outer-box" ng-repeat="paragraph in chapter.paragraphs" ng-model="chapter.paragraphs" data-drag="true" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}" jqyoui-draggable="{index: $index,placeholder:'keep',animate:false}">
+              <div class="outer-box" ng-repeat="paragraph in chapter.paragraphs" ng-model="chapter.paragraphs" data-drag="true" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}" jqyoui-draggable="{index: $index,placeholder:'keep',animate:false}" ng-class="{'selected' : list2.includes(paragraph)}">
                 <span id="{{ paragraph.id }}">
                   <div class="para-list-type">{{ paragraph.number }}</div>
                   <div class="para-detail">{{ paragraph.description }}</div>
@@ -44,31 +43,9 @@
               </div>
               </uib-accordion-group>
           </uib-accordion>
-          <!-- <div class="panel panel-default" ng-repeat="chapter in chapters">
-            <div role="tab" id="chapter_{{$index}}" class="panel-heading" ng-class="{'highlight' : $first}">
-              <h4 class="panel-title clearfix">
-                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse_{{$index}}" aria-expanded="true" aria-controls="collapse_{{$index}}" class="expbtn" ng-class="{'collapsed' : !$first}" toggle-class="highlight">
-                </a>
-                <p>{{ chapter.name }}</p>
-                <a class="info" href="javascript:void(0);" title="Info"></a>
-              </h4>
-            </div>
-            <div id="collapse_{{$index}}" aria-labelledby="chapter_{{$index}}" class="panel-collapse collapse" ng-class="{'in' : $first}">
-              <div class="panel-body">
-                <div class="outer-box" ng-repeat="paragraph in chapter.paragraphs" ng-model="chapter.paragraphs" data-drag="true" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}" jqyoui-draggable="{index: $index,placeholder:'keep',animate:false}">
-                  <span id="{{ paragraph.id }}">
-                    <div class="para-list-type">{{ paragraph.number }}</div>
-                    <div class="para-detail">{{ paragraph.description }}</div>
-                    <a class="info para-info" href="javascript:void(0);" title="Info" ng-click="showInfo(paragraph)"></a>
-                  <span>
-                </div>
-              </div>
-            </div>
-          </div> -->
           <!-- ng loop end -->
         </div>
       </div>
     </div>
-  <!-- </div> -->
 </div>
 

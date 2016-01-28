@@ -9,7 +9,7 @@
           <form ng-submit="submit()" name="auditForm">
             <div class="row middle-header clearfix">
               <div class="col-md-3" ng-repeat="item in list2 track by $index" ng-model="list2">
-                <div class="span-box" ng-click="showInfo(item)">{{item.name}}</div>
+                <div class="span-box" ng-click="showInfo(item)">{{item.name}} <a class="span-box-remove glyphicon glyphicon-remove" ng-click="removeItemFromList(item)"></a></div>
               </div>
             </div>
             <div class="row audit-box">

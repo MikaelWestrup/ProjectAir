@@ -46,6 +46,8 @@ ul#st-menu > li:hover, ul#st-menu > li:focus { background: #fa9c46; border: 1px 
 /* draged paragraphs tabs */
 .middle-sec .middle-header .col-md-3 .span-box { cursor: pointer; }
 .middle-sec .middle-header .col-md-3 .span-box:hover { border-color: #FA9C46; }
+.span-box-remove { display: none; }
+.col-md-3 .span-box:hover .span-box-remove { display: block; /*position: absolute; padding-top: 2px; padding-left: 67px;*/ text-decoration-line: none; }
 
 /* Employee Info Popup */
 .emp-info .table { text-align: left }
