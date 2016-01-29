@@ -3,7 +3,7 @@ class ChaptersController < ApplicationController
   
   respond_to :json
 
-  def index  
+  def index
     respond_with @chapters.as_json(include: :paragraphs)
   end
 
@@ -14,6 +14,16 @@ class ChaptersController < ApplicationController
 
   private
     def search
-      @chapters = Chapter.ransack(name_cont: params[:q]).result
+      if params[:filter] == "Regulation"
+        regulations = Regulation.ransack(name_cont: params[:q]).result
+        @chapters = Chapter.where(regulation_id: regulations.map(&:id))
+      end
+      if params[:filter] == "Chapter" || params[:filter].blank?
+        @chapters = Chapter.ransack(name_cont: params[:q]).result
+      end
+      if params[:filter] == "Paragraph"
+        paragraphs = Paragraph.ransack(name_cont: params[:q]).result
+        @chapters = Chapter.where(id: paragraphs.map(&:chapter_id).uniq)
+      end
     end
 end
