@@ -1,166 +1,104 @@
-<!-- <div class="modal fade" id="showAuditPopup" tabindex="-1" role="dialog" aria-labelledby="showAuditPopupLabel">
-  <div class="modal-dialog" role="document">
-    <div class="cal-outer-box main-span"> -->
-      <!-- <div><h1>{{ show_audit }}</h1></div> -->
-    <!-- </div>
-  </div>
-</div> -->
-
 <div class="modal fade bs-example-modal-lg" id="showAuditPopup" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-body mdl-box clearfix">
         <h2>{{ show_audit.name }}</h2>
-      <p>paragraphs</p>
-      <ul class="btn-list">
-         <li>145A, 55(B)</li>
-       <li>145A, 55(B)</li>
-       <li>145A, 55(B)</li>
-       <li>145A, 55(B)</li>
-      </ul>
-      <div class="col-md-6">
-          <div class="left-adit-box clearfix">
-            <div class="row">
-              <div class="col-md-3 text-center">
-               <h5>date</h5>
-             <p>2016-jan-14</p>
-             <p>2016-jan-13</p>
-             <p>2016-jan-12</p>
-             <p>2016-jan-11</p>
-             <p>2016-jan-10</p>
-             
+        <p>paragraphs</p>
+        <ul class="btn-list">
+          <li ng-repeat="paragraph in show_audit.paragraphs">{{paragraph.name}}</li>
+        </ul>
+
+        <div class="row">
+          <div class="col-md-6 ft-box">
+            <div class="left-adit-box clearfix">
+              <div class="row">
+                <div class="col-md-3 text-center">
+                  <h5>date</h5>
+                  <p ng-repeat="fine_tune in show_audit.fine_tunes" ng-if="$even">{{fine_tune.ddate}}</p>
+                </div>
+                <div class="col-md-3 text-center">
+                  <h5>time</h5>
+                  <p ng-repeat="fine_tune in show_audit.fine_tunes" ng-if="$even">08:00.09:00</p>
+                </div>
+                <div class="col-md-3 text-center">
+                  <h5>notes</h5>
+                  <p ng-repeat="fine_tune in show_audit.fine_tunes" ng-if="$even">{{fine_tune.notes}}</p>
+                </div>
+                <div class="col-md-3 text-center">
+                  <h5>paragraph</h5>
+                  <p ng-repeat="fine_tune in show_audit.fine_tunes" ng-if="$even">{{paragraphName(fine_tune.paragraph_id)}}</p>
+                </div>
+              </div>
             </div>
-            <div class="col-md-3 text-center">
-               <h5>time</h5>
-             <p>08:30.09:00</p>
-             <p>08:30.09:00</p>
-             <p>08:30.09:00</p>
-             <p>08:30.09:00</p>
-             <p>08:30.09:00</p>
-            
-            </div>
-            <div class="col-md-3 text-center">
-               <h5>notes</h5>
-             <p>opening meeting</p>
-             <p>opening meeting</p>
-             <p>opening meeting</p>
-             <p>opening meeting</p>
-             <p>opening meeting</p>
-             
-            </div>
-            <div class="col-md-3 text-center">
-               <h5>paragraph</h5>
-             <p>145A, 55(B)</p>
-             <p>145A, 55(B)</p>
-             <p>145A, 55(B)</p>
-             <p>145A, 55(B)</p>
-             <p>145A, 55(B)</p>
-            
+          </div>
+          <div class="col-md-6 ft-box">
+            <div class="left-adit-box clearfix">
+              <div class="row">
+                <div class="col-md-3 text-center">
+                  <h5>date</h5>
+                  <p ng-repeat="fine_tune in show_audit.fine_tunes" ng-if="$odd">{{fine_tune.ddate}}</p>
+                </div>
+                <div class="col-md-3 text-center">
+                  <h5>time</h5>
+                  <p ng-repeat="fine_tune in show_audit.fine_tunes" ng-if="$odd">08:00.09:00</p>
+                </div>
+                <div class="col-md-3 text-center">
+                  <h5>notes</h5>
+                  <p ng-repeat="fine_tune in show_audit.fine_tunes" ng-if="$odd">{{fine_tune.notes}}</p>
+                </div>
+                <div class="col-md-3 text-center">
+                  <h5>paragraph</h5>
+                  <p ng-repeat="fine_tune in show_audit.fine_tunes" ng-if="$odd">{{paragraphName(fine_tune.paragraph_id)}}</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-md-6">
-          <div class="left-adit-box clearfix">
-            <div class="row">
-              <div class="col-md-3 text-center">
-               <h5>date</h5>
-             <p>2016-jan-14</p>
-             <p>2016-jan-13</p>
-             <p>2016-jan-12</p>
-             <p>2016-jan-11</p>
-             <p>2016-jan-10</p>
-             
+        <div class="clearfix"></div>
+
+
+        <div class="frm-popup-box">
+          <div class="col-md-2 frm-popup-box">
+            <div class="form-group">
+              <label>country</label>
+              <label class="form-control">{{ show_audit.location.country }}</label>
             </div>
-            <div class="col-md-3 text-center">
-               <h5>time</h5>
-             <p>08:30.09:00</p>
-             <p>08:30.09:00</p>
-             <p>08:30.09:00</p>
-             <p>08:30.09:00</p>
-             <p>08:30.09:00</p>
-            
+          </div>
+          <div class="col-md-2 frm-popup-box">
+            <div class="form-group">
+              <label>airport</label>
+              <label class="form-control">{{ show_audit.location.airport }}</label>
             </div>
-            <div class="col-md-3 text-center">
-               <h5>notes</h5>
-             <p>opening meeting</p>
-             <p>opening meeting</p>
-             <p>opening meeting</p>
-             <p>opening meeting</p>
-             <p>opening meeting</p>
-             
+          </div>
+          <div class="col-md-4 frm-popup-box">
+            <div class="form-group">
+              <label>address</label>
+              <label class="form-control">{{ show_audit.location.address }}</label>
             </div>
-            <div class="col-md-3 text-center">
-               <h5>paragraph</h5>
-             <p>145A, 55(B)</p>
-             <p>145A, 55(B)</p>
-             <p>145A, 55(B)</p>
-             <p>145A, 55(B)</p>
-             <p>145A, 55(B)</p>
-            
+          </div>
+          <div class="col-md-2 frm-popup-box">
+            <div class="form-group">
+              <label>zipcode</label>
+              <label class="form-control">{{ show_audit.location.zipcode }}</label>
+            </div>
+          </div>
+          <div class="col-md-2 frm-popup-box">
+            <div class="form-group">
+              <label>Todw/City</label>
+              <label class="form-control">{{ show_audit.location.town }}</label>
+            </div>
+          </div>
+          <div class="col-md-12 frm-popup-box">
+            <div class="form-group">
+              <label>additional detail</label>
+              <label class="form-control">{{ show_audit.location.country }}</label>
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-md-2 frm-popup-box">
-         <div class="form-group">
-         <label>country</label>
-         <input type="text" class="form-control" readonly />
-       </div>
-      </div>
-      <div class="col-md-2 frm-popup-box">
-         <div class="form-group">
-         <label>airport</label>
-         <input type="text" class="form-control" readonly />
-       </div>
-      </div>
-      <div class="col-md-4 frm-popup-box">
-          <div class="form-group">
-         <label>address</label>
-         <input type="text" class="form-control" readonly />
-        </div>
-      </div>
-      <div class="col-md-2 frm-popup-box">
-         <div class="form-group">
-         <label>zipcode</label>
-         <input type="text" class="form-control" readonly />
-       </div>
-      </div>
-      <div class="col-md-2 frm-popup-box">
-         <div class="form-group">
-         <label>Todw/City</label>
-         <input type="text" class="form-control" readonly />
-       </div>
-      </div>
-      <div class="col-md-12 frm-popup-box">
-         <div class="form-group">
-         <label>additional detail</label>
-         <input type="text" class="form-control" readonly />
-       </div>
-      </div>
-      <div class="col-md-6 q-dev">
-        <p>previously created Q-DEV</p>
-         <ul class="btn-list">
-         <li>145A, 55(B)</li>
-         <li>145A, 55(B)</li>
-         <li>145A, 55(B)</li>
-         <li>145A, 55(B)</li>
-        </ul> 
-      </div>
-      <div class="col-md-6 q-dev">
-          <p>previously created DEV/IMP</p>
-          <ul class="btn-list">
-         <li>145A, 55(B)</li>
-         <li>145A, 55(B)</li>
-         <li>145A, 55(B)</li>
-         <li>145A, 55(B)</li>
-        </ul> 
-      </div>
-      
-      <div class="col-md-12 text-center ftr-popup">
+        <div class="col-md-12 text-center ftr-popup">
           <button  class="btn btn-cal btn2" type="button" data-dismiss="modal">done</button>
+        </div>
       </div>
-    </div>
     </div>
   </div>
 </div>

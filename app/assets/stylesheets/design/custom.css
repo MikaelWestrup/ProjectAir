@@ -52,3 +52,5 @@ ul#st-menu > li:hover, ul#st-menu > li:focus { background: #fa9c46; border: 1px 
 /* Employee Info Popup */
 .emp-info .table { text-align: left }
 #employeeInfoPopup table tbody tr td { text-transform: capitalize; }
+
+.ft-box { margin-top: -1%; }

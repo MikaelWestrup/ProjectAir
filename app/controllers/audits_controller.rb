@@ -9,6 +9,8 @@ class AuditsController < ApplicationController
   end
 
   def show
+    @audit = Audit.find(params[:id])
+    respond_with @audit.as_json(:include => [:location, :fine_tunes, :paragraphs => {only: [:id, :name]}])
   end
 
   def edit

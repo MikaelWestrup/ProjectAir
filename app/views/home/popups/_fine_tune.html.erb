@@ -3,7 +3,7 @@
     <div class="cal-outer-box main-span mCustomScrollbar" style="max-width: 420px;">
       <div class="fine-tune" ng-repeat="ft in fine_tunes">
         <div class="select-date">
-          <h4 ng-click="aa(true, $index)">{{ show_date(ft.date) || 'Select Date' }}</h4>
+          <h4 ng-click="aa(true, $index)" style="cursor: pointer;">{{ show_date(ft.date) || 'Select Date' }}</h4>
           <div class="date-section">
             <div finetune-datepicker="" ng-model="ft.date" ng-class="{'hide' : $index != open_id}" ng-change="aa(false, null)"></div>
           </div>

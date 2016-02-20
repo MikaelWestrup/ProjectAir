@@ -130,7 +130,7 @@ myApp.controller('AuditCtrl', ['$scope', 'api', function($scope, api){
     if (size == 0) { return true; }
     else {
       ft = $scope.fine_tunes[size-1];
-      return (ft.start_time.hour && ft.start_time.min && ft.end_time.hour && ft.end_time.min && ft.paragraph) ? true : false;
+      return (ft.date && ft.start_time.hour && ft.start_time.min && ft.end_time.hour && ft.end_time.min && ft.paragraph) ? true : false;
     };
   };
 
