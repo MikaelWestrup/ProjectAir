@@ -7,11 +7,20 @@ myApp.controller('MainCtrl', ['$scope', 'api', function($scope, api){
   
   // Initialize elements with default values
   $scope.list2 = [];
-
-  $scope.showAudit = function(audit){
-    $scope.show_audit = audit;
+  
+  //------------------------
+  $scope.showAudit = function(audit) {
+    $scope.show_audit = api.Audit.show({id: audit.id});
+    // $scope.show_audit = audit;
   };
 
+  $scope.paragraphName = function(id) {
+    angular.forEach($scope.show_audit.paragraphs, function(value, key){
+      if(value.id == id)
+        para_name = value.name;
+    });
+    return para_name;
+  };
   //------------------------
   $scope.showInfo = function(paragraph) {
     res = true;
