@@ -9,7 +9,7 @@
 //
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
-//
+
 //= require jquery.min
 //= require jquery_ujs
 
@@ -19,7 +19,6 @@
 
 //= require design/jquery.mCustomScrollbar.concat.min
 //= require design/jquery-ui.min
-//= require design/chosen.jquery
 
 //= require turbolinks
 
