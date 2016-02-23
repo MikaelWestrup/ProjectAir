@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :chapters, only: [:index, :create]
     get 'chapters/paragraph/:id' =>  'chapters#show_paragraph'
     get 'chapters' => "chapters#search"
+    get 'chapters/list_chapter_type' => "chapters#list_chapter_type"
     get 'companies' => "employees#conpanies_list"
     get 'departments' => "employees#departments_list"
     get 'employees' => "employees#employees_list"
