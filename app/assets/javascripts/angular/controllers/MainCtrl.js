@@ -1,6 +1,7 @@
 myApp.controller('MainCtrl', ['$scope', 'api', function($scope, api){
   // Import resources and Listing data
   $scope.audit_types = api.AuditTypes.query();
+  $scope.list_chapter_types = api.ChaptersCtype.query();
   $scope.locations_list = api.Locations.query();
   $scope.companies = api.Companies.query();
   $scope.employees = api.Employee.index();

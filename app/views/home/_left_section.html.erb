@@ -16,16 +16,14 @@
       <form>
         <div class="col-md-6 pd-r">
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search field" ng-model="searchForm.q" ng-change="search()"/>
+            <input type="text" class="form-control" placeholder="Search text" ng-model="searchForm.q" ng-change="search()" style="text-transform: none;"/>
           </div>
         </div>
         <div class="col-md-6 custom-dd">
           <div class="form-group">
             <select class="form-control" ng-model="searchForm.filter" ng-change="search()">
-              <option selected value="">Select Search In</option>
-              <option>Regulation</option>
-              <option>Chapter</option>
-              <option>Paragraph</option>
+              <option selected value="">Filter By</option>
+              <option ng-repeat="ctype in list_chapter_types">{{ctype}}</option>
             </select>
           </div>
         </div>

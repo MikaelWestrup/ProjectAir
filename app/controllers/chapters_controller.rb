@@ -12,18 +12,24 @@ class ChaptersController < ApplicationController
     respond_with @paragraph.as_json(include: {attachments: { include: {attachment_type: {only: :name}}}})
   end
 
+  def list_chapter_type
+    @ctypes = Chapter.pluck(:ctype).uniq
+    respond_with @ctypes.as_json
+  end
+
   private
     def search
-      if params[:filter] == "Regulation"
-        regulations = Regulation.ransack(name_cont: params[:q]).result
-        @chapters = Chapter.where(regulation_id: regulations.map(&:id))
+      chapters = Chapter.ransack(name_cont: params[:q]).result
+      paragraphs = Paragraph.ransack(name_or_description_cont: params[:q]).result
+      paragraph_chapters = Chapter.where(id: paragraphs.map(&:chapter_id).uniq)
+      chapters_list = (chapters + paragraph_chapters).uniq
+      if params[:filter].present?
+        filter_chapter = Chapter.ransack(ctype_cont: params[:filter]).result
+        @chapters = []
+        chapters_list.each {|chapter| @chapters.push(chapter) if filter_chapter.include?(chapter)}
+      else
+        @chapters = chapters_list
       end
-      if params[:filter] == "Chapter" || params[:filter].blank?
-        @chapters = Chapter.ransack(name_cont: params[:q]).result
-      end
-      if params[:filter] == "Paragraph"
-        paragraphs = Paragraph.ransack(name_cont: params[:q]).result
-        @chapters = Chapter.where(id: paragraphs.map(&:chapter_id).uniq)
-      end
+      @chapters
     end
 end
