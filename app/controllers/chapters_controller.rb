@@ -13,7 +13,7 @@ class ChaptersController < ApplicationController
   end
 
   def list_chapter_type
-    @ctypes = Chapter.pluck(:ctype).uniq
+    @ctypes = Chapter.order(ctype: :asc).pluck(:ctype).uniq
     respond_with @ctypes.as_json
   end
 
