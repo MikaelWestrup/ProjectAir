@@ -13,6 +13,8 @@
 #
 
 class Paragraph < ActiveRecord::Base
+  default_scope {order("number ASC")}
+
   before_save :set_paragraph_number
   # Validations for storing filtered data
   validates_presence_of :name, :description, :up_to_including_amendment, :chapter_id
