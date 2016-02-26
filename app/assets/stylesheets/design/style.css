@@ -15,7 +15,7 @@ img { max-width: 100%; border: 0px; height: auto; width: auto\9; /* ie8 */ }
 .btn.active.focus, .btn.active:focus, .btn.focus, .btn.focus:active, .btn:active:focus, .btn:focus { outline: none; -webkit-outline: none; -moz-outline: none; -ms-outline: none; -o-outline: none; }
 /*css for bootstrap slect btn*/
 .main-content-box { display: table; }
-.left-sec, .middle-sec, .right-sec { background: #fff; border: 10px solid #e5e5e5; border-collapse: separate; border-radius: 30px; border-spacing: 0; display: table-cell; padding: 10px !important; vertical-align: top; }
+.left-sec, .middle-sec, .right-sec { background: #fff; border: 10px solid #e5e5e5; border-collapse: separate; border-radius: 30px; border-spacing: 0; display: table-cell; padding: 10px !important; vertical-align: top;}
 .left-sec { width: 450px; padding: 0 10px; }
 .middle-sec { width: 450px; padding: 0 10px; position:relative;}
 .right-sec { width: 270px; padding: 0 10px; }

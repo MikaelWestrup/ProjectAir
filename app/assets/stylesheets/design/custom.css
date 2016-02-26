@@ -63,5 +63,7 @@ ul#st-menu > li:hover, ul#st-menu > li:focus { background: #fa9c46; border: 1px 
 #participantsPopup form .form-group .form-control { padding-left: 0; padding-right: 0%; }
 #participantsPopup .emp-link { padding: 0px; }
 
-.main-span { max-height: 500px; }
-#participantsPopup .main-span { max-height: 273px; }
+.middle-sec .middle-inner-box { max-height: 441px; }
+#participantsPopup .block-size { max-height: 297px; }
+#locationPopup .block-size  { height: 429px; }
+#datePopup .block-size, #fineTunePopup .block-size { max-height: 461px; }

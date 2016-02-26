@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-xs-6 left-sec-popup">
         <h4>Auditor</h4>
-        <div class="col-md-12 auditor-list main-span mCustomScrollbar">
+        <div class="col-md-12 auditor-list block-size main-span mCustomScrollbar">
           <div class="panel-group" role="tablist">
             <div class="emp-link outer-box" style="cursor: pointer;" ng-repeat="employee in employees" ng-click="toggle = !toggle" ng-class="{ 'selected' : toggle}" value="{{ employee.id }}">
               <!-- <div class="para-list-type"></div> -->
@@ -29,12 +29,12 @@
             </div>
           </form>
         </div>
-        <div class="col-md-12 auditee-list main-span mCustomScrollbar">
+        <div class="col-md-12 auditee-list block-size main-span mCustomScrollbar">
           <div class="panel-group" role="tablist">
             <div class="emp-link outer-box" style="cursor: pointer;" ng-repeat="employee in auditee_list" ng-click="toggle = !toggle" ng-class="{ 'selected' : toggle}" value="{{ employee.id }}">
               <!-- <div class="para-list-type"></div> -->
               <div class="auditor-detail">{{ employee.name }}</div>
-              <a class="info para-info" ng-click="employeeInfo($index)" title="Info" data-toggle="modal" data-target="#employeeInfoPopup"></a>
+              <a class="info para-info" ng-click="employeeInfo(employee)" title="Info" data-toggle="modal" data-target="#employeeInfoPopup"></a>
             </div>
           </div>
         </div>
@@ -42,7 +42,6 @@
     </div><br>
     <div class="footer-cal">
       <button type="button" class="btn btn-cal" ng-click="participantsPopup=false">Done</button>
-      <!-- <button type="button" class="btn btn-cal" ng-click="select_auditor()">Done</button> -->
     </div>
   </div>
 </div>

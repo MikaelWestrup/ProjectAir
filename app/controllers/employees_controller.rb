@@ -4,7 +4,7 @@ class EmployeesController < ApplicationController
   def show
     @employee = Employee.find(params[:id])
     @employee[:avatar_file_name] = request.protocol + request.host_with_port + @employee.avatar.url
-    respond_with @employee.as_json()
+    respond_with @employee.as_json(include: {company: {only: :name}})
   end
 
   def conpanies_list
