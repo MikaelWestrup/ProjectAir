@@ -36,6 +36,7 @@ myApp.controller('MainCtrl', ['$scope', 'api', function($scope, api){
   };
   //------------------------
   $scope.employeeInfo = function(employee) {
+    // $scope.employeeInfoPopup = true;
     $scope.employee_info = api.Employee.show({id: employee.id});
   };
   //------------------------

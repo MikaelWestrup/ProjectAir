@@ -23,13 +23,15 @@ ul#st-menu > li:hover, ul#st-menu > li:focus { background: #fa9c46; border: 1px 
 .location-form { border: 2px solid #e5e5e5; position: fixed; max-width: 65%; padding-bottom: 8px; margin-top: -5px; border-radius: 16px; }
 .location-form .form-control { border: 2px solid #e5e5e5; border-radius: 10px ; }
 .location-form .form-control:focus { border: 2px solid #FA9C46; box-shadow: none; border-radius: 10px ; }
-.location-list { padding-top: 87%; }
+.location-list { padding-left: 4%; padding-right: 4%; }
 
 /* Fine tune Popup css*/
-.fine-tune .form-group .form-control { display: -webkit-inline-box; width: 48%; padding-left: 0px; padding-right: 0px; }
-.fine-tune .form-group .fc-lg { width: 100%; }
-.fine-tune .footer-cal { margin-top: 2%; margin-bottom: 2%; }
-.fine-tune .form-control:focus, .fine-tune .footer-cal .btn:hover { border: 2px solid #FA9C46; box-shadow: none; }
+.fine-tune1 .form-group .form-control { display: -webkit-inline-box; padding-left: 0px; padding-right: 0px; }
+.fine-tune1 .form-group .fc-lg { width: 100%; }
+.fine-tune1 .footer-cal { margin-top: 2%; margin-bottom: 2%; }
+.fine-tune1 .form-control:focus, .fine-tune .footer-cal .btn:hover { border: 2px solid #FA9C46; box-shadow: none; }
+.fine-tune1 .date-section { width: 95%; padding-left: 5%; }
+.add-button { margin-top: 5%; }
 ul#st-menu { border-radius: 5px; }
 ul#st-menu > li:hover, ul#st-menu > li:focus { background: #fa9c46; border: 1px solid #fa9c46; color: #fff; }
 #locationPopup .cal-outer-box { padding-left: 12px; padding-right: 12px; }
@@ -39,8 +41,8 @@ ul#st-menu > li:hover, ul#st-menu > li:focus { background: #fa9c46; border: 1px 
 .auditor-list, .auditee-list { padding-left: 0px; padding-right: 0px; }
 .auditor-list .panel-group .outer-box, .auditee-list .panel-group .outer-box { border-radius: 8px; }
 .selected { border-color: #f69c4c !important; }
-.left-sec-popup .main-span, .right-sec-popup .main-span { max-height: 410px ; }
-.left-sec-popup .auditor-list { margin-top: 28%; }
+/*.left-sec-popup .main-span, .right-sec-popup .main-span { max-height: 304px ; }*/
+.left-sec-popup .auditor-list { margin-top: 29.5%; }
 
 /* middel section */
 /* draged paragraphs tabs */
@@ -54,3 +56,12 @@ ul#st-menu > li:hover, ul#st-menu > li:focus { background: #fa9c46; border: 1px 
 #employeeInfoPopup table tbody tr td { text-transform: capitalize; }
 
 .ft-box { margin-top: -1%; }
+
+.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight { background-color: #f6f6f6; border-color: #c5c5c5; color: #454545; }
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active { border-color: #fa9c46; background: #fa9c46; }
+
+#participantsPopup form .form-group .form-control { padding-left: 0; padding-right: 0%; }
+#participantsPopup .emp-link { padding: 0px; }
+
+.main-span { max-height: 500px; }
+#participantsPopup .main-span { max-height: 273px; }

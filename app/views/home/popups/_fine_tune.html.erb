@@ -1,4 +1,4 @@
-<div class="modal fade" id="fineTunePopup" tabindex="-1" role="dialog" aria-labelledby="fineTunePopupLabel">
+<!-- <div class="modal fade" id="fineTunePopup" tabindex="-1" role="dialog" aria-labelledby="fineTunePopupLabel">
   <div class="modal-dialog" role="document">
     <div class="cal-outer-box main-span mCustomScrollbar" style="max-width: 420px;">
       <div class="fine-tune" ng-repeat="ft in fine_tunes">
@@ -45,6 +45,74 @@
       <div class="footer-cal">
         <button type="button" class="btn btn-cal" data-dismiss="modal">Done</button>
       </div>
+    </div>
+  </div>
+</div>
+ -->
+
+<div class="custom-popup2 popup-active clearfix" ng-show="fineTunePopup">
+  <div class="popup2-iner-box clearfix mCustomScrollbar">
+    <div class="fine-tune1" ng-repeat="ft in fine_tunes">
+      <div class="row">
+        <h3 ng-click="aa(true, $index)" style="cursor: pointer;">{{ show_date(ft.date) || 'Select Date' }}</h3>
+        <div class="date-section">
+          <div finetune-datepicker="" ng-model="ft.date" ng-class="{'hide' : $index != open_id}" ng-change="aa(false, null)"></div>
+        </div>
+        <div class="col-md-4 box1">
+          <p>start</p>
+          <div class="row">
+            <div class="col-md-6 custom-dd drop1">
+              <div class="form-group">
+                <select-hour-time ng-model="ft.start_time.hour"></select-hour-time>
+              </div>
+            </div>
+            <div class="col-md-6 custom-dd drop2">
+              <div class="form-group">
+                <select-minute-time ng-model="ft.start_time.min"></select-minute-time>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 box1">
+          <p>end</p>
+          <div class="row">
+            <div class="col-md-6 custom-dd drop1">
+              <div class="form-group">
+                <select-hour-time ng-model="ft.end_time.hour"></select-hour-time>
+              </div>
+            </div>
+            <div class="col-md-6 custom-dd drop2">
+              <div class="form-group">
+                <select-minute-time ng-model="ft.end_time.min"></select-minute-time>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 box2">
+          <p>paragraph</p>
+          <div class="row">
+            <div class="col-md-12 custom-dd">
+              <div class="form-group">
+                <select name="colors" class="form-control fc-lg" ng-model="ft.paragraph" ng-options="item.id as item.name for item in list2"></select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 note-box">
+          <p>note</p>
+          <input type="text" class="form-control" ng-model="ft.note" />
+        </div>
+      </div>
+    </div>
+    <div class="row add-button">
+      <div class="col-md-12">
+        <button type="button" class="btn btn-default" ng-click="addFineTune()">+</button>
+      </div>
+    </div>
+    <div class="footer-cal footer2">
+      <button type="button" class="btn btn-cal btn2" ng-click="fineTunePopup=false">Done</button>
     </div>
   </div>
 </div>

@@ -1,4 +1,4 @@
-<div class="modal fade" id="locationPopup" tabindex="-1" role="dialog" aria-labelledby="locationPopupLabel">
+<!-- <div class="modal fade" id="locationPopup" tabindex="-1" role="dialog" aria-labelledby="locationPopupLabel">
   <div class="modal-dialog" role="document">
     <div class="cal-outer-box main-span mCustomScrollbar" style="max-width: 420px;">
       <div class="location-form">
@@ -50,6 +50,73 @@
         <div class="row middle-header clearfix">
           <div class="col-md-3 clickble" ng-repeat="location in locations_list" ng-click="setLocation(location)">
             <div class="span-box">{{ location.name }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+ -->
+
+<div class="custom-popup3 popup-active2" ng-show="locationPopup">
+  <div class="cal-outer-box popup3-cal-box clearfix">
+    <div class="col-md-12 scrl-bx mCustomScrollbar" style="max-height: 407px;">
+      <div class="row top-popup3-content">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>country</label>
+            <input type="text" class="form-control" placeholder="Country" ng-model="locations.country"/>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>airport</label>
+            <input type="text" class="form-control" placeholder="Airport" ng-model="locations.airport"/>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="form-group">
+            <label>address</label>
+            <input type="text" class="form-control" ng-model="locations.address"/>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>zipcode</label>
+              <input type="text" class="form-control" placeholder="Zipcode" ng-model="locations.zipcode"/>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Town/City</label>
+              <input type="text" class="form-control" placeholder="Town/City" ng-model="locations.town"/>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="form-group">
+            <label>additional detail</label>
+            <input type="text" class="form-control" ng-model="locations.additional_details"/>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Location name</label>
+            <input type="text" class="form-control" placeholder="Location Name" ng-model="locations.name"/>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>&nbsp;</label>
+            <button type="button" class="btn btn-cal btn2" ng-click="locationPopup=false">done</button>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="location-list">
+          <div class="row middle-header clearfix">
+            <div class="col-md-3 clickble" ng-repeat="location in locations_list" ng-click="setLocation(location)">
+              <div class="span-box">{{ location.name }}</div>
+            </div>
           </div>
         </div>
       </div>

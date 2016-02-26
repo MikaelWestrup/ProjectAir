@@ -9,7 +9,7 @@ myApp.controller('AuditCtrl', ['$scope', 'api', function($scope, api){
     $scope.intervals = [6,12,24];
     $scope.auditType = null;
     $scope.fine_tunes = []; add_ft(); // Initialize one object at starting
-    $scope.audit_date = {"start": {"date": null, "time": "10:00"}, "end": {"date": null, "time": "10:00"}};
+    $scope.audit_date = {"start": {"date": new Date(), "time": "10:00"}, "end": {"date": new Date(), "time": "10:00"}};
     $scope.audit = null;
   };
 
