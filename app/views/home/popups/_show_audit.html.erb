@@ -18,7 +18,7 @@
                 </div>
                 <div class="col-md-3 text-center">
                   <h5>time</h5>
-                  <p ng-repeat="fine_tune in show_audit.fine_tunes" ng-if="$even">08:00.09:00</p>
+                  <p ng-repeat="fine_tune in show_audit.fine_tunes" ng-if="$even">{{getTime(fine_tune.start_hour, fine_tune.end_hour)}}</p>
                 </div>
                 <div class="col-md-3 text-center">
                   <h5>notes</h5>
@@ -40,7 +40,7 @@
                 </div>
                 <div class="col-md-3 text-center">
                   <h5>time</h5>
-                  <p ng-repeat="fine_tune in show_audit.fine_tunes" ng-if="$odd">08:00.09:00</p>
+                  <p ng-repeat="fine_tune in show_audit.fine_tunes" ng-if="$odd">{{getTime(fine_tune.start_hour, fine_tune.end_hour)}}</p>
                 </div>
                 <div class="col-md-3 text-center">
                   <h5>notes</h5>

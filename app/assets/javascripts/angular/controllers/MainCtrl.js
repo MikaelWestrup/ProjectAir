@@ -40,4 +40,12 @@ myApp.controller('MainCtrl', ['$scope', 'api', function($scope, api){
     $scope.employee_info = api.Employee.show({id: employee.id});
   };
   //------------------------
+  $scope.getTime = function(start_hour, end_hour) {
+    str = '';
+    str += start_hour.length ? start_hour.split(/['T','.']/)[1].split(':00')[0] : '00:00';
+    str += " - ";
+    str += end_hour.length ? end_hour.split(/['T','.']/)[1].split(':00')[0] : '00:00';
+    return str;
+  };
+  //------------------------
 }]);
