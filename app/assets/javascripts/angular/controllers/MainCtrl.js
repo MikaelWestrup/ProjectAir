@@ -42,9 +42,21 @@ myApp.controller('MainCtrl', ['$scope', 'api', function($scope, api){
   //------------------------
   $scope.getTime = function(start_hour, end_hour) {
     str = '';
-    str += start_hour.length ? start_hour.split(/['T','.']/)[1].split(':00')[0] : '00:00';
+    if (start_hour.length) {
+      t = start_hour.split(/['T','.']/)[1].split(':');
+      str += t[0] + ':' + t[1];
+    }
+    else {
+      str += '00:00';
+    }
     str += " - ";
-    str += end_hour.length ? end_hour.split(/['T','.']/)[1].split(':00')[0] : '00:00';
+    if (end_hour.length) {
+      t = end_hour.split(/['T','.']/)[1].split(':');
+      str += t[0] + ':' + t[1];
+    }
+    else {
+      str += '00:00';
+    }
     return str;
   };
   //------------------------
