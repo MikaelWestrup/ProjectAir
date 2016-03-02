@@ -60,4 +60,8 @@ myApp.controller('MainCtrl', ['$scope', 'api', function($scope, api){
     return str;
   };
   //------------------------
+  $scope.itemPresent = function(paragraph) {
+    return itemPresent(paragraph);
+  };
+  //------------------------
 }]);

@@ -33,7 +33,7 @@
           <!-- ng loop start -->
           <uib-accordion close-others="false">
             <uib-accordion-group heading="{{chapter.name}}" ng-repeat="chapter in chapters" template-url="group-template.html" is-open="suffle.isOpen" ng-init="suffle.isOpen = $first">
-              <div class="outer-box" ng-repeat="paragraph in chapter.paragraphs | orderBy:'number'" ng-model="chapter.paragraphs" data-drag="true" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}" jqyoui-draggable="{index: $index,placeholder:'keep',animate:false}" ng-class="{'selected' : list2.includes(paragraph)}">
+              <div class="outer-box" ng-repeat="paragraph in chapter.paragraphs | orderBy:'number'" ng-model="chapter.paragraphs" data-drag="true" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}" jqyoui-draggable="{index: $index,placeholder:'keep',animate:false}" ng-class="{'selected' : itemPresent(paragraph)}">
                 <span id="{{ paragraph.id }}">
                   <div class="para-list-type">{{ paragraph.number }}</div>
                   <div class="para-detail">{{ paragraph.description }}</div>

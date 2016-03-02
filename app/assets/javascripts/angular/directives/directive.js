@@ -69,8 +69,10 @@ myApp.directive("finetuneDatepicker", function() {
     require: 'ngModel',
     link: function(scope, element, attrs, ngModel) {
       scope.changeText = function(min, max) {
+        // min = min.split('-').join('/');
+        // max = max.split('-').join('/');
         element.datepicker({
-          dateFormat: "mm-dd-yy",
+          dateFormat: "mm/dd/yy",
           minDate: new Date(min),
           maxDate: new Date(max),
           onSelect: function(date) {
@@ -93,7 +95,7 @@ myApp.directive("customDatepicker", function() {
     require: 'ngModel',
     link: function(scope, element, attrs, ngModel) {
       element.datepicker({
-        dateFormat: "mm-dd-yy",
+        dateFormat: "mm/dd/yy",
         minDate: new Date(),
         // maxDate: new Date(max),
         onSelect: function(date) {

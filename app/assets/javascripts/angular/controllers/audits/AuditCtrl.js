@@ -173,7 +173,7 @@ myApp.controller('AuditCtrl', ['$scope', 'api', function($scope, api){
     length = $scope.list2.length;
     item = $scope.list2[length-1];
     $scope.list2.pop();
-    if($scope.list2.includes(item)){
+    if(itemPresent(item)){
       window.alert("This paragraph is already added for audit");
     }
     else{
@@ -183,9 +183,19 @@ myApp.controller('AuditCtrl', ['$scope', 'api', function($scope, api){
   };
 
   $scope.removeItemFromList = function(item) {
-    if ($scope.list2.includes(item)) {
+    if (itemPresent(item)) {
       index = $scope.list2.indexOf(item);
       $scope.list2.splice(index,1);
     };
+  };
+
+  itemPresent = function(item){
+    status = false;
+    angular.forEach($scope.list2, function(value, key){
+      if(value == item ){
+        status = true;
+      }
+    });
+    return status=='true' ? true : false;
   };
 }]);

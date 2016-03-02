@@ -33,7 +33,7 @@ class AuditsController < ApplicationController
         end
         if params[:audit][:fine_tunes].present?
           params[:audit][:fine_tunes].each do |fine_tune|
-            @audit.fine_tunes.build( ddate: Date.strptime(fine_tune[:date], "%m-%d-%Y"),
+            @audit.fine_tunes.build( ddate: Date.strptime(fine_tune[:date], "%m/%d/%Y"),
               start_hour: change_time(fine_tune[:start_time][:hour], fine_tune[:start_time][:min]),
               end_hour: change_time(fine_tune[:end_time][:hour], fine_tune[:end_time][:min]),
               notes: fine_tune[:note], paragraph_id: fine_tune[:paragraph]
@@ -66,8 +66,8 @@ class AuditsController < ApplicationController
     end
 
     def change_date_format
-      params[:audit][:period_start] = DateTime.strptime(params[:audit][:period_start], "%m-%d-%Y %H:%M")
-      params[:audit][:period_end] = DateTime.strptime(params[:audit][:period_end], "%m-%d-%Y %H:%M")
+      params[:audit][:period_start] = DateTime.strptime(params[:audit][:period_start], "%m/%d/%Y %H:%M")
+      params[:audit][:period_end] = DateTime.strptime(params[:audit][:period_end], "%m/%d/%Y %H:%M")
     end
 
     def change_time(hour,min)
