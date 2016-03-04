@@ -8,6 +8,53 @@
           <li ng-repeat="paragraph in show_audit.paragraphs">{{paragraph.name}}</li>
         </ul>
 
+        <div class="frm-popup-box">
+          <div class="col-md-2 frm-popup-box">
+            <div class="form-group">
+              <label>start date</label>
+              <label class="form-control">{{ show_audit.period_start.split('T')[0] }}</label>
+            </div>
+          </div>
+          <div class="col-md-2 frm-popup-box">
+            <div class="form-group">
+              <label>end date</label>
+              <label class="form-control">{{ show_audit.period_end.split('T')[0] }}</label>
+            </div>
+          </div>
+          <div class="col-md-4 frm-popup-box">
+          </div>
+          <div class="col-md-2 frm-popup-box">
+            <div class="form-group">
+              <label>repeating</label>
+              <label class="form-control">{{ show_audit.reoccuring ? 'Yes' : 'No' }}</label>
+            </div>
+          </div>
+          <div class="col-md-2 frm-popup-box">
+            <div class="form-group">
+              <label>interval (months)</label>
+              <label class="form-control">{{ show_audit.interval || '--' }}</label>
+            </div>
+          </div>
+          <div class="col-md-12 frm-popup-box">
+            <div class="form-group">
+              <label>notes</label>
+              <label class="form-control">{{ show_audit.location.notes }}</label>
+            </div>
+          </div>
+          <div class="col-md-6 q-dev">
+            <p>Auditors Included</p>
+            <ul class="btn-list">
+              <li ng-repeat="auditor in show_audit.auditors">{{auditor.name}}</li>
+            </ul> 
+          </div>
+          <div class="col-md-6 q-dev">
+            <p>Auditees Included</p>
+            <ul class="btn-list">
+              <li ng-repeat="auditee in show_audit.auditees">{{auditee.name}}</li>
+            </ul>
+          </div>
+        </div>
+
         <div class="row">
           <div class="col-md-6 ft-box">
             <div class="left-adit-box clearfix">
@@ -22,7 +69,7 @@
                 </div>
                 <div class="col-md-3 text-center">
                   <h5>notes</h5>
-                  <p ng-repeat="fine_tune in show_audit.fine_tunes" ng-if="$even">{{fine_tune.notes}}</p>
+                  <p ng-repeat="fine_tune in show_audit.fine_tunes" ng-if="$even">{{fine_tune.notes || '--'}}</p>
                 </div>
                 <div class="col-md-3 text-center">
                   <h5>paragraph</h5>
@@ -44,7 +91,7 @@
                 </div>
                 <div class="col-md-3 text-center">
                   <h5>notes</h5>
-                  <p ng-repeat="fine_tune in show_audit.fine_tunes" ng-if="$odd">{{fine_tune.notes}}</p>
+                  <p ng-repeat="fine_tune in show_audit.fine_tunes" ng-if="$odd">{{fine_tune.notes || '--'}}</p>
                 </div>
                 <div class="col-md-3 text-center">
                   <h5>paragraph</h5>
@@ -91,10 +138,23 @@
           <div class="col-md-12 frm-popup-box">
             <div class="form-group">
               <label>additional detail</label>
-              <label class="form-control">{{ show_audit.location.country }}</label>
+              <label class="form-control">{{ show_audit.location.additional_details }}</label>
             </div>
           </div>
+          <!-- <div class="col-md-6 q-dev">
+            <p>Auditors Included</p>
+            <ul class="btn-list">
+              <li ng-repeat="auditor in show_audit.auditors">{{auditor.name}}</li>
+            </ul> 
+          </div>
+          <div class="col-md-6 q-dev">
+            <p>Auditees Included</p>
+            <ul class="btn-list">
+              <li ng-repeat="auditee in show_audit.auditees">{{auditee.name}}</li>
+            </ul>
+          </div> -->
         </div>
+
         <div class="col-md-12 text-center ftr-popup">
           <button  class="btn btn-cal btn2" type="button" data-dismiss="modal">done</button>
         </div>

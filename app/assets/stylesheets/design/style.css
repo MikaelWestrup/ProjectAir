@@ -284,7 +284,7 @@ ul#speed-menu > li:hover, ul#speed-menu > li:focus{ background: #fa9c46; border:
   color: #333;
   display: inline-block;
   font-size: 12px;
-  margin: 0 1px;
+  /* custom change */ /*margin: 0 1px;*/
   padding: 6px 8px;
   text-align: center;
   vertical-align: middle;

@@ -20,4 +20,153 @@
   </div>
 </div>
 
-<%= render partial: "home/popups/show_audit" %>
+<%#= render partial: "home/popups/show_audit" %>
+
+<div class="modal fade bs-example-modal-lg" id="showAuditPopup" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-body mdl-box clearfix">
+        <h2>{{ show_audit.name }}</h2>
+        <p>paragraphs</p>
+        <ul class="btn-list">
+          <li ng-repeat="paragraph in show_audit.paragraphs">{{paragraph.name}}</li>
+        </ul>
+        <div class="frm-popup-box">
+          <div class="col-md-2 frm-popup-box">
+            <div class="form-group">
+              <label>start date</label>
+              <label class="form-control">{{ show_audit.period_start.split('T')[0] }}</label>
+            </div>
+          </div>
+          <div class="col-md-2 frm-popup-box">
+            <div class="form-group">
+              <label>end date</label>
+              <label class="form-control">{{ show_audit.period_end.split('T')[0] }}</label>
+            </div>
+          </div>
+          <div class="col-md-4 frm-popup-box">
+          </div>
+          <div class="col-md-2 frm-popup-box">
+            <div class="form-group">
+              <label>repeating</label>
+              <label class="form-control">{{ show_audit.reoccuring ? 'Yes' : 'No' }}</label>
+            </div>
+          </div>
+          <div class="col-md-2 frm-popup-box">
+            <div class="form-group">
+              <label>interval (months)</label>
+              <label class="form-control">{{ show_audit.interval || '--' }}</label>
+            </div>
+          </div>
+          <div class="col-md-12 frm-popup-box">
+            <div class="form-group">
+              <label>notes</label>
+              <label class="form-control">{{ show_audit.location.notes }}</label>
+            </div>
+          </div>
+          <div class="col-md-6 q-dev">
+            <p>Auditors Included</p>
+            <ul class="btn-list">
+              <li ng-repeat="auditor in show_audit.auditors">{{auditor.name}}</li>
+            </ul> 
+          </div>
+          <div class="col-md-6 q-dev">
+            <p>Auditees Included</p>
+            <ul class="btn-list">
+              <li ng-repeat="auditee in show_audit.auditees">{{auditee.name}}</li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 ft-box">
+            <div class="left-adit-box clearfix">
+              <div class="row">
+                <div class="col-md-3 text-center">
+                  <h5>date</h5>
+                  <p ng-repeat="fine_tune in show_audit.fine_tunes" ng-if="$even">{{fine_tune.ddate}}</p>
+                </div>
+                <div class="col-md-3 text-center">
+                  <h5>time</h5>
+                  <p ng-repeat="fine_tune in show_audit.fine_tunes" ng-if="$even">{{getTime(fine_tune.start_hour, fine_tune.end_hour)}}</p>
+                </div>
+                <div class="col-md-3 text-center">
+                  <h5>notes</h5>
+                  <p ng-repeat="fine_tune in show_audit.fine_tunes" ng-if="$even">{{fine_tune.notes || '--'}}</p>
+                </div>
+                <div class="col-md-3 text-center">
+                  <h5>paragraph</h5>
+                  <p ng-repeat="fine_tune in show_audit.fine_tunes" ng-if="$even">{{paragraphName(fine_tune.paragraph_id)}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 ft-box">
+            <div class="left-adit-box clearfix">
+              <div class="row">
+                <div class="col-md-3 text-center">
+                  <h5>date</h5>
+                  <p ng-repeat="fine_tune in show_audit.fine_tunes" ng-if="$odd">{{fine_tune.ddate}}</p>
+                </div>
+                <div class="col-md-3 text-center">
+                  <h5>time</h5>
+                  <p ng-repeat="fine_tune in show_audit.fine_tunes" ng-if="$odd">{{getTime(fine_tune.start_hour, fine_tune.end_hour)}}</p>
+                </div>
+                <div class="col-md-3 text-center">
+                  <h5>notes</h5>
+                  <p ng-repeat="fine_tune in show_audit.fine_tunes" ng-if="$odd">{{fine_tune.notes || '--'}}</p>
+                </div>
+                <div class="col-md-3 text-center">
+                  <h5>paragraph</h5>
+                  <p ng-repeat="fine_tune in show_audit.fine_tunes" ng-if="$odd">{{paragraphName(fine_tune.paragraph_id)}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="frm-popup-box">
+          <div class="col-md-2 frm-popup-box">
+            <div class="form-group">
+              <label>country</label>
+              <label class="form-control">{{ show_audit.location.country }}</label>
+            </div>
+          </div>
+          <div class="col-md-2 frm-popup-box">
+            <div class="form-group">
+              <label>airport</label>
+              <label class="form-control">{{ show_audit.location.airport }}</label>
+            </div>
+          </div>
+          <div class="col-md-4 frm-popup-box">
+            <div class="form-group">
+              <label>address</label>
+              <label class="form-control">{{ show_audit.location.address }}</label>
+            </div>
+          </div>
+          <div class="col-md-2 frm-popup-box">
+            <div class="form-group">
+              <label>zipcode</label>
+              <label class="form-control">{{ show_audit.location.zipcode }}</label>
+            </div>
+          </div>
+          <div class="col-md-2 frm-popup-box">
+            <div class="form-group">
+              <label>Todw/City</label>
+              <label class="form-control">{{ show_audit.location.town }}</label>
+            </div>
+          </div>
+          <div class="col-md-12 frm-popup-box">
+            <div class="form-group">
+              <label>additional detail</label>
+              <label class="form-control">{{ show_audit.location.additional_details }}</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-12 text-center ftr-popup">
+          <button  class="btn btn-cal btn2" type="button" data-dismiss="modal">done</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

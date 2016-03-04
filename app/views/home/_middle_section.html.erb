@@ -1,6 +1,17 @@
 <div class="outer-middle-box" ng-controller="AuditCtrl">
   
-  <%= render partial: "home/popups/info_details" %>
+  <%#= render partial: "home/popups/info_details" %>
+
+  <div class="info-box-outer" id="paragraph-info">
+    <div class="info-box mCustomScrollbar hide">
+      <p>{{ paragraph_info.description }}</p>
+      <div ng-repeat="attachment in paragraph_info.attachments">
+        <p>Attachment Type : {{ attachment.attachment_type.name }}</p>
+        <p>{{ attachment.name }}</p>
+        <p>{{ attachment.description }}</p>
+      </div>
+    </div>
+  </div>
 
   <div data-drop="true" aria-disabled="false" data-jqyoui-options jqyoui-droppable="{multiple:true, onDrop: 'myCallback'}" ng-model="list2">
     <div class="middle-sec">
@@ -126,11 +137,289 @@
           </form>
         </div>
       </div>
-      <%= render partial: "home/popups/date_time" %>
-      <%= render partial: "home/popups/fine_tune" %>
-      <%= render partial: "home/popups/location" %>
-      <%= render partial: "home/popups/participants_popup" %>
-      <%= render partial: "home/popups/employee_info" %>
+      <%#= render partial: "home/popups/date_time" %>
+
+      <div class="custom-popup popup-active" ng-show="datePopup" id="datePopup">
+        <div class="cal-outer-box block-size mCustomScrollbar">
+          <h4>start</h4>
+          <div class="date-section">
+            <div custom-datepicker ng-model="audit_date.start.date"></div>
+          </div>
+          <div class="custom-timeslder-span1">
+            <div class="rang-sli">
+              <p>  
+                <span class="range-inp">{{ audit_date.start.time }}</span>
+              </p>
+              <div range-time-slider ng-model="audit_date.start.time"></div>
+            </div>
+          </div>
+          <h4>end</h4>
+          <div class="date-section">
+            <div custom-datepicker ng-model="audit_date.end.date"></div>
+          </div>
+          <div class="custom-timeslder-span1">
+            <div class="rang-sli">
+              <p>  
+                <span class="range-inp">{{ audit_date.end.time }}</span>
+              </p>
+              <div range-time-slider ng-model="audit_date.end.time"></div>
+            </div>
+          </div>
+          <div class="footer-cal">
+            <button type="button" class="btn btn-cal btn1" ng-click="fineTunePopup=true">finetune</button>
+            <button type="button" class="btn btn-cal btn2" ng-click="datePopup=false">done</button>
+          </div>
+        </div>
+      </div>
+      <%#= render partial: "home/popups/fine_tune" %>
+
+      <div class="custom-popup2 popup-active clearfix" ng-show="fineTunePopup" id="fineTunePopup">
+        <div class="popup2-iner-box clearfix block-size mCustomScrollbar">
+          <div class="fine-tune1" ng-repeat="ft in fine_tunes">
+            <div class="row">
+              <h3><a ng-click="aa(true, $index)">{{ show_date(ft.date) || 'Select Date' }}</a></h3>
+              <div class="date-section">
+                <div finetune-datepicker="" ng-model="ft.date" ng-class="{'hide' : $index != open_id}" ng-change="aa(false, null)"></div>
+              </div>
+              <div class="col-md-4 box1">
+                <p>start</p>
+                <div class="row">
+                  <div class="col-md-6 custom-dd drop1">
+                    <div class="form-group">
+                      <select-hour-time ng-model="ft.start_time.hour"></select-hour-time>
+                    </div>
+                  </div>
+                  <div class="col-md-6 custom-dd drop2">
+                    <div class="form-group">
+                      <select-minute-time ng-model="ft.start_time.min"></select-minute-time>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 box1">
+                <p>end</p>
+                <div class="row">
+                  <div class="col-md-6 custom-dd drop1">
+                    <div class="form-group">
+                      <select-hour-time ng-model="ft.end_time.hour"></select-hour-time>
+                    </div>
+                  </div>
+                  <div class="col-md-6 custom-dd drop2">
+                    <div class="form-group">
+                      <select-minute-time ng-model="ft.end_time.min"></select-minute-time>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 box2">
+                <p>paragraph</p>
+                <div class="row">
+                  <div class="col-md-12 custom-dd">
+                    <div class="form-group">
+                      <select name="colors" class="form-control fc-lg" ng-model="ft.paragraph" ng-options="item.id as item.name for item in list2"></select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12 note-box">
+                <p>note</p>
+                <input type="text" class="form-control" ng-model="ft.note" />
+              </div>
+            </div>
+          </div>
+          <div class="row add-button">
+            <div class="col-md-12">
+              <button type="button" class="btn btn-default" ng-click="addFineTune()">+</button>
+            </div>
+          </div>
+          <div class="footer-cal footer2">
+            <button type="button" class="btn btn-cal btn2" ng-click="fineTunePopup=false">Done</button>
+          </div>
+        </div>
+      </div>
+      <%#= render partial: "home/popups/location" %>
+
+      <div class="custom-popup3 popup-active2" ng-show="locationPopup" id="locationPopup">
+        <div class="cal-outer-box popup3-cal-box clearfix">
+          <div class="col-md-12 scrl-bx block-size mCustomScrollbar">
+            <div class="row top-popup3-content">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>country</label>
+                  <input type="text" class="form-control" placeholder="Country" ng-model="locations.country"/>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>airport</label>
+                  <input type="text" class="form-control" placeholder="Airport" ng-model="locations.airport"/>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label>address</label>
+                  <input type="text" class="form-control" ng-model="locations.address"/>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>zipcode</label>
+                    <input type="text" class="form-control" placeholder="Zipcode" ng-model="locations.zipcode"/>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Town/City</label>
+                    <input type="text" class="form-control" placeholder="Town/City" ng-model="locations.town"/>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label>additional detail</label>
+                  <input type="text" class="form-control" ng-model="locations.additional_details"/>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Location name</label>
+                  <input type="text" class="form-control" placeholder="Location Name" ng-model="locations.name"/>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>&nbsp;</label>
+                  <button type="button" class="btn btn-cal btn2" ng-click="locationPopup=false">done</button>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="location-list">
+                <div class="row middle-header clearfix">
+                  <div class="col-md-3 clickble" ng-repeat="location in locations_list" ng-click="setLocation(location)">
+                    <div class="span-box">{{ location.name }}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <%#= render partial: "home/popups/participants_popup" %>
+
+      <div class="custom-popup3 popup-active2" ng-show="participantsPopup" id="participantsPopup">
+        <div class="cal-outer-box">
+          <div class="row">
+            <div class="col-xs-6 left-sec-popup">
+              <h4>Auditor</h4>
+              <div class="col-md-12 auditor-list block-size main-span mCustomScrollbar">
+                <div class="panel-group" role="tablist">
+                  <div class="emp-link outer-box" style="cursor: pointer;" ng-repeat="employee in employees" ng-click="toggle = !toggle" ng-class="{ 'selected' : toggle}" value="{{ employee.id }}">
+                    <!-- <div class="para-list-type"></div> -->
+                    <div class="auditor-detail">{{ employee.name }}</div>
+                    <a class="info para-info" ng-click="employeeInfo(employee)" title="Info" data-toggle="modal" data-target="#employeeInfoPopup"></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-6 right-sec-popup">
+              <h4>Auditee</h4>
+              <div class="iner-box row">
+                <form>
+                  <div class="col-md-6 custom-dd">
+                    <div class="form-group">
+                      <select class="dropdown form-control" data-ng-model="companySelect" data-ng-options="company.name for company in companies"></select>
+                    </div>
+                  </div>
+                  <div class="col-md-6 custom-dd">
+                    <div class="form-group">
+                      <select class="dropdown form-control" data-ng-model="departmentSelect" data-ng-options="department.name for department in companySelect.departments" ng-change="auditee_employees()"></select>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="col-md-12 auditee-list block-size main-span mCustomScrollbar">
+                <div class="panel-group" role="tablist">
+                  <div class="emp-link outer-box" style="cursor: pointer;" ng-repeat="employee in auditee_list" ng-click="toggle = !toggle" ng-class="{ 'selected' : toggle}" value="{{ employee.id }}">
+                    <!-- <div class="para-list-type"></div> -->
+                    <div class="auditor-detail">{{ employee.name }}</div>
+                    <a class="info para-info" ng-click="employeeInfo(employee)" title="Info" data-toggle="modal" data-target="#employeeInfoPopup"></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div><br>
+          <div class="footer-cal">
+            <button type="button" class="btn btn-cal" ng-click="participantsPopup=false">Done</button>
+          </div>
+        </div>
+      </div>
+
+      <%#= render partial: "home/popups/employee_info" %>
+
+      <div class="modal fade" id="employeeInfoPopup" tabindex="-1" role="dialog" aria-labelledby="employeeInfoPopupLabel">
+        <div class="modal-dialog" role="document">
+          <div class="custom-popup4 usr-detail-frm popup-active3">
+            <div class="cal-outer-box popup4-cal-box clearfix">
+              <form class="form-horizontal">
+                <div class="col-md-3 user-pic">
+                  <img alt="Employee {{ employee_info.name }} Pic" ng-src="{{employee_info.avatar_file_name || 'assets/profile-pic.png'}}" class="img-responsive">
+                  <!-- <p>user name</p> -->
+                </div>
+                <div class="col-md-9">
+                  <div class="form-group">
+                    <label  class="col-sm-2 control-label">name:</label>
+                    <div class="col-sm-10 pd-l">
+                      <label class="form-control">{{ employee_info.name }}</label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label  class="col-sm-3 control-label">position:</label>
+                    <div class="col-sm-9 pd-l">
+                      <label class="form-control">{{ employee_info.role }}</label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label  class="col-sm-4 control-label">office phone:</label>
+                    <div class="col-sm-8 pd-l">
+                      <label class="form-control">{{ employee_info.office_phone }}</label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label  class="col-sm-4 control-label">mobile phone:</label>
+                    <div class="col-sm-8 pd-l">
+                      <label class="form-control">{{ employee_info.cell_phone }}</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label  class="col-sm-2 control-label last">company:</label>
+                    <div class="col-sm-10 pd-l">
+                      <label class="form-control">{{ employee_info.company.name }}</label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label  class="col-sm-2 control-label last">email:</label>
+                    <div class="col-sm-10 pd-l">
+                      <label class="form-control">{{ employee_info.email }}</label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <button type="button" class="btn btn-cal" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
