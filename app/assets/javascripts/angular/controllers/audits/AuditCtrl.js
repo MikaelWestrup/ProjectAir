@@ -97,6 +97,7 @@ myApp.controller('AuditCtrl', ['$scope', 'api', function($scope, api){
   };
 
   $scope.select_auditor = function(){
+    $scope.participantsPopup = false;
     $scope.auditors = [];
     $scope.auditees = [];
     elements = $("#participantsPopup .auditor-list .selected");
