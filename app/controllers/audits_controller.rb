@@ -18,36 +18,25 @@ class AuditsController < ApplicationController
   end
 
   def create
-    @location = Location.find_by(id: params[:location][:id], name: params[:location][:name])
-    @location = Location.new(location_params) if @location.blank?
-    if @location.save
-      @audit = @location.audits.build(audit_params)
-      if @audit.save
-        if params[:audit][:paragraphs].present?
-          params[:audit][:paragraphs].each { |pa| @audit.audit_items.build(paragraph_id: pa).save }
-        end
-        if params[:audit][:auditors].present?
-          params[:audit][:auditors].each { |employee| @audit.auditor_employees.build(employee_id: employee).save }
-        end
-        if params[:audit][:auditees].present?
-          params[:audit][:auditees].each { |employee| @audit.auditee_employees.build(employee_id: employee).save }
-        end
-        if params[:audit][:fine_tunes].present?
-          params[:audit][:fine_tunes].each do |fine_tune|
-            @audit.fine_tunes.build( ddate: Date.strptime(fine_tune[:date], "%m/%d/%Y"),
-              start_hour: change_time(fine_tune[:start_time][:hour], fine_tune[:start_time][:min]),
-              end_hour: change_time(fine_tune[:end_time][:hour], fine_tune[:end_time][:min]),
-              notes: fine_tune[:note], paragraph_id: fine_tune[:paragraph]
-            ).save
-          end
-        end
-        render json: @audit, status: :created
-      else
-        # @location.destroy
-        render json: @audit.errors, status: :unprocessable_entity
-      end
+    if params[:location].present?
+      @location = Location.find_by(id: params[:location][:id], name: params[:location][:name])
+      @location = Location.new(location_params) if @location.blank?
+      @audit = @location.audits.build(audit_params) if @location.save
+    end
+    @audit ||= Audit.new(audit_params)
+    if @audit.save
+      params[:audit][:paragraphs].each { |pa| @audit.audit_items.build(paragraph_id: pa).save } if params[:audit][:paragraphs].present?
+      params[:audit][:auditors].each { |employee| @audit.auditor_employees.build(employee_id: employee).save } if params[:audit][:auditors].present?
+      params[:audit][:auditees].each { |employee| @audit.auditee_employees.build(employee_id: employee).save } if params[:audit][:auditees].present?
+      params[:audit][:fine_tunes].each do |fine_tune|
+        @audit.fine_tunes.build( ddate: Date.strptime(fine_tune[:date], "%m/%d/%Y"),
+          start_hour: change_time(fine_tune[:start_time][:hour], fine_tune[:start_time][:min]),
+          end_hour: change_time(fine_tune[:end_time][:hour], fine_tune[:end_time][:min]),
+          notes: fine_tune[:note], paragraph_id: fine_tune[:paragraph]
+        ).save
+      end if params[:audit][:fine_tunes].present?
+      render json: @audit, status: :created
     else
-      # @location.errors.each {|error| @audit.errors.add(error)}
       render json: @audit.errors, status: :unprocessable_entity
     end
   end

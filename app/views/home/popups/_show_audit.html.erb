@@ -104,7 +104,12 @@
         <div class="clearfix"></div>
 
 
-        <div class="frm-popup-box">
+        <div class="frm-popup-box" ng-show="show_audit.onsite">
+          <div class="col-md-12 frm-popup-box">
+            <div class="form-group">
+              <label>Location Details</label>
+            </div>
+          </div>
           <div class="col-md-2 frm-popup-box">
             <div class="form-group">
               <label>country</label>
@@ -141,18 +146,14 @@
               <label class="form-control">{{ show_audit.location.additional_details }}</label>
             </div>
           </div>
-          <!-- <div class="col-md-6 q-dev">
-            <p>Auditors Included</p>
-            <ul class="btn-list">
-              <li ng-repeat="auditor in show_audit.auditors">{{auditor.name}}</li>
-            </ul> 
+        </div>
+        <div class="frm-popup-box" ng-hide="show_audit.onsite">
+          <div class="col-md-12 frm-popup-box">
+            <div class="form-group">
+              <label>Location Details</label>
+              <label class="form-control">audit is on desktop location</label>
+            </div>
           </div>
-          <div class="col-md-6 q-dev">
-            <p>Auditees Included</p>
-            <ul class="btn-list">
-              <li ng-repeat="auditee in show_audit.auditees">{{auditee.name}}</li>
-            </ul>
-          </div> -->
         </div>
 
         <div class="col-md-12 text-center ftr-popup">

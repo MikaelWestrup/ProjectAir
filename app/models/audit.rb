@@ -26,12 +26,13 @@ class Audit < ActiveRecord::Base
   # Relations/Associations with other models
   belongs_to :location
   belongs_to :audit_type
-  has_many :auditor_employees, dependent: :destroy
   has_many :fine_tunes, dependent: :destroy
   has_many :audit_items, dependent: :destroy
-  has_many :auditee_employees, dependent: :destroy
-  has_many :paragraphs, :through => :audit_items, dependent: :destroy
+  has_many :audit_items, dependent: :destroy
+  has_many :paragraphs, :through => :audit_items
+  has_many :auditor_employees, dependent: :destroy
   has_many :auditors, :through => :auditor_employees, :source => :employee
+  has_many :auditee_employees, dependent: :destroy
   has_many :auditees, :through => :auditee_employees, :source => :employee
 
   private

@@ -124,7 +124,12 @@
           </div>
         </div>
         <div class="clearfix"></div>
-        <div class="frm-popup-box">
+        <div class="frm-popup-box" ng-show="show_audit.onsite">
+          <div class="col-md-12 frm-popup-box">
+            <div class="form-group">
+              <label>Location Details</label>
+            </div>
+          </div>
           <div class="col-md-2 frm-popup-box">
             <div class="form-group">
               <label>country</label>
@@ -162,7 +167,14 @@
             </div>
           </div>
         </div>
-
+        <div class="frm-popup-box" ng-hide="show_audit.onsite">
+          <div class="col-md-12 frm-popup-box">
+            <div class="form-group">
+              <label>Location Details</label>
+              <label class="form-control">audit is on desktop location</label>
+            </div>
+          </div>
+        </div>
         <div class="col-md-12 text-center ftr-popup">
           <button  class="btn btn-cal btn2" type="button" data-dismiss="modal">done</button>
         </div>
