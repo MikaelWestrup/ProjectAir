@@ -100,15 +100,19 @@ myApp.controller('AuditCtrl', ['$scope', 'api', function($scope, api){
     $scope.participantsPopup = false;
     $scope.auditors = [];
     $scope.auditees = [];
+    auditors_size = false; audites_size = false;
     elements = $("#participantsPopup .auditor-list .selected");
     var auditor = []; var auditee = [];
     $("#participantsPopup .auditor-list .selected").each(function(index){
+      auditors_size = true;
       $scope.auditors[index] = parseInt($(this).attr('value'));
     });
 
     $("#participantsPopup .auditee-list .selected").each(function(index){
+      audites_size = true;
       $scope.auditees[index] = parseInt($(this).attr('value'));
     });
+    $scope.participantsHighlight = (auditors_size && audites_size) ? true : false;
   };
 
   $scope.addFineTune = function() {

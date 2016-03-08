@@ -27,7 +27,7 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="exampleInputEmail1">type of audit</label>
-                  <div class="dropdown">
+                  <div class="dropdown" ng-class="{'highlight' : (auditType != null && auditType != '')}">
                     <a href="#" class="btn dropdown-toggle" data-toggle="dropdown">{{ auditType.name || 'Select Audit Type' }}<span class="caret"></span></a>
                     <ul class="dropdown-menu" id="type_of_audit">
                       <li ng-repeat="audit_type in audit_types" on-finish-render="ngRepeatFinished">
@@ -45,7 +45,7 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="exampleInputEmail1">name of audit</label>
-                  <input type="text" class="form-control" ng-model="audit.name" style="height:38px;" />
+                  <input type="text" class="form-control" ng-model="audit.name" ng-class="{'highlight' : (audit.name != null && audit.name != '')}" style="height:38px;" />
                 </div>
               </div>
             </div>
@@ -55,13 +55,13 @@
                   <li>one time
                     <label>
                       <input type="radio" name="ont_time" value=false ng-model="audit.reoccuring">
-                        <img src="assets/Large-One-Time.png" alt="" class="img-responsive" style="width:95%"/>
+                        <img src="assets/Large-One-Time.png" alt="" class="img-responsive" ng-class="{'highlight-radio' : audit.reoccuring == 'false'}" style="width:95%"/>
                     </label>
                   </li>
                   <li>repeating
                     <label>
                       <input type="radio" name="ont_time" value=true ng-model="audit.reoccuring">
-                        <img src="assets/Large-Reoccurring.png" alt="" class="img-responsive" style="width:95%" />
+                        <img src="assets/Large-Reoccurring.png" alt="" class="img-responsive" ng-class="{'highlight-radio' : audit.reoccuring == 'true'}" style="width:95%" />
                     </label>
                   </li>
                 </ul>
@@ -80,8 +80,8 @@
             <div class="row date-middle">
               <div class="col-md-4 date-box">
                 <ul class="audit-time-box clearfix">
-                  <li>date &amp; time <button type="button" class="btn btn-default" ng-click="datePopup=true">
-                  <img src="assets/Large-Date-and-Time.png" alt="" class="img-responsive" /></button></li>
+                  <li>date &amp; time<button type="button" class="btn btn-default" ng-click="datePopup=true; dateHighlight=true">
+                  <img src="assets/Large-Date-and-Time.png" alt="" class="img-responsive" ng-class="{'highlight-radio' : dateHighlight}"/></button></li>
                 </ul>
               </div>
               <div class="col-md-4 onside">
@@ -89,12 +89,13 @@
                   <li>onsite
                     <label>
                       <input type="radio" name="ont_time" value=true ng-model="audit.onsite" ng-click="locationPopup=true">
-                      <img src="assets/Large-Home.png" alt="" class="img-responsive" />
+                      <img src="assets/Large-Home.png" alt="" class="img-responsive" ng-class="{'highlight-radio' : audit.onsite == 'true'}" />
                     </label>
                   </li>
                   <li>desktop
                     <label>
-                      <input type="radio" name="ont_time" value=false ng-model="audit.onsite"><img src="assets/Large-Desktop.png" alt="" class="img-responsive" />
+                      <input type="radio" name="ont_time" value=false ng-model="audit.onsite">
+                        <img src="assets/Large-Desktop.png" alt="" class="img-responsive" ng-class="{'highlight-radio' : audit.onsite == 'false'}" />
                     </label>
                   </li>
                 </ul>
@@ -103,7 +104,7 @@
                 <ul class="audit-time-box clearfix">
                   <li>participants 
                     <button type="button" class="btn btn-default" ng-click="participantsPopup=true">
-                      <img src="assets/user.png" alt="" class="img-responsive" />
+                      <img src="assets/user.png" alt="" class="img-responsive" ng-class="{'highlight-radio' : participantsHighlight}"/>
                     </button></li>
                 </ul>
               </div>
@@ -127,7 +128,7 @@
             <div class="row">
               <div class="col-md-12 footer-note-box">
                 <label>notes</label>
-                <textarea class="form-control" ng-model="audit.notes"></textarea>
+                <textarea class="form-control" ng-model="audit.notes" ng-class="{'highlight' : (audit.notes != '' && audit.notes !=  null)}"></textarea>
               </div>
             </div><br>
             <div class="row date-middle">
@@ -186,12 +187,12 @@
                 <div class="row">
                   <div class="col-md-6 custom-dd drop1">
                     <div class="form-group">
-                      <select-hour-time ng-model="ft.start_time.hour"></select-hour-time>
+                      <select-hour-time ng-model="ft.start_time.hour" ng-class="{'highlight' : ft.start_time.hour != null}"></select-hour-time>
                     </div>
                   </div>
                   <div class="col-md-6 custom-dd drop2">
                     <div class="form-group">
-                      <select-minute-time ng-model="ft.start_time.min"></select-minute-time>
+                      <select-minute-time ng-model="ft.start_time.min" ng-class="{'highlight' : ft.start_time.min != null}"></select-minute-time>
                     </div>
                   </div>
                 </div>
@@ -201,12 +202,12 @@
                 <div class="row">
                   <div class="col-md-6 custom-dd drop1">
                     <div class="form-group">
-                      <select-hour-time ng-model="ft.end_time.hour"></select-hour-time>
+                      <select-hour-time ng-model="ft.end_time.hour" ng-class="{'highlight' : ft.end_time.hour != null}"></select-hour-time>
                     </div>
                   </div>
                   <div class="col-md-6 custom-dd drop2">
                     <div class="form-group">
-                      <select-minute-time ng-model="ft.end_time.min"></select-minute-time>
+                      <select-minute-time ng-model="ft.end_time.min" ng-class="{'highlight' : ft.end_time.min != null}"></select-minute-time>
                     </div>
                   </div>
                 </div>
@@ -216,7 +217,7 @@
                 <div class="row">
                   <div class="col-md-12 custom-dd">
                     <div class="form-group">
-                      <select name="colors" class="form-control fc-lg" ng-model="ft.paragraph" ng-options="item.id as item.name for item in list2"></select>
+                      <select name="colors" class="form-control fc-lg" ng-model="ft.paragraph" ng-options="item.id as item.name for item in list2" ng-class="{'highlight' : ft.paragraph != null}"></select>
                     </div>
                   </div>
                 </div>
@@ -225,7 +226,7 @@
             <div class="row">
               <div class="col-md-12 note-box">
                 <p>note</p>
-                <input type="text" class="form-control" ng-model="ft.note" />
+                <input type="text" class="form-control" ng-model="ft.note" ng-class="{'highlight' : (ft.note != null && ft.note != '')}"/>
               </div>
             </div>
           </div>

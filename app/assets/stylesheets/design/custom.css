@@ -67,3 +67,7 @@ ul#st-menu > li:hover, ul#st-menu > li:focus { background: #fa9c46; border: 1px 
 #participantsPopup .block-size { max-height: 297px; }
 #locationPopup .block-size  { height: 429px; }
 #datePopup .block-size, #fineTunePopup .block-size { max-height: 461px; }
+
+.highlight { border: 2px solid #FA9C46 !important; }
+.highlight-radio { border: 2px solid #FA9C46 !important; border-radius: 10px !important; }
+.highlight-date { color: #FA9C46; }
