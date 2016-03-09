@@ -1,21 +1,20 @@
 myApp.controller('AuditCtrl', ['$scope', 'api', function($scope, api){
-  // Import resources and Listing data
-  $scope.audits = api.Audit.index();
-
-  // Initialize elements with default values
-  initialize();
+  $scope.audits = api.Audit.index();  // Import resources and Listing data
+  initialize();  // Initialize elements with default values
 
   function initialize() {
     $scope.intervals = [6,12,24];
     $scope.auditType = null;
     $scope.fine_tunes = []; add_ft(); // Initialize one object at starting
     currentDate = new Date();
-    currentDate = currentDate.toLocaleDateString().split('/').join('-')
+    currentDate = currentDate.toLocaleDateString()//.split('/').join('-')
     $scope.audit_date = {"start": {"date": currentDate, "time": "10:00"}, "end": {"date": currentDate, "time": "10:00"}};
     $scope.audit = null;
+    $scope.fineTuneIsValid = false;
   };
 
   $scope.submit = function(){
+    vft();
     setParams();
     function success(response) {
       console.log("success", response);
@@ -24,15 +23,13 @@ myApp.controller('AuditCtrl', ['$scope', 'api', function($scope, api){
     }
     function failure(response) {
       console.log("failure", response);
-      // _.each(response.data, function(errors, key) {
-      //   _.each(errors, function(e) {
-      //     $scope.form[key].$dirty = true;
-      //     $scope.form[key].$setValidity(e, false);
-      //   });
-      // });
     }
     newAudit = { audit: $scope.audit, location: $scope.locations };
-    api.Audit.create(newAudit, success, failure);
+    if (validateAuditForm(newAudit)) {
+      api.Audit.create(newAudit, success, failure);
+    } else {
+      window.alert("Audit can't be created!\n Please enter required fields.");
+    }
   };
 
   $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent){
@@ -202,5 +199,25 @@ myApp.controller('AuditCtrl', ['$scope', 'api', function($scope, api){
       }
     });
     return status=='true' ? true : false;
+  };
+
+  $scope.validateFineTune = function() {
+    vft();
+  };
+
+  vft = function() {
+    ft = [];
+    angular.forEach($scope.fine_tunes, function(value, key) {
+      if (value.date && value.start_time.hour && value.start_time.min && value.end_time.hour && value.end_time.min && value.paragraph) {
+        this.push(value);
+      }
+    }, ft);
+    $scope.fine_tunes = ft;
+    $scope.fineTuneIsValid = true;
+  };
+
+  validateAuditForm = function(new_audit) {
+    audit = new_audit.audit;
+    return (audit.name && (audit.paragraphs.length > 0) && (audit.audit_type_id != null)) ? true : false;
   };
 }]);

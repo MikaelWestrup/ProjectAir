@@ -29,11 +29,13 @@ class AuditsController < ApplicationController
       params[:audit][:auditors].each { |employee| @audit.auditor_employees.build(employee_id: employee).save } if params[:audit][:auditors].present?
       params[:audit][:auditees].each { |employee| @audit.auditee_employees.build(employee_id: employee).save } if params[:audit][:auditees].present?
       params[:audit][:fine_tunes].each do |fine_tune|
-        @audit.fine_tunes.build( ddate: Date.strptime(fine_tune[:date], "%m/%d/%Y"),
-          start_hour: change_time(fine_tune[:start_time][:hour], fine_tune[:start_time][:min]),
-          end_hour: change_time(fine_tune[:end_time][:hour], fine_tune[:end_time][:min]),
-          notes: fine_tune[:note], paragraph_id: fine_tune[:paragraph]
-        ).save
+        if fine_tune[:date] && fine_tune[:start_time][:hour] && fine_tune[:start_time][:min] && fine_tune[:end_time][:hour] && fine_tune[:end_time][:min] && fine_tune[:paragraph]
+          @audit.fine_tunes.build( ddate: Date.strptime(fine_tune[:date], "%m/%d/%Y"),
+            start_hour: change_time(fine_tune[:start_time][:hour], fine_tune[:start_time][:min]),
+            end_hour: change_time(fine_tune[:end_time][:hour], fine_tune[:end_time][:min]),
+            notes: fine_tune[:note], paragraph_id: fine_tune[:paragraph]
+          ).save
+        end
       end if params[:audit][:fine_tunes].present?
       render json: @audit, status: :created
     else

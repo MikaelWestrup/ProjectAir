@@ -11,12 +11,12 @@
           <div class="row">
             <div class="col-md-6 custom-dd drop1">
               <div class="form-group">
-                <select-hour-time ng-model="ft.start_time.hour"></select-hour-time>
+                <select-hour-time ng-model="ft.start_time.hour" ng-class="{'highlight' : ft.start_time.hour != null}"></select-hour-time>
               </div>
             </div>
             <div class="col-md-6 custom-dd drop2">
               <div class="form-group">
-                <select-minute-time ng-model="ft.start_time.min"></select-minute-time>
+                <select-minute-time ng-model="ft.start_time.min" ng-class="{'highlight' : ft.start_time.min != null}"></select-minute-time>
               </div>
             </div>
           </div>
@@ -26,12 +26,12 @@
           <div class="row">
             <div class="col-md-6 custom-dd drop1">
               <div class="form-group">
-                <select-hour-time ng-model="ft.end_time.hour"></select-hour-time>
+                <select-hour-time ng-model="ft.end_time.hour" ng-class="{'highlight' : ft.end_time.hour != null}"></select-hour-time>
               </div>
             </div>
             <div class="col-md-6 custom-dd drop2">
               <div class="form-group">
-                <select-minute-time ng-model="ft.end_time.min"></select-minute-time>
+                <select-minute-time ng-model="ft.end_time.min" ng-class="{'highlight' : ft.end_time.min != null}"></select-minute-time>
               </div>
             </div>
           </div>
@@ -41,7 +41,7 @@
           <div class="row">
             <div class="col-md-12 custom-dd">
               <div class="form-group">
-                <select name="colors" class="form-control fc-lg" ng-model="ft.paragraph" ng-options="item.id as item.name for item in list2"></select>
+                <select name="colors" class="form-control fc-lg" ng-model="ft.paragraph" ng-options="item.id as item.name for item in list2" ng-class="{'highlight' : ft.paragraph != null}"></select>
               </div>
             </div>
           </div>
@@ -50,7 +50,7 @@
       <div class="row">
         <div class="col-md-12 note-box">
           <p>note</p>
-          <input type="text" class="form-control" ng-model="ft.note" />
+          <input type="text" class="form-control" ng-model="ft.note" ng-class="{'highlight' : (ft.note != null && ft.note != '')}"/>
         </div>
       </div>
     </div>
@@ -60,7 +60,7 @@
       </div>
     </div>
     <div class="footer-cal footer2">
-      <button type="button" class="btn btn-cal btn2" ng-click="fineTunePopup=false">Done</button>
+      <button type="button" class="btn btn-cal btn2" ng-click="validateFineTune(); fineTunePopup=false">Done</button>
     </div>
   </div>
 </div>
