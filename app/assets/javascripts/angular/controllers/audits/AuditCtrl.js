@@ -14,10 +14,8 @@ myApp.controller('AuditCtrl', ['$scope', 'api', function($scope, api){
   };
 
   $scope.submit = function(){
-    vft();
     setParams();
     function success(response) {
-      console.log("success", response);
       alert("Audit is successfully created.");
       window.location.reload();
     }
@@ -58,15 +56,6 @@ myApp.controller('AuditCtrl', ['$scope', 'api', function($scope, api){
   
   $scope.setAuditType = function(auditType){
     $scope.auditType = auditType;
-  };
-
-  $scope.setInterval = function(interval){
-    $scope.rinterval = interval;
-  };
-
-  $scope.setDateTime = function(){
-    // $scope.sdate = $("#start_date").val() + " " + $("#start_time").text();
-    // $scope.edate = $("#end_date").val() + " " + $("#end_time").text();
   };
 
   $scope.setLocation = function(location) {
@@ -139,12 +128,9 @@ myApp.controller('AuditCtrl', ['$scope', 'api', function($scope, api){
   };
 
   function setParams(){
-    $scope.audit["audit_type_id"] = ($scope.auditType ? $scope.auditType.id : null);
-    $scope.audit["interval"] = ($scope.audit.reoccuring == 'true' ? ($scope.rinterval || 0) : (0));
+    $scope.audit["audit_type_id"] = $scope.auditType.id || null;
     $scope.audit["period_start"] = $scope.audit_date.start.date + " " + $scope.audit_date.start.time;
     $scope.audit["period_end"] = $scope.audit_date.end.date + " " + $scope.audit_date.end.time;
-    $scope.audit["reoccuring"] = $scope.audit["reoccuring"] == "true" ? true : false;
-    $scope.audit["onsite"] = $scope.audit["onsite"] == "true" ? true : false;
     $scope.audit["paragraphs"] = getParagraphsList();
     $scope.audit["auditors"] = $scope.auditors;
     $scope.audit["auditees"] = $scope.auditees;
@@ -180,7 +166,6 @@ myApp.controller('AuditCtrl', ['$scope', 'api', function($scope, api){
     }
     else{
       $scope.list2.push(item);
-      // console.log('Dropped into something');
     };
   };
 
@@ -202,10 +187,6 @@ myApp.controller('AuditCtrl', ['$scope', 'api', function($scope, api){
   };
 
   $scope.validateFineTune = function() {
-    vft();
-  };
-
-  vft = function() {
     ft = [];
     angular.forEach($scope.fine_tunes, function(value, key) {
       if (value.date && value.start_time.hour && value.start_time.min && value.end_time.hour && value.end_time.min && value.paragraph) {

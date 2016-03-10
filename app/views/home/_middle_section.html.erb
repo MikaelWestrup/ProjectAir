@@ -41,23 +41,23 @@
                 <ul class="audit-time-box clearfix">
                   <li>one time
                     <label>
-                      <input type="radio" name="ont_time" value=false ng-model="audit.reoccuring">
-                        <img src="assets/Large-One-Time.png" alt="" class="img-responsive" ng-class="{'highlight-radio' : audit.reoccuring == 'false'}" style="width:95%"/>
+                      <input type="radio" name="ont_time" ng-value=false ng-model="audit.reoccuring" ng-click="audit['interval'] = 0">
+                        <img src="assets/Large-One-Time.png" class="img-responsive" ng-class="{'highlight-radio' : audit.reoccuring==false}" style="width:95%"/>
                     </label>
                   </li>
                   <li>repeating
                     <label>
-                      <input type="radio" name="ont_time" value=true ng-model="audit.reoccuring">
-                        <img src="assets/Large-Reoccurring.png" alt="" class="img-responsive" ng-class="{'highlight-radio' : audit.reoccuring == 'true'}" style="width:95%" />
+                      <input type="radio" name="ont_time" ng-value=true ng-model="audit.reoccuring">
+                        <img src="assets/Large-Reoccurring.png" class="img-responsive" ng-class="{'highlight-radio' : audit.reoccuring}" style="width:95%" />
                     </label>
                   </li>
                 </ul>
               </div>
-              <div class="col-md-6 audit-int" ng-class="{'disabled' : audit.reoccuring != 'true'}">
+              <div class="col-md-6 audit-int" ng-class="{'disabled' : !audit.reoccuring}">
                 <p>Audit Interval</p>
                 <ul class="audit-time-box clearfix">
                   <li><a ng-click="changeInterval(intervals[0], '-')" ng-hide="intervals.includes(0)">-</a></li>
-                  <li ng-repeat="interval in intervals" ng-click="setInterval(interval)" ng-class="{'active' : interval == rinterval && audit.reoccuring == 'true' }">
+                  <li ng-repeat="interval in intervals" ng-click="audit['interval'] = interval" ng-class="{'active' : interval == audit['interval']}">
                     <span>{{ interval }}</span>
                   </li>
                   <li><a ng-click="changeInterval(intervals[2], '+')" ng-hide="intervals.includes(48)">+</a></li>
@@ -75,14 +75,14 @@
                 <ul class="audit-time-box clearfix">
                   <li>onsite
                     <label>
-                      <input type="radio" name="ont_time" value=true ng-model="audit.onsite" ng-click="locationPopup=true">
-                      <img src="assets/Large-Home.png" alt="" class="img-responsive" ng-class="{'highlight-radio' : audit.onsite == 'true'}" />
+                      <input type="radio" name="ont_time" ng-value=true ng-model="audit.onsite" ng-click="locationPopup=true">
+                      <img src="assets/Large-Home.png" class="img-responsive" ng-class="{'highlight-radio' : audit.onsite}" />
                     </label>
                   </li>
                   <li>desktop
                     <label>
-                      <input type="radio" name="ont_time" value=false ng-model="audit.onsite">
-                        <img src="assets/Large-Desktop.png" alt="" class="img-responsive" ng-class="{'highlight-radio' : audit.onsite == 'false'}" />
+                      <input type="radio" name="ont_time" ng-value=false ng-model="audit.onsite">
+                        <img src="assets/Large-Desktop.png" class="img-responsive" ng-class="{'highlight-radio' : audit.onsite==false}" />
                     </label>
                   </li>
                 </ul>
