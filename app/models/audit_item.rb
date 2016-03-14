@@ -10,6 +10,7 @@
 #
 
 class AuditItem < ActiveRecord::Base
+  # Relations/Associations with other models
   belongs_to :audit
   belongs_to :paragraph
 end

@@ -10,6 +10,7 @@
 #
 
 class AuditorEmployee < ActiveRecord::Base
+  # Relations/Associations with other models
   belongs_to :audit
   belongs_to :employee
 end
