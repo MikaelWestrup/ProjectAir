@@ -71,6 +71,9 @@ RailsAdmin.config do |config|
 
   config.model 'AuditType' do 
     hide_fields
+    list do
+      exclude_fields :audits
+    end
     edit do
       exclude_fields :sub_types, :audits
     end
@@ -113,7 +116,7 @@ RailsAdmin.config do |config|
       exclude_fields :audits, :auditor_employees, :auditee_employees, :role
     end
     edit do
-      exclude_fields :audits, :auditor_employees, :auditee_employees
+      exclude_fields :audits, :auditor_employees, :auditee_employees, :role
     end
   end
 

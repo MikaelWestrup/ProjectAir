@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     # design api routes for audits controller all CRUD operation except edit and update
     resources :audits, except: [:edit, :update]
     # design api routes for chapters controller index action and search functionality
-    resources :chapters, only: [:index, :create]
+    resources :chapters, only: :index
     # get specific paragraph details by id
     get 'chapters/paragraph/:id' =>  'chapters#show_paragraph'
     # search content
