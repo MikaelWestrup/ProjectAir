@@ -62,15 +62,12 @@ RailsAdmin.config do |config|
     end
   end
 
-  # config.model 'AttachmentType' do 
-  #   hide_fields
-  #   list do
-  #     exclude_fields :attachments
-  #   end
-  #   edit do
-  #     exclude_fields :attachments
-  #   end
-  # end
+  config.model 'AttachmentType' do 
+    hide_fields
+    edit do
+      exclude_fields :attachments
+    end
+  end
 
   config.model 'AuditType' do 
     hide_fields
