@@ -64,6 +64,9 @@ RailsAdmin.config do |config|
 
   config.model 'AttachmentType' do 
     hide_fields
+    list do
+      exclude_fields :attachments
+    end
     edit do
       exclude_fields :attachments
     end
