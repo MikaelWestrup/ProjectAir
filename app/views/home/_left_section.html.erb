@@ -1,7 +1,7 @@
 <div class="left-sec" ng-controller="ChapterCtrl">
   <script type="text/ng-template" id="group-template.html">
     <div class="panel panel-default">
-      <h4 class="panel-heading panel-title clearfix" ng-class="{'highlight' : isOpen}">
+      <h4 class="panel-heading panel-title clearfix" ng-class="{'highlight' : isCollapsed}">
         <a class="expbtn accordion-toggle" ng-class="{'collapsed' : !isOpen}" ng-click="toggleOpen()"></a>
         <p>{{ heading }}</p>
         <a class="info" href="javascript:void(0);" title="Info"></a>
