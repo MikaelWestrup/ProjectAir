@@ -1,5 +1,6 @@
 * { margin: 0; padding: 0; }
-body { background: #E5E5E5; }
+/*body { background: #E5E5E5; }*/
+body { background: green; }
 /*basic css*/
 ul { margin: 0; padding: 0; list-style: none; }
 h1 { font-size: 36px; }
