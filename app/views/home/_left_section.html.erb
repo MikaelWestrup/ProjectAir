@@ -32,8 +32,8 @@
         <div class="panel-group" id="accordion" role="tablist">
           <!-- ng loop start -->
           <uib-accordion close-others="false">
-            <uib-accordion-group heading="{{chapter.name}}" ng-repeat="chapter in chapters" template-url="group-template.html" is-open="suffle.isOpen" ng-init="suffle.isOpen = $first">
-           <!--uib-accordion-group heading="{{chapter.name}}" ng-repeat="chapter in chapters" template-url="group-template.html"> -->
+            <!-- <uib-accordion-group heading="{{chapter.name}}" ng-repeat="chapter in chapters" template-url="group-template.html" is-open="suffle.isOpen" ng-init="suffle.isOpen = $first"> REMOVE in refactor--> 
+           <uib-accordion-group heading="{{chapter.name}}" ng-repeat="chapter in chapters" template-url="group-template.html"> 
               <div class="outer-box" ng-repeat="paragraph in chapter.paragraphs | orderBy:'number'" ng-model="chapter.paragraphs" data-drag="true" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}" jqyoui-draggable="{index: $index,placeholder:'keep',animate:false}" ng-class="{'selected' : itemPresent(paragraph)}">
                 <span id="{{ paragraph.id }}">
                   <div class="para-list-type">{{ paragraph.number }}</div>
