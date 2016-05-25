@@ -106,7 +106,7 @@ ul#speed-menu > li:hover, ul#speed-menu > li:focus{ background: #fa9c46; border:
 .info-box { background: #fff; border-radius: 10px; height: 150px; margin: 10px auto 0; max-width: 400px; overflow: auto; padding: 10px; text-align: center; display: block; }
 .info-box p { color: #000; font-size: 14px; font-weight: 700; }
 .info-box-outer { height: 150px; }
-.outer-middle-box { position: relative; overflow:hidden; }
+.outer-middle-box { position: relative;}
 .custom-popup, 
 .custom-popup2{ display: none; left: 0; position: absolute; top:0px; width: 100%;}
 .custom-popup.popup-active{ display:block;}
